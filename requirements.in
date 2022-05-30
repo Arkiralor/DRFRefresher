@@ -1,0 +1,12 @@
+autopep8
+coverage
+django
+django-cors-headers
+django-dotenv
+djangorestframework
+pandas
+psycopg2-binary
+pytest-django
+requests
+scipy
+sympy
