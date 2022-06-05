@@ -25,9 +25,9 @@ class GetUserView(APIView):
         GET a list of all users in system:
         '''
         if request.user.is_staff:
-            queryset = User.objects.all()
+            queryset = User.objects.all().order_by('date_joined')
 
-            serialized = UserSerializer(queryset, many=True)
+            serialized = UserAdminSerializer(queryset, many=True)
 
             return Response(
                 serialized.data,

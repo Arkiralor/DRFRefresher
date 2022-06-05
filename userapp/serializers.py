@@ -18,7 +18,20 @@ class UserAdminSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = User
-        fields = '__all__'
+        fields = (
+            'id',
+            'username', 
+            'email', 
+            'first_name', 
+            'last_name', 
+            'user_slug',
+            'user_type',
+            'last_login', 
+            'is_superuser', 
+            'is_staff', 
+            'is_active', 
+            'date_joined'
+        )
         extra_kwargs = {
             'password': {
                 'read_only': True

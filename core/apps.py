@@ -11,7 +11,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
 ]
 CUSTOM_APPS = [
-    'userapp',
-    'storyapp',
+    'userapp.apps.UserappConfig',
+    'storyapp.apps.StoryappConfig',
     'searchapp'
 ]
