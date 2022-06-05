@@ -1,12 +1,14 @@
-autopep8
-coverage
-django
-django-cors-headers
-django-dotenv
-djangorestframework
-pandas
-psycopg2-binary
-pytest-django
-requests
-scipy
-sympy
+autopep8                ## Used to format the code
+coverage                ## Used to test code coverage and which tests need to be written
+django                  ## Main framework for project
+django-cors-headers     ## Used to allow cross-origin requests
+django-dotenv           ## Used to read environment variables from .env file
+djangorestframework     ## Used to create RESTful APIs
+pandas                  ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
+psycopg2-binary         ## Used to connect to PostgreSQL database
+pytest-django           ## Used to automate testing of Django apps
+requests                ## Used to make HTTP requests to external APIs
+spacy                   ## Used to perform natural language processing
+spacy-langdetect        ## Language detector module used to detect language of text
+scipy                   ## Used to perform scientific mathematical operations
+sympy                   ## Used to perform symbolic mathematical operations

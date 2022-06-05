@@ -9,5 +9,6 @@ class IsModerator(BasePermission):
         is_true = (
             request.user.user_type == "moderator" 
             or request.user.is_staff
-            )
+            or request.user.is_superuser
+        )
         return bool(is_true and request.user.is_authenticated)

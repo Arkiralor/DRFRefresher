@@ -3,6 +3,9 @@ from constants.file_paths import FilePath
 
 
 class FileIO:
+    """
+    Class to handle file operations
+    """
 
     @classmethod
     def write_token_to_file(cls, username:str, token:str):

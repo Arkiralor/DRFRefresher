@@ -12,14 +12,32 @@ attrs==21.4.0
     # via pytest
 autopep8==1.6.0
     # via -r requirements.in
+blis==0.7.7
+    # via
+    #   spacy
+    #   thinc
+catalogue==2.0.7
+    # via
+    #   spacy
+    #   srsly
+    #   thinc
 certifi==2022.5.18.1
     # via requests
 charset-normalizer==2.0.12
     # via requests
+click==8.1.3
+    # via typer
 colorama==0.4.4
-    # via pytest
+    # via
+    #   pytest
+    #   tqdm
 coverage==6.4
     # via -r requirements.in
+cymem==2.0.6
+    # via
+    #   preshed
+    #   spacy
+    #   thinc
 django==4.0.4
     # via
     #   -r requirements.in
@@ -35,28 +53,58 @@ idna==3.3
     # via requests
 iniconfig==1.1.1
     # via pytest
+jinja2==3.1.2
+    # via spacy
+langcodes==3.3.0
+    # via spacy
+langdetect==1.0.7
+    # via spacy-langdetect
+markupsafe==2.1.1
+    # via jinja2
 mpmath==1.2.1
     # via sympy
+murmurhash==1.0.7
+    # via
+    #   preshed
+    #   spacy
+    #   thinc
 numpy==1.22.4
     # via
+    #   blis
     #   pandas
     #   scipy
+    #   spacy
+    #   thinc
 packaging==21.3
-    # via pytest
+    # via
+    #   pytest
+    #   spacy
 pandas==1.4.2
     # via -r requirements.in
+pathy==0.6.1
+    # via spacy
 pluggy==1.0.0
     # via pytest
+preshed==3.0.6
+    # via
+    #   spacy
+    #   thinc
 psycopg2-binary==2.9.3
     # via -r requirements.in
 py==1.11.0
     # via pytest
 pycodestyle==2.8.0
     # via autopep8
+pydantic==1.8.2
+    # via
+    #   spacy
+    #   thinc
 pyparsing==3.0.9
     # via packaging
 pytest==7.1.2
-    # via pytest-django
+    # via
+    #   pytest-django
+    #   spacy-langdetect
 pytest-django==4.5.2
     # via -r requirements.in
 python-dateutil==2.8.2
@@ -66,20 +114,56 @@ pytz==2022.1
     #   djangorestframework
     #   pandas
 requests==2.27.1
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   spacy
 scipy==1.8.1
     # via -r requirements.in
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   langdetect
+    #   python-dateutil
+smart-open==5.2.1
+    # via pathy
+spacy==3.3.0
+    # via -r requirements.in
+spacy-langdetect==0.1.2
+    # via -r requirements.in
+spacy-legacy==3.0.9
+    # via spacy
+spacy-loggers==1.0.2
+    # via spacy
 sqlparse==0.4.2
     # via django
+srsly==2.4.3
+    # via
+    #   spacy
+    #   thinc
 sympy==1.10.1
     # via -r requirements.in
+thinc==8.0.17
+    # via spacy
 toml==0.10.2
     # via autopep8
 tomli==2.0.1
     # via pytest
+tqdm==4.64.0
+    # via spacy
+typer==0.4.1
+    # via
+    #   pathy
+    #   spacy
+typing-extensions==4.2.0
+    # via pydantic
 tzdata==2022.1
     # via django
 urllib3==1.26.9
     # via requests
+wasabi==0.9.1
+    # via
+    #   spacy
+    #   spacy-loggers
+    #   thinc
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

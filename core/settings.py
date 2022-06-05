@@ -7,10 +7,13 @@ from core.middleware import DEFAULT_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE, CUSTOM_M
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = environ['SECRET_KEY']
-DEBUG = bool(environ['DEBUG'])
+
+DEBUG = eval(environ['DEBUG'])
+
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
 ]
 
 
@@ -68,8 +71,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = environ['LANGUAGE_CODE']
 TIME_ZONE = environ['TIME_ZONE']
-USE_I18N = bool(environ['USE_I18N'])
-USE_TZ = bool(environ['USE_TZ'])
+USE_I18N = eval(environ['USE_I18N'])
+USE_TZ = eval(environ['USE_TZ'])
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [

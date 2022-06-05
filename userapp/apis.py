@@ -1,5 +1,5 @@
 from userapp.models import User
-from userapp.serializers import UserSerializer, UserAdminSerializer
+from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -52,7 +52,9 @@ class AddUserView(APIView):
         POST a new user to the system:
         '''
         data = request.data
+        print(f"\n\n\nPassword: {data['password']}\n\n\n")
         data['password'] = make_password(data.get('password'))
+
         if 'is_staff' in data.keys():
             data['is_staff'] = False
         if 'is_superuser' in data.keys():
@@ -61,6 +63,7 @@ class AddUserView(APIView):
             data['has_key'] = False
         if 'user_type' in data.keys():
             data['user_type'] = 'normal_user'
+
         deserialized = UserSerializer(data=data)
 
         if deserialized.is_valid():
@@ -90,6 +93,7 @@ class UserLoginView(APIView):
 
         username = data.get('username')
         password = data.get('password')
+        print(f"\n\n\nPassword: {password}\n\n\n")
         user = User.objects.filter(username=username).first()
 
         if user is None:

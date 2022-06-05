@@ -4,8 +4,7 @@ import uuid
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
-from userapp.model_choices import USER_TYPE_CHOICES
-
+from userapp.model_choices import UserChoice
 # Create your models here.
 
 
@@ -23,7 +22,7 @@ class User(AbstractUser):
     user_slug = models.SlugField(max_length=250, null=True, blank=True)
     user_type = models.CharField(
         max_length=32,
-        choices=USER_TYPE_CHOICES,
+        choices=UserChoice.TYPE_CHOICES,
         default='normal_user',
         blank=True,
         null=True
@@ -43,4 +42,4 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-        ordering = ('-id', '-date_joined')
+        ordering = ('-date_joined', 'id')
