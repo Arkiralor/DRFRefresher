@@ -45,13 +45,13 @@ class SearchStoryAPI(APIView):
 
         resp = {
             'results': results,
-            'query': params,
+            'query': dict(params),
             'requester': request.user.username,
             'searched_at': timestamp
         }
 
         return Response(
-            data=resp,
+            resp,
             status=status.HTTP_200_OK
         )
 
