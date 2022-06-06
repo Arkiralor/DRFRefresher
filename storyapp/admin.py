@@ -6,7 +6,7 @@ from storyapp.models import Story
 
 @admin.register(Story)
 class StoryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'created_at', 'updated_at')
+    list_display = ('id', 'title', 'author', 'created_at', 'updated_at')
     list_filter = ('created_at', 'updated_at')
     search_fields = ('title', 'author')
     raw_id_fields = ('author',)
