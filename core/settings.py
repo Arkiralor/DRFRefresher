@@ -99,7 +99,7 @@ LOGGING = {
     },
     'loggers': {
         'root': {
-            'handlers': ['console', 'file'], 
+            'handlers': ['console', 'file'],
             "level": 'DEBUG'
         },
         'django': {
