@@ -13,5 +13,5 @@ THIRD_PARTY_APPS = [
 CUSTOM_APPS = [
     'userapp.apps.UserappConfig',
     'storyapp.apps.StoryappConfig',
-    'searchapp'
+    'searchapp.apps.SearchappConfig',
 ]

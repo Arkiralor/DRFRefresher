@@ -1,10 +1,13 @@
 from datetime import datetime
 import uuid
 
+from django.core.validators import EmailValidator, RegexValidator
 from django.db import models
+from django.db.models import Q
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
 from userapp.model_choices import UserChoice
+from userapp.constants import UserRegex
 # Create your models here.
 
 
@@ -18,7 +21,27 @@ class User(AbstractUser):
         default=uuid.uuid4, 
         editable=False
     )
-    email = models.EmailField(unique=True)
+    email = models.EmailField(
+        validators=[
+            EmailValidator(
+                message="Please enter a valid email address.",
+                code="invalid_email"
+            )
+        ],
+        unique=True
+    )
+    user_phone_primary = models.CharField(
+        max_length=10,
+        validators=[
+            RegexValidator(
+                regex=UserRegex.PHONE_REGEX_IN,
+                message="Please enter a valid phone number.",
+                code="invalid_phone"
+            )
+        ],
+        blank=True,
+        null=True
+    )
     user_slug = models.SlugField(max_length=250, null=True, blank=True)
     user_type = models.CharField(
         max_length=32,

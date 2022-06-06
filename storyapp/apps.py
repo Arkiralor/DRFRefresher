@@ -6,4 +6,4 @@ class StoryappConfig(AppConfig):
     name = 'storyapp'
 
     def ready(self):
-        import userapp.signals
+        import storyapp.signals

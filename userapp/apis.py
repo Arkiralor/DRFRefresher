@@ -52,7 +52,6 @@ class AddUserView(APIView):
         POST a new user to the system:
         '''
         data = request.data
-        # print(f"\n\n\nPassword: {data['password']}\n\n\n")
         data['password'] = make_password(data.get('password'))
 
         if 'is_staff' in data.keys():
@@ -93,7 +92,6 @@ class UserLoginView(APIView):
 
         username = data.get('username')
         password = data.get('password')
-        # print(f"\n\n\nPassword: {password}\n\n\n")
         user = User.objects.filter(username=username).first()
 
         if user is None:

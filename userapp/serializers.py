@@ -1,7 +1,5 @@
 from rest_framework import serializers
 from userapp.models import User
-# Define your serializers here:
-
 
 class UserSerializer(serializers.ModelSerializer):
     """
@@ -24,6 +22,7 @@ class UserAdminSerializer(serializers.ModelSerializer):
             'email', 
             'first_name', 
             'last_name', 
+            'user_phone_primary',
             'user_slug',
             'user_type',
             'last_login', 
