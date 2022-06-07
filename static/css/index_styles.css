@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic";
+    src: url(https://fonts.googleapis.com/css?family=Century+Gothic);
+}
+
+header {
+    background-color: #242424;
+    height: 12vh;
+    background-size: cover;
+    background-position: top;
+}
+
+body {
+    background: linear-gradient(180deg, #242424 0%, #242424 25%, #7c003b 100%);
+    height: 100pc;
+    background-size: cover;
+    background-position: top;
+}
+
+h1 {
+    color: rgb(233, 233, 233);
+    font-size: 3em;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.title {
+    position: center;
+}
+
+.title tr td h1 {
+    color: #fff;
+    font-size: 70px;
+    font-family: "Century Gothic";
+}
+
+.LinkTable {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #242424;
+    font-size: 25px;
+    font-family: "Century Gothic";
+    color: #fff;
+    text-align: center;
+    margin-top: 0.5em;
+}

@@ -130,10 +130,10 @@ USE_I18N = eval(environ['USE_I18N'])
 USE_TZ = eval(environ['USE_TZ'])
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     path.join(BASE_DIR, 'static')
-# ]
-STATIC_ROOT = path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [
+    path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = path.join(BASE_DIR, 'static_assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = path.join(BASE_DIR, 'media/')
