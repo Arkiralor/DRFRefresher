@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from userapp.models import User
+from userapp.models import User, UserProfile
+
 
 class UserSerializer(serializers.ModelSerializer):
     """
@@ -18,17 +19,17 @@ class UserAdminSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'username', 
-            'email', 
-            'first_name', 
-            'last_name', 
+            'username',
+            'email',
+            'first_name',
+            'last_name',
             'user_phone_primary',
             'user_slug',
             'user_type',
-            'last_login', 
-            'is_superuser', 
-            'is_staff', 
-            'is_active', 
+            'last_login',
+            'is_superuser',
+            'is_staff',
+            'is_active',
             'date_joined'
         )
         extra_kwargs = {
@@ -36,3 +37,12 @@ class UserAdminSerializer(serializers.ModelSerializer):
                 'read_only': True
             }
         }
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for UserProfile model.
+    """
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
