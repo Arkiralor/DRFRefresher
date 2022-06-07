@@ -1,15 +1,8 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 3px;
     font-family: "Century Gothic";
     src: url(https://fonts.googleapis.com/css?family=Century+Gothic);
-}
-
-header {
-    background-color: #242424;
-    height: 12vh;
-    background-size: cover;
-    background-position: top;
 }
 
 body {
@@ -45,23 +38,46 @@ p {
 }
 
 .LinkTable {
-    align-self: center;
-    width: 60%;
+    color: #fff;
+    width: 90vw;
     height: auto;
-    border: 2px solid #242424;
+    /* border: 1px solid #fdfdfd; */
+    margin-top: 0.5em;
+    position: relative;
+    align-self: center;
+    margin-left: 1cm;
+    padding: auto;
+    text-align: center;
+}
+
+.LinkTable tr {
     font-size: 12px;
     font-family: "Century Gothic";
+    height: 25px;
     color: #fff;
     text-align: center;
-    margin-top: 0.5em;
+    /* border: 1px solid #fdfdfd; */
 }
 
-.LinkTable tr{
+.LinkTable tr td {
     height: 25px;
-    width: 25vw;
+    width: 35%;
+    text-align: center;
+    /* border: 1px solid #fdfdfd; */
+
 }
 
-.LinkTable tr td{
-    height: 25px;
-    width: 12px
+.LinkTable tr td text {
+    color: #fff;
+    font-size: 12px;
+    font-family: "Century Gothic";
+    text-align: center;
+}
+
+.LinkTable tr td a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 16px;
+    font-family: "Century Gothic";
+    text-align: center;
 }
