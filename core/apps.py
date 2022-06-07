@@ -15,4 +15,5 @@ CUSTOM_APPS = [
     'storyapp.apps.StoryappConfig',
     'searchapp.apps.SearchappConfig',
     'index_app.apps.IndexAppConfig',
+    'locationapp.apps.LocationappConfig',
 ]
