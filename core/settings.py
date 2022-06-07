@@ -75,7 +75,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LOG_DIR = path.join(BASE_DIR, 'logs/')
 if not path.exists(LOG_DIR):
     makedirs(LOG_DIR)
-LOG_FILE = path.join(LOG_DIR, f'{env_type}.log')
+ENV_LOG_FILE = path.join(LOG_DIR, f'{env_type}.log')
+DJANGO_LOG_FILE = path.join(LOG_DIR, 'django.log')
 
 LOGGING = {
     'version': 1,
@@ -85,18 +86,19 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'file': {
+        'root_file': {
             'class': 'logging.FileHandler',
-            'filename': LOG_FILE,
-            'formatter': 'verbose',
+            'filename': ENV_LOG_FILE,
+            'formatter': 'verbose'
         },
-        'logfile': {
+        'django_file': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': path.join(LOG_DIR, 'django.log'),
+            'filename': DJANGO_LOG_FILE,
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'local',
+            'encoding': 'utf-8',
         }
     },
     'formatters': {
@@ -111,11 +113,11 @@ LOGGING = {
     },
     'loggers': {
         'root': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console', 'root_file'],
             "level": 'INFO'
         },
         'django': {
-            'handlers': ['console', 'logfile'],
+            'handlers': ['console', 'django_file'],
             'level': 'INFO',
             'propagate': True
         },
