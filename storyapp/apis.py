@@ -44,6 +44,7 @@ class AddStoryAPI(APIView):
         """
         POST method to add a new story to system
         """
+        request.data['author'] = request.user.id
         serialized = StorySerializer(data=request.data)
         if serialized.is_valid():
             serialized.save()
@@ -187,5 +188,29 @@ class IndividualStoryAPI(APIView):
             {
                 "message": f"Story with identifier {identifier} deleted successfully"
             },
+            status=status.HTTP_200_OK
+        )
+
+class IndividualStoryBySlugAPI(APIView):
+    """
+    API to retrieve a single story by slug.
+    """
+
+    def get(self, request, slug):
+        """
+        GET method to get a single story.
+        """
+        story = Story.objects.get(slug=slug)
+        if not story:
+            return Response(
+                {
+                    "error": f"Story with slug {slug} not found"
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serialized = StorySerializer(story)
+        return Response(
+            serialized.data,
             status=status.HTTP_200_OK
         )
