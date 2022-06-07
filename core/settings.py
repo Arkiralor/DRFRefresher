@@ -90,9 +90,21 @@ LOGGING = {
             'filename': LOG_FILE,
             'formatter': 'verbose',
         },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': path.join(LOG_DIR, 'django.log'),
+            'maxBytes': 50000,
+            'backupCount': 2,
+            'formatter': 'local',
+        }
     },
     'formatters': {
         'verbose': {
+            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|PROCESS:%(process)d|THREAD:%(thread)d|%(name)s|%(module)s|%(funcName)s|%(lineno)s]   %(message)s',
+            'datefmt': '%d/%b/%Y %H:%M:%S',
+        },
+        'local': {
             'format': '[%(levelname)s|%(asctime)s.%(msecs)d|PROCESS:%(process)d|THREAD:%(thread)d|%(name)s|%(module)s|%(funcName)s|%(lineno)s]   %(message)s',
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
@@ -103,8 +115,9 @@ LOGGING = {
             "level": 'INFO'
         },
         'django': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console', 'logfile'],
             'level': 'INFO',
+            'propagate': True
         },
     },
 }
