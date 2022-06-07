@@ -19,7 +19,6 @@ class UserSignalReciever:
         Signal to send when a story is created.
         """
         if created:
-            # print(f"User: {instance.username} created.")
             logger.info(f"User: {instance.username} created.")
 
     @classmethod
@@ -28,7 +27,6 @@ class UserSignalReciever:
         Signal to send when a story is updated.
         """
         if not created:
-            # print(f"User {instance.username} updated.")
             logger.info(f"User {instance.username} updated.")
 
     @classmethod
@@ -36,7 +34,6 @@ class UserSignalReciever:
         """
         Signal to send when a story is deleted.
         """
-        # print(f"User {instance.username} deleted.")
         logger.info(f"User {instance.username} deleted.")
 
 ## Signal to send when a user is created.
