@@ -3,6 +3,7 @@ from spacy.language import Language as ln
 from spacy_langdetect import LanguageDetector
 import en_core_web_md
 
+from general_utilities import logger
 from general_utilities.constants import LANG_DICT
 
 
@@ -18,6 +19,7 @@ class LanguageHandlers:
         '''
         Initialization method for the class:
         '''
+        logger.info(f"Initializing LanguageHandlers class.")
         self.input_text = input_text
 
     def __repr__(self):
@@ -55,7 +57,7 @@ class LanguageHandlers:
                 return LANG_DICT.get(lang_code)
 
         except Exception as ex:
-            print(f"Error: {ex}")
+            logger.info(f"Error: {ex}")
 
     @classmethod
     def check_if_similiar(cls, sample_text: str, tested_text: str):

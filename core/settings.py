@@ -1,6 +1,7 @@
 from pathlib import Path
 from os import environ, path, makedirs
 
+from core import logger
 from core.apps import DEFAULT_APPS, THIRD_PARTY_APPS, CUSTOM_APPS
 from core.middleware import DEFAULT_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE, CUSTOM_MIDDLEWARE
 
@@ -74,6 +75,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ## Create directory for logs
 LOG_DIR = path.join(BASE_DIR, 'logs/')
 if not path.exists(LOG_DIR):
+    logger.info('Creating log directory.')
     makedirs(LOG_DIR)
 ENV_LOG_FILE = path.join(LOG_DIR, f'{env_type}.log')
 DJANGO_LOG_FILE = path.join(LOG_DIR, 'django.log')
