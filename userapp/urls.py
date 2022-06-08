@@ -1,7 +1,6 @@
 from django.urls import path
 from userapp.apis import GetUserView, AddUserView, UserLoginView, UserLogoutView, SetSuperView, \
-    SetStaffView, UserGetView, MakeModeratorView
-
+    SetStaffView, UserGetView, MakeModeratorView, GetAllProfilesAPI
 
 urlpatterns = [
     path('login/', UserLoginView.as_view(), name='user_login'),
@@ -12,4 +11,5 @@ urlpatterns = [
     path('make_super/<str:slug>', SetSuperView.as_view(), name='set_super'),
     path('make_staff/<str:slug>', SetStaffView.as_view(), name='set_staff'),
     path('make_moderator/<str:slug>', MakeModeratorView.as_view(), name='make_moderator'),
+    path('profile/all', GetAllProfilesAPI.as_view(), name='all_user_profiles'),
 ]

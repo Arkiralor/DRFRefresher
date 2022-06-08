@@ -1,11 +1,9 @@
-from django.urls import path, include
-from rest_framework import routers
-from locationapp.apis import CountryModelViewSet, LocationModelViewSet
-
-model_router = routers.DefaultRouter()
-model_router.register(r'country', CountryModelViewSet)
-model_router.register(r'location', LocationModelViewSet)
+from django.urls import path
+from locationapp.apis import CountryAPI, IndividualCountryAPI, LocationAPI, IndividualLocationAPI
 
 urlpatterns = [
-    path('', include(model_router.urls)),
+    path('location/', LocationAPI.as_view(), name='location_list'),
+    path('location/<slug:slug>', IndividualLocationAPI.as_view(), name='location_detail'),
+    path('country/all', CountryAPI.as_view(), name='country_list'),
+    path('country/<slug:slug>/', IndividualCountryAPI.as_view(), name='country_detail'),
 ]

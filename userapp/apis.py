@@ -1,5 +1,5 @@
-from userapp.models import User
-from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer
+from userapp.models import User, UserProfile
+from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -297,4 +297,22 @@ class MakeModeratorView(APIView):
         return Response(
             resp,
             status_code
+        )
+
+class GetAllProfilesAPI(APIView):
+    '''
+    API to get all profiles
+    '''
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAdminUser,)
+
+    def get(self, request):
+        '''
+        GET request to get all profiles
+        '''
+        profiles = UserProfile.objects.all()
+        serialized = UserProfileSerializer(profiles, many=True)
+        return Response(
+            serialized.data,
+            status=status.HTTP_200_OK
         )
