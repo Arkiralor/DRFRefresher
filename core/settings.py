@@ -105,11 +105,11 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|PROCESS:%(process)d|THREAD:%(thread)d|%(name)s|%(module)s|%(funcName)s|%(lineno)s]   %(message)s',
+            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|%(name)s|%(module)s|%(funcName)s:%(lineno)s]    %(message)s',
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
         'local': {
-            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|PROCESS:%(process)d|THREAD:%(thread)d|%(name)s|%(module)s|%(funcName)s|%(lineno)s]   %(message)s',
+            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|%(name)s|%(module)s|%(funcName)s:%(lineno)s]    %(message)s',
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
     },

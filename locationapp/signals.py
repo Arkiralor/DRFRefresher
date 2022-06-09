@@ -51,7 +51,7 @@ class LocationModelSignalReciever:
         Signal to send when a location is created.
         """
         if created:
-            logger.info(f"Location: {instance.city_town} created.")
+            logger.info(f"Location '{instance.city_town}, {instance.country.name}' created.")
 
     @classmethod
     def location_updated(cls, sender, instance, created, **kwargs):
@@ -59,14 +59,14 @@ class LocationModelSignalReciever:
         Signal to send when a location is updated.
         """
         if not created:
-            logger.info(f"Location {instance.city_town} updated.")
+            logger.info(f"Location '{instance.city_town}, {instance.country.name}' updated.")
 
     @classmethod
     def location_deleted(cls, sender, instance, **kwargs):
         """
         Signal to send when a location is deleted.
         """
-        logger.info(f"Location {instance.city_town} deleted.")
+        logger.info(f"Location '{instance.city_town}, {instance.country.name}' deleted.")
 
 
 post_save.connect(receiver=LocationModelSignalReciever.location_created, sender=LocationModelSignalReciever.model)

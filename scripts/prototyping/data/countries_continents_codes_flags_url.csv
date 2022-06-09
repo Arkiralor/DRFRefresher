@@ -1,0 +1,274 @@
+country,country_code,calling_code,region
+Afghanistan,AF,4,Asia
+Albania,AL,8,Europe
+Algeria,DZ,12,Africa
+Andorra,AD,20,Europe
+Angola,AO,24,Africa
+Antigua and Barbuda,AG,28,Americas
+Argentina,AR,32,Americas
+Armenia,AM,51,Asia
+Australia,AU,36,Oceania
+Austria,AT,40,Europe
+Azerbaijan,AZ,31,Asia
+Bahamas,BS,44,Americas
+Bahrain,BH,48,Asia
+Bangladesh,BD,50,Asia
+Barbados,BB,52,Americas
+Belarus,BY,112,Europe
+Belgium,BE,56,Europe
+Belize,BZ,84,Americas
+Benin,BJ,204,Africa
+Bhutan,BT,64,Asia
+Bolivia,BO,68,Americas
+Bosnia and Herzegovina,,,
+Botswana,BW,72,Africa
+Brazil,BR,76,Americas
+Brunei,,,
+Bulgaria,BG,100,Europe
+Burkina Faso,BF,854,Africa
+Burundi,BI,108,Africa
+Cambodia,KH,116,Asia
+Cameroon,CM,120,Africa
+Canada,CA,124,Americas
+Cape Verde,,,
+Central African Republic,CF,140,Africa
+Chad,TD,148,Africa
+Chile,CL,152,Americas
+China,CN,156,Asia
+Colombia,CO,170,Americas
+Comoros,KM,174,Africa
+Democratic Republic of Congo,,,
+Republic of Congo,,,
+Costa Rica,CR,188,Americas
+Croatia,HR,191,Europe
+Cuba,CU,192,Americas
+Cyprus,CY,196,Asia
+Czech Republic,CZ,203,Europe
+Denmark,DK,208,Europe
+Djibouti,DJ,262,Africa
+Dominica,DM,212,Americas
+Dominican Republic,DO,214,Americas
+East Timor,,,
+Ecuador,EC,218,Americas
+Egypt,EG,818,Africa
+El Salvador,SV,222,Americas
+Equatorial Guinea,GQ,226,Africa
+Eritrea,ER,232,Africa
+Estonia,EE,233,Europe
+Ethiopia,ET,231,Africa
+Fiji,FJ,242,Oceania
+Finland,FI,246,Europe
+France,FR,250,Europe
+Gabon,GA,266,Africa
+The Gambia,,,
+Georgia,GE,268,Asia
+Germany,DE,276,Europe
+Ghana,GH,288,Africa
+Greece,GR,300,Europe
+Grenada,GD,308,Americas
+Guatemala,GT,320,Americas
+Guinea,GN,324,Africa
+Guinea-Bissau,,,
+Guyana,GY,328,Americas
+Haiti,HT,332,Americas
+Honduras,HN,340,Americas
+Hungary,HU,348,Europe
+Iceland,IS,352,Europe
+India,IN,356,Asia
+Indonesia,ID,360,Asia
+Iran,IR,364,Asia
+Iraq,IQ,368,Asia
+Ireland,IE,372,Europe
+Israel,IL,376,Asia
+Italy,IT,380,Europe
+Ivory Coast,,,
+Jamaica,JM,388,Americas
+Japan,JP,392,Asia
+Jordan,JO,400,Asia
+Kazakhstan,KZ,398,Asia
+Kenya,KE,404,Africa
+Kiribati,KI,296,Oceania
+North Korea,,,
+South Korea,KP,408,Asia
+Kuwait,KW,414,Asia
+Kyrgyzstan,KG,417,Asia
+Laos,LA,418,Asia
+Latvia,LV,428,Europe
+Lebanon,LB,422,Asia
+Lesotho,LS,426,Africa
+Liberia,LR,430,Africa
+Libya,LY,434,Africa
+Liechtenstein,LI,438,Europe
+Lithuania,LT,440,Europe
+Luxembourg,LU,442,Europe
+Macedonia,MK,807,Europe
+Madagascar,MG,450,Africa
+Malawi,MW,454,Africa
+Malaysia,MY,458,Asia
+Maldives,MV,462,Asia
+Mali,ML,466,Africa
+Malta,MT,470,Europe
+Marshall Islands,MH,584,Oceania
+Mauritania,MR,478,Africa
+Mauritius,MU,480,Africa
+Mexico,MX,484,Americas
+Federated States of Micronesia,,,
+Moldova,MD,498,Europe
+Monaco,MC,492,Europe
+Mongolia,MN,496,Asia
+Montenegro,ME,499,Europe
+Morocco,MA,504,Africa
+Mozambique,MZ,508,Africa
+Myanmar,MM,104,Asia
+Namibia,,516,Africa
+Nauru,NR,520,Oceania
+Nepal,NP,524,Asia
+Netherlands,NL,528,Europe
+New Zealand,NZ,554,Oceania
+Nicaragua,NI,558,Americas
+Niger,NE,562,Africa
+Nigeria,NG,566,Africa
+Norway,NO,578,Europe
+Oman,OM,512,Asia
+Pakistan,PK,586,Asia
+Palau,PW,585,Oceania
+Palestine,,,
+Panama,PA,591,Americas
+Papua New Guinea,PG,598,Oceania
+Paraguay,PY,600,Americas
+Peru,PE,604,Americas
+Philippines,PH,608,Asia
+Poland,PL,616,Europe
+Portugal,PT,620,Europe
+Qatar,QA,634,Asia
+Romania,RO,642,Europe
+Russia,RU,643,Europe
+Rwanda,RW,646,Africa
+Saint Kitts and Nevis,KN,659,Americas
+Saint Lucia,LC,662,Americas
+Saint Vincent and Grenadines,,,
+Samoa,WS,882,Oceania
+San Marino,SM,674,Europe
+Sao Tome and Principe,ST,678,Africa
+Saudi Arabia,SA,682,Asia
+Senegal,SN,686,Africa
+Serbia,RS,688,Europe
+Seychelles,SC,690,Africa
+Sierra Leone,SL,694,Africa
+Singapore,SG,702,Asia
+Slovakia,SK,703,Europe
+Slovenia,SI,705,Europe
+Solomon Islands,SB,90,Oceania
+Somalia,SO,706,Africa
+South Africa,ZA,710,Africa
+South Sudan,SS,728,Africa
+Spain,ES,724,Europe
+Sri Lanka,LK,144,Asia
+Sudan,SD,729,Africa
+Suriname,SR,740,Americas
+Swaziland,,,
+Sweden,SE,752,Europe
+Switzerland,CH,756,Europe
+Syria,SY,760,Asia
+Tajikistan,TJ,762,Asia
+Tanzania,TZ,834,Africa
+Thailand,TH,764,Asia
+Togo,TG,768,Africa
+Tonga,TO,776,Oceania
+Trinidad and Tobago,TT,780,Americas
+Tunisia,TN,788,Africa
+Turkey,TR,792,Asia
+Turkmenistan,TM,795,Asia
+Tuvalu,TV,798,Oceania
+Uganda,UG,800,Africa
+Ukraine,UA,804,Europe
+United Arab Emirates,AE,784,Asia
+United Kingdom,GB,826,Europe
+United States,US,840,Americas
+Uruguay,UY,858,Americas
+Uzbekistan,UZ,860,Asia
+Vanuatu,VU,548,Oceania
+Vatican City,,,
+Venezuela,VE,862,Americas
+Vietnam,VN,704,Asia
+Yemen,YE,887,Asia
+Zambia,ZM,894,Africa
+Zimbabwe,ZW,716,Africa
+Abkhazia,,,
+Artsakh,,,
+Cook Islands,CK,184,Oceania
+Kosovo,,,
+Niue,NU,570,Oceania
+Turkish Republic of Northern Cyprus,,,
+Sahrawi Arab Democratic Republic,,,
+Somaliland,,,
+South Ossetia,,,
+Republic of China,,,
+Transnistria,,,
+Åland Islands,AX,248,Europe
+American Samoa,AS,16,Oceania
+Anguilla,AI,660,Americas
+Antarctica,AQ,10,
+Aruba,AW,533,Americas
+Bermuda,BM,60,Americas
+"Bonaire, Sint Eustatius and Saba",BQ,535,Americas
+Bosnia And Herzegovina,BA,70,Europe
+Bouvet Island,BV,74,Americas
+British Indian Ocean Territory,IO,86,Africa
+Brunei Darussalam,BN,96,Asia
+Cabo Verde,CV,132,Africa
+Cayman Islands,KY,136,Americas
+Christmas Island,CX,162,Oceania
+Cocos (Keeling) Islands,CC,166,Oceania
+Congo,CG,178,Africa
+Congo (Democratic Republic Of The),CD,180,Africa
+Côte D'Ivoire,CI,384,Africa
+Curaçao,CW,531,Americas
+Eswatini,SZ,748,Africa
+Falkland Islands (Malvinas),FK,238,Americas
+Faroe Islands,FO,234,Europe
+French Guiana,GF,254,Americas
+French Polynesia,PF,258,Oceania
+French Southern Territories,TF,260,Africa
+Gambia,GM,270,Africa
+Gibraltar,GI,292,Europe
+Greenland,GL,304,Americas
+Guadeloupe,GP,312,Americas
+Guam,GU,316,Oceania
+Guernsey,GG,831,Europe
+Guinea Bissau,GW,624,Africa
+Heard Island and McDonald Islands,HM,334,Oceania
+Holy See,VA,336,Europe
+Hong Kong,HK,344,Asia
+Isle of Man,IM,833,Europe
+Jersey,JE,832,Europe
+"Korea, Republic of",KR,410,Asia
+Macao,MO,446,Asia
+Martinique,MQ,474,Americas
+Mayotte,YT,175,Africa
+Micronesia (Federated States of),FM,583,Oceania
+Montserrat,MS,500,Americas
+New Caledonia,NC,540,Oceania
+Norfolk Island,NF,574,Oceania
+Northern Mariana Islands,MP,580,Oceania
+"Palestine, State of",PS,275,Asia
+Pitcairn,PN,612,Oceania
+Puerto Rico,PR,630,Americas
+Réunion,RE,638,Africa
+Saint Barthélemy,BL,652,Americas
+"Saint Helena, Ascension and Tristan da Cunha",SH,654,Africa
+Saint Martin (French part),MF,663,Americas
+Saint Pierre and Miquelon,PM,666,Americas
+Saint Vincent and the Grenadines,VC,670,Americas
+Sint Maarten (Dutch part),SX,534,Americas
+South Georgia and the South Sandwich Islands,GS,239,Americas
+Svalbard and Jan Mayen,SJ,744,Europe
+Taiwan,TW,158,Asia
+Timor-Leste,TL,626,Asia
+Tokelau,TK,772,Oceania
+Turks and Caicos Islands,TC,796,Americas
+United States Minor Outlying Islands,UM,581,Oceania
+Virgin Islands (British),VG,92,Americas
+Virgin Islands (U.S.),VI,850,Americas
+Wallis and Futuna,WF,876,Oceania
+Western Sahara,EH,732,Africa
