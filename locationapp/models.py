@@ -14,11 +14,11 @@ class CountryModel(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    name = models.CharField(max_length=50, unique=True)
+    official_name = models.CharField(max_length=50, unique=True)
     common_name = models.CharField(max_length=50, blank=True, null=True)
     slug = models.SlugField(max_length=50, null=True, blank=True)
-    icann = models.CharField(max_length=7, blank=True, null=True)
-    isd = models.CharField(max_length=5, blank=True, null=True)
+    internet_tld = models.CharField(max_length=7, blank=True, null=True, help_text="Internet top level domain for the country")
+    calling_code = models.CharField(max_length=5, blank=True, null=True, help_text="International Dialing Code for the country.")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -26,16 +26,16 @@ class CountryModel(models.Model):
         Extended save() method to create a slug for the story.
         '''
         if not self.id or not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.official_name)
         super(CountryModel, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.common_name
 
     class Meta:
         verbose_name = 'Country'
         verbose_name_plural = 'Countries'
-        ordering = ('-created_at',)
+        ordering = ('common_name',)
 
 
 class LocationModel(models.Model):
@@ -69,7 +69,7 @@ class LocationModel(models.Model):
     class Meta:
         verbose_name = 'Location'
         verbose_name_plural = 'Locations'
-        ordering = ('-created_at',)
+        ordering = ('country', 'city_town')
         unique_together = ('city_town', 'district_county', 'state_province', 'country')
 
     @property

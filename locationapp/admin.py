@@ -3,9 +3,9 @@ from locationapp.models import CountryModel, LocationModel
 
 @admin.register(CountryModel)
 class CountryModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'icann', 'isd', 'created_at')
+    list_display = ('id', 'common_name', 'internet_tld', 'calling_code', 'created_at')
     search_fields = ('name',)
-    ordering = ('-created_at',)
+    ordering = ('common_name',)
 
 
 @admin.register(LocationModel)
