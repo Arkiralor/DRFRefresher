@@ -2,7 +2,6 @@ autopep8                ## Used to format the code
 coverage                ## Used to test code coverage and which tests need to be written
 django                  ## Main framework for project
 django-cors-headers     ## Used to allow cross-origin requests
-django-crontab          ## Used to schedule tasks
 django-dotenv           ## Used to read environment variables from .env file
 djangorestframework     ## Used to create RESTful APIs
 jupyter                 ## Used to create Jupyter notebooks for prototyping.
