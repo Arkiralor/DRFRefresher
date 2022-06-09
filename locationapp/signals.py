@@ -15,7 +15,6 @@ class CountryModelSignalReciever:
         """
         Signal to send when a country is created.
         """
-        request = kwargs.get('request')
         if created:
             logger.info(f"Country: {instance.name} created.")
 
@@ -24,7 +23,6 @@ class CountryModelSignalReciever:
         """
         Signal to send when a country is updated.
         """
-        request = kwargs.get('request')
         if not created:
             logger.info(f"Country {instance.name} updated.")
 
