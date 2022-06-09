@@ -14,13 +14,20 @@ class CountryModel(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    name = models.CharField(max_length=50, unique=True, default="Default Country Name", help_text="Common name of the country.")
-    official_name = models.CharField(max_length=50, blank=True, null=True, help_text="Official name of the country as presented in legal documents.")
-    slug = models.SlugField(max_length=50, null=True, blank=True, help_text="Slug used to identify/route to the country.")
-    country_code = models.CharField(max_length=5, blank=True, null=True, help_text="ISO 3166-1 alpha-3 country code.")
-    country_region = models.CharField(max_length=128, blank=True, null=True, help_text="Region of the country.")
-    internet_tld = models.CharField(max_length=7, blank=True, null=True, help_text="Internet top level domain for the country")
-    calling_code = models.CharField(max_length=5, blank=True, null=True, help_text="International Dialing Code for the country.")
+    name = models.CharField(max_length=50, unique=True,
+                            default="Default Country Name", help_text="Common name of the country.")
+    official_name = models.CharField(max_length=50, blank=True, null=True,
+                                     help_text="Official name of the country as presented in legal documents.")
+    slug = models.SlugField(max_length=128, null=True, blank=True,
+                            help_text="Slug used to identify/route to the country.")
+    country_code = models.CharField(
+        max_length=10, blank=True, null=True, help_text="ISO 3166-1 alpha-3 country code.")
+    country_region = models.CharField(
+        max_length=128, blank=True, null=True, help_text="Region of the country.")
+    internet_tld = models.CharField(
+        max_length=10, blank=True, null=True, help_text="Internet top level domain for the country")
+    calling_code = models.CharField(
+        max_length=10, blank=True, null=True, help_text="International Dialing Code for the country.")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -62,18 +69,20 @@ class LocationModel(models.Model):
         Extended save() method to create a slug for the story.
         '''
         if not self.id or not self.slug:
-            self.slug = slugify(f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.official_name}")
+            self.slug = slugify(
+                f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.official_name}")
         super(LocationModel, self).save(*args, **kwargs)
 
     def __str__(self):
         rep = f"{self.city_town}, {self.country.name}"
-        return 
+        return rep
 
     class Meta:
         verbose_name = 'Location'
         verbose_name_plural = 'Locations'
         ordering = ('country', 'city_town')
-        unique_together = ('city_town', 'district_county', 'state_province', 'country')
+        unique_together = ('city_town', 'district_county',
+                           'state_province', 'country')
 
     @property
     def name(self):
