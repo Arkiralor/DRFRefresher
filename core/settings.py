@@ -143,3 +143,11 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userapp.User'
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+CRONJOBS = [
+    (
+        '* * * * *', 
+        'index_app.cron.sample_cron_job'
+    )
+]
