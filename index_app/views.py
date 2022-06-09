@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from os import environ
 
 from index_app import logger
 
@@ -12,7 +13,13 @@ def index(request):
     resp_dict = {
             'title': 'Index',
             'welcome_message': 'Welcome to the index page.',
-            'message': 'Please use the APIs to interface with the backend.'
+            'message': 'Please use the APIs to interface with the backend.',
+            'documentation': {
+                'userapp_docs': environ.get('USERAPP_DOCS'),
+                'locationapp_docs': environ.get('LOCATIONAPP_DOCS'),
+                'storyapp_docs': environ.get('STORYAPP_DOCS'),
+                'searchapp_docs': environ.get('SEARCHAPP_DOCS'),
+            }
         }
     return render(
         request, 
