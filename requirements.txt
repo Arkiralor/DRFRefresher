@@ -4,14 +4,28 @@
 #
 #    pip-compile
 #
+argon2-cffi==21.3.0
+    # via notebook
+argon2-cffi-bindings==21.2.0
+    # via argon2-cffi
 asgiref==3.5.2
     # via django
+asttokens==2.0.5
+    # via stack-data
 atomicwrites==1.4.0
     # via pytest
 attrs==21.4.0
-    # via pytest
+    # via
+    #   jsonschema
+    #   pytest
 autopep8==1.6.0
     # via -r requirements.in
+backcall==0.2.0
+    # via ipython
+beautifulsoup4==4.11.1
+    # via nbconvert
+bleach==5.0.0
+    # via nbconvert
 blis==0.7.7
     # via
     #   spacy
@@ -23,12 +37,16 @@ catalogue==2.0.7
     #   thinc
 certifi==2022.5.18.1
     # via requests
+cffi==1.15.0
+    # via argon2-cffi-bindings
 charset-normalizer==2.0.12
     # via requests
 click==8.1.3
     # via typer
 colorama==0.4.4
     # via
+    #   click
+    #   ipython
     #   pytest
     #   tqdm
 coverage==6.4
@@ -38,6 +56,12 @@ cymem==2.0.6
     #   preshed
     #   spacy
     #   thinc
+debugpy==1.6.0
+    # via ipykernel
+decorator==5.1.1
+    # via ipython
+defusedxml==0.7.1
+    # via nbconvert
 django==4.0.4
     # via
     #   -r requirements.in
@@ -49,18 +73,82 @@ django-dotenv==1.4.2
     # via -r requirements.in
 djangorestframework==3.13.1
     # via -r requirements.in
+entrypoints==0.4
+    # via
+    #   jupyter-client
+    #   nbconvert
+executing==0.8.3
+    # via stack-data
+fastjsonschema==2.15.3
+    # via nbformat
 idna==3.3
     # via requests
 iniconfig==1.1.1
     # via pytest
+ipykernel==6.13.1
+    # via
+    #   ipywidgets
+    #   jupyter
+    #   jupyter-console
+    #   notebook
+    #   qtconsole
+ipython==8.4.0
+    # via
+    #   ipykernel
+    #   ipywidgets
+    #   jupyter-console
+ipython-genutils==0.2.0
+    # via
+    #   ipywidgets
+    #   notebook
+    #   qtconsole
+ipywidgets==7.7.0
+    # via jupyter
+jedi==0.18.1
+    # via ipython
 jinja2==3.1.2
-    # via spacy
+    # via
+    #   nbconvert
+    #   notebook
+    #   spacy
+jsonschema==4.6.0
+    # via nbformat
+jupyter==1.0.0
+    # via -r requirements.in
+jupyter-client==7.3.4
+    # via
+    #   ipykernel
+    #   jupyter-console
+    #   nbclient
+    #   notebook
+    #   qtconsole
+jupyter-console==6.4.3
+    # via jupyter
+jupyter-core==4.10.0
+    # via
+    #   jupyter-client
+    #   nbconvert
+    #   nbformat
+    #   notebook
+    #   qtconsole
+jupyterlab-pygments==0.2.2
+    # via nbconvert
+jupyterlab-widgets==1.1.0
+    # via ipywidgets
 langcodes==3.3.0
     # via spacy
 langdetect==1.0.7
     # via spacy-langdetect
 markupsafe==2.1.1
-    # via jinja2
+    # via
+    #   jinja2
+    #   nbconvert
+matplotlib-inline==0.1.3
+    # via
+    #   ipykernel
+    #   ipython
+mistune==0.8.4
+    # via nbconvert
 mpmath==1.2.1
     # via sympy
 murmurhash==1.0.7
@@ -68,6 +156,28 @@ murmurhash==1.0.7
     #   preshed
     #   spacy
     #   thinc
+nbclient==0.6.4
+    # via nbconvert
+nbconvert==6.5.0
+    # via
+    #   jupyter
+    #   notebook
+nbformat==5.4.0
+    # via
+    #   ipywidgets
+    #   nbclient
+    #   nbconvert
+    #   notebook
+nest-asyncio==1.5.5
+    # via
+    #   ipykernel
+    #   jupyter-client
+    #   nbclient
+    #   notebook
+notebook==6.4.12
+    # via
+    #   jupyter
+    #   widgetsnbextension
 numpy==1.22.4
     # via
     #   blis
@@ -77,30 +187,59 @@ numpy==1.22.4
     #   thinc
 packaging==21.3
     # via
+    #   ipykernel
+    #   nbconvert
     #   pytest
+    #   qtpy
     #   spacy
 pandas==1.4.2
     # via -r requirements.in
+pandocfilters==1.5.0
+    # via nbconvert
+parso==0.8.3
+    # via jedi
 pathy==0.6.1
     # via spacy
+pickleshare==0.7.5
+    # via ipython
 pluggy==1.0.0
     # via pytest
 preshed==3.0.6
     # via
     #   spacy
     #   thinc
+prometheus-client==0.14.1
+    # via notebook
+prompt-toolkit==3.0.29
+    # via
+    #   ipython
+    #   jupyter-console
+psutil==5.9.1
+    # via ipykernel
 psycopg2-binary==2.9.3
     # via -r requirements.in
+pure-eval==0.2.2
+    # via stack-data
 py==1.11.0
     # via pytest
 pycodestyle==2.8.0
     # via autopep8
+pycparser==2.21
+    # via cffi
 pydantic==1.8.2
     # via
     #   spacy
     #   thinc
+pygments==2.12.0
+    # via
+    #   ipython
+    #   jupyter-console
+    #   nbconvert
+    #   qtconsole
 pyparsing==3.0.9
     # via packaging
+pyrsistent==0.18.1
+    # via jsonschema
 pytest==7.1.2
     # via
     #   pytest-django
@@ -108,23 +247,44 @@ pytest==7.1.2
 pytest-django==4.5.2
     # via -r requirements.in
 python-dateutil==2.8.2
-    # via pandas
+    # via
+    #   jupyter-client
+    #   pandas
 pytz==2022.1
     # via
     #   djangorestframework
     #   pandas
+pywin32==304
+    # via jupyter-core
+pywinpty==2.0.5
+    # via terminado
+pyzmq==23.1.0
+    # via
+    #   jupyter-client
+    #   notebook
+    #   qtconsole
+qtconsole==5.3.1
+    # via jupyter
+qtpy==2.1.0
+    # via qtconsole
 requests==2.27.1
     # via
     #   -r requirements.in
     #   spacy
 scipy==1.8.1
     # via -r requirements.in
+send2trash==1.8.0
+    # via notebook
 six==1.16.0
     # via
+    #   asttokens
+    #   bleach
     #   langdetect
     #   python-dateutil
 smart-open==5.2.1
     # via pathy
+soupsieve==2.3.2.post1
+    # via beautifulsoup4
 spacy==3.3.0
     # via -r requirements.in
 spacy-langdetect==0.1.2
@@ -139,16 +299,41 @@ srsly==2.4.3
     # via
     #   spacy
     #   thinc
+stack-data==0.2.0
+    # via ipython
 sympy==1.10.1
     # via -r requirements.in
+terminado==0.15.0
+    # via notebook
 thinc==8.0.17
     # via spacy
+tinycss2==1.1.1
+    # via nbconvert
 toml==0.10.2
     # via autopep8
 tomli==2.0.1
     # via pytest
+tornado==6.1
+    # via
+    #   ipykernel
+    #   jupyter-client
+    #   notebook
+    #   terminado
 tqdm==4.64.0
     # via spacy
+traitlets==5.2.2.post1
+    # via
+    #   ipykernel
+    #   ipython
+    #   ipywidgets
+    #   jupyter-client
+    #   jupyter-core
+    #   matplotlib-inline
+    #   nbclient
+    #   nbconvert
+    #   nbformat
+    #   notebook
+    #   qtconsole
 typer==0.4.1
     # via
     #   pathy
@@ -164,6 +349,14 @@ wasabi==0.9.1
     #   spacy
     #   spacy-loggers
     #   thinc
+wcwidth==0.2.5
+    # via prompt-toolkit
+webencodings==0.5.1
+    # via
+    #   bleach
+    #   tinycss2
+widgetsnbextension==3.6.0
+    # via ipywidgets
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

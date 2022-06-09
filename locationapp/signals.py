@@ -17,7 +17,7 @@ class CountryModelSignalReciever:
         """
         request = kwargs.get('request')
         if created:
-            logger.info(f"Country: {instance.common_name} created.")
+            logger.info(f"Country: {instance.name} created.")
 
     @classmethod
     def country_updated(cls, sender, instance, created, **kwargs):
@@ -26,14 +26,14 @@ class CountryModelSignalReciever:
         """
         request = kwargs.get('request')
         if not created:
-            logger.info(f"Country {instance.common_name} updated.")
+            logger.info(f"Country {instance.name} updated.")
 
     @classmethod
     def country_deleted(cls, sender, instance, **kwargs):
         """
         Signal to send when a country is deleted.
         """
-        logger.info(f"Country {instance.common_name} deleted.")
+        logger.info(f"Country {instance.name} deleted.")
 
 
 post_save.connect(receiver=CountryModelSignalReciever.country_created, sender=CountryModelSignalReciever.model)
@@ -53,7 +53,7 @@ class LocationModelSignalReciever:
         Signal to send when a location is created.
         """
         if created:
-            logger.info(f"Location '{instance.city_town}, {instance.country.common_name}' created.")
+            logger.info(f"Location '{instance.city_town}, {instance.country.name}' created.")
 
     @classmethod
     def location_updated(cls, sender, instance, created, **kwargs):
@@ -61,14 +61,14 @@ class LocationModelSignalReciever:
         Signal to send when a location is updated.
         """
         if not created:
-            logger.info(f"Location '{instance.city_town}, {instance.country.common_name}' updated.")
+            logger.info(f"Location '{instance.city_town}, {instance.country.name}' updated.")
 
     @classmethod
     def location_deleted(cls, sender, instance, **kwargs):
         """
         Signal to send when a location is deleted.
         """
-        logger.info(f"Location '{instance.city_town}, {instance.country.common_name}' deleted.")
+        logger.info(f"Location '{instance.city_town}, {instance.country.name}' deleted.")
 
 
 post_save.connect(receiver=LocationModelSignalReciever.location_created, sender=LocationModelSignalReciever.model)

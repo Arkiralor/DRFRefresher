@@ -14,9 +14,11 @@ class CountryModel(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    official_name = models.CharField(max_length=50, unique=True)
-    common_name = models.CharField(max_length=50, blank=True, null=True)
-    slug = models.SlugField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50, unique=True, default="Default Country Name", help_text="Common name of the country.")
+    official_name = models.CharField(max_length=50, blank=True, null=True, help_text="Official name of the country as presented in legal documents.")
+    slug = models.SlugField(max_length=50, null=True, blank=True, help_text="Slug used to identify/route to the country.")
+    country_code = models.CharField(max_length=5, blank=True, null=True, help_text="ISO 3166-1 alpha-3 country code.")
+    country_region = models.CharField(max_length=128, blank=True, null=True, help_text="Region of the country.")
     internet_tld = models.CharField(max_length=7, blank=True, null=True, help_text="Internet top level domain for the country")
     calling_code = models.CharField(max_length=5, blank=True, null=True, help_text="International Dialing Code for the country.")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,16 +28,16 @@ class CountryModel(models.Model):
         Extended save() method to create a slug for the story.
         '''
         if not self.id or not self.slug:
-            self.slug = slugify(self.official_name)
+            self.slug = slugify(self.name)
         super(CountryModel, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.common_name
+        return self.name
 
     class Meta:
         verbose_name = 'Country'
         verbose_name_plural = 'Countries'
-        ordering = ('common_name',)
+        ordering = ('name',)
 
 
 class LocationModel(models.Model):
@@ -60,11 +62,12 @@ class LocationModel(models.Model):
         Extended save() method to create a slug for the story.
         '''
         if not self.id or not self.slug:
-            self.slug = slugify(f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.name}")
+            self.slug = slugify(f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.official_name}")
         super(LocationModel, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.city_town
+        rep = f"{self.city_town}, {self.country.name}"
+        return 
 
     class Meta:
         verbose_name = 'Location'
