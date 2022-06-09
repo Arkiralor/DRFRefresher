@@ -23,7 +23,7 @@ This project will be updated as needed and should only be treated as a sample.
 6. Install `PIP-Tools` using:   `pip install pip-tools`
 7. Compile the `requirements.in` file using:    `pip-compile`
 8. Install the dependencies:    `pip install -r requirements.txt`
-9. Install the `spacy` model using: `python -m spacy install en_core_web_md`
+9. Install the `spacy` model using: `python -m spacy download en_core_web_md`
 10. Copy the `.env` file to the directory root.
 11. Create the necessary migrations:    `./manage.py makemigrations`
 12. Migrate the database:   `./manage.py migrate`
