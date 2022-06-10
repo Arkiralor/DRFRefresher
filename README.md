@@ -1,17 +1,17 @@
 # Django Refresher
 
-A basic django apllication that I used to refresh up on core concepts of Django and Django Restframework.
+A basic django apllication that I use to refresh up on core concepts of Django and Django Restframework.
 
 The project is a web-system for users to publish stories using a collection of Rest APIs.
 
-This project will be updated as needed and should only be treated as a sample.
+_This project will be updated as needed and should only be treated as a sample._
 
 ## Features
 
-1. Rest API
-2. PostgreSQL Database
-3. Logged in File
-4. Custom Permission Classes
+1. [Rest API](#rest-api)
+2. [PostgreSQL Database](https://www.postgresql.org/)
+3. [Logged in File](#logs/)
+4. [Custom Permission Classes](#custom-permission-classes)
 
 ## Setup
 
