@@ -8,10 +8,10 @@ _This project will be updated as needed and should only be treated as a sample._
 
 ## Features
 
-1. [Rest API](#rest-api)
+1. [Rest API](https://restfulapi.net/)
 2. [PostgreSQL Database](https://www.postgresql.org/)
-3. [Logged in File](#logs/)
-4. [Custom Permission Classes](#custom-permission-classes)
+3. [Logged in File](https://docs.djangoproject.com/en/4.0/topics/logging/)
+4. [Custom Permission Classes](https://www.django-rest-framework.org/api-guide/permissions/)
 
 ## Setup
 
