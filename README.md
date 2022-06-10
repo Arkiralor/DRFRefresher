@@ -49,6 +49,11 @@ LANGUAGE_CODE = 'language_code'
 TIME_ZONE = 'standard_time_location as city/continent'
 USE_I18N = True/False
 USE_TZ = True/False
+
+USERAPP_DOCS = 'link_to_docs'
+LOCATIONAPP_DOCS = 'link_to_docs'
+STORYAPP_DOCS = 'link_to_docs'
+SEARCHAPP_DOCS = 'link_to_docs'
 ```
 
 ## Documentation
