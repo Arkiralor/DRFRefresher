@@ -1,186 +1,187 @@
 name,country_code,country_region,internet_tld,calling_code,official_name
-Afghanistan,AF,Asia,.af,+93,Afghanistan
-Albania,AL,Europe,.al,+355,Albania
-Algeria,DZ,Africa,.dz,+213,Algeria
-Andorra,AD,Europe,.ad,+376,Andorra
-Angola,AO,Africa,.ao,+244,Angola
+Afghanistan,AF,Asia,.af,+93,Islamic Emirate of Afghanistan
+Albania,AL,Europe,.al,+355,Republic of Albania
+Algeria,DZ,Africa,.dz,+213,People's Democratic Republic of Algeria
+Andorra,AD,Europe,.ad,+376,Principality of Andorra
+Angola,AO,Africa,.ao,+244,Republic of Angola
 Antigua and Barbuda,AG,Americas,.ag,+1 268,Antigua And Barbuda
-Argentina,AR,Americas,.ar,+54,Argentina
-Armenia,AM,Asia,.am,+374,Armenia
-Australia,AU,Oceania,.au,+61,Australia
-Austria,AT,Europe,.at,+43,Austria
-Azerbaijan,AZ,Asia,.az,+994,Azerbaijan
-Bahamas,BS,Americas,.bs,+1 242,Bahamas
-Bahrain,BH,Asia,.bh,+973,Bahrain
-Bangladesh,BD,Asia,.bd,+880,Bangladesh
+Argentina,AR,Americas,.ar,+54,Argentine Republic
+Armenia,AM,Asia,.am,+374,Republic of Armenia
+Australia,AU,Oceania,.au,+61,Commonwealth of Australia
+Austria,AT,Europe,.at,+43,Republic of Austria
+Azerbaijan,AZ,Asia,.az,+994,Republic of Azerbaijan
+Bahamas,BS,Americas,.bs,+1 242,Commonwealth of The Bahamas
+Bahrain,BH,Asia,.bh,+973,Kingdom of Bahrain
+Bangladesh,BD,Asia,.bd,+880,People's Republic of Bangladesh
 Barbados,BB,Americas,.bb,+1 246,Barbados
-Belarus,BY,Europe,.by,+375,Belarus
-Belgium,BE,Europe,.be,+32,Belgium
+Belarus,BY,Europe,.by,+375,Republic of Belarus
+Belgium,BE,Europe,.be,+32,Kingdom of Belgium
 Belize,BZ,Americas,.bz,+501,Belize
-Benin,BJ,Africa,.bj,+229,Benin
-Bhutan,BT,Asia,.bt,+975,Bhutan
-Bolivia,BO,Americas,.bo,+591,Bolivia
-Botswana,BW,Africa,.bw,+267,Botswana
-Brazil,BR,Americas,.br,+55,Brazil
-Bulgaria,BG,Europe,.bg,+358,Bulgaria
+Benin,BJ,Africa,.bj,+229,Republic of Benin
+Bhutan,BT,Asia,.bt,+975,Kingdom of Bhutan
+Bolivia,BO,Americas,.bo,+591,Plurinational State of Bolivia
+Botswana,BW,Africa,.bw,+267,Republic of Botswana
+Brazil,BR,Americas,.br,+55,Federative Republic of Brazil
+Bulgaria,BG,Europe,.bg,+358,Republic of Bulgaria
 Burkina Faso,BF,Africa,.bf,+226,Burkina Faso
-Burundi,BI,Africa,.bi,+257,Burundi
-Cambodia,KH,Asia,.kh,+855,Cambodia
-Cameroon,CM,Africa,.cm,+237,Cameroon
+Burundi,BI,Africa,.bi,+257,Republic of Burundi
+Cambodia,KH,Asia,.kh,+855,Kingdom of Cambodia
+Cameroon,CM,Africa,.cm,+237,Republic of Cameroon
 Canada,CA,Americas,.ca,+1,Canada
 Central African Republic,CF,Africa,.cf,+236,Central African Republic
-Chad,TD,Africa,.td,+235,Chad
-Chile,CL,Americas,.cl,+56,Chile
-China,CN,Asia,.cn,+86,China
-Colombia,CO,Americas,.co,+57,Colombia
-Comoros,KM,Africa,.km,+269,Comoros
-Costa Rica,CR,Americas,.cr,+506,Costa Rica
-Croatia,HR,Europe,.hr,+385,Croatia
-Cuba,CU,Americas,.cu,+53,Cuba
-Cyprus,CY,Asia,.cy,+357,Cyprus
+Chad,TD,Africa,.td,+235,Republic of Chad
+Chile,CL,Americas,.cl,+56,Republic of Chile
+China,CN,Asia,.cn,+86,People's Republic of China
+Colombia,CO,Americas,.co,+57,Republic of Colombia
+Comoros,KM,Africa,.km,+269,Union of the Comoros
+Costa Rica,CR,Americas,.cr,+506,Republic of Costa Rica
+Croatia,HR,Europe,.hr,+385,Republic of Croatia
+Cuba,CU,Americas,.cu,+53,Republic of Cuba
+Cyprus,CY,Asia,.cy,+357,Republic of Cyprus
 Czech Republic,CZ,Europe,.cz,+420,Czech Republic
 Denmark,DK,Europe,.dk,+45,Denmark
-Djibouti,DJ,Africa,.dj,+253,Djibouti
-Dominica,DM,Americas,.dm,+1 767,Dominica
+Djibouti,DJ,Africa,.dj,+253,Republic of Djibouti
+Dominica,DM,Americas,.dm,+1 767,Commonwealth of Dominica
 Dominican Republic,DO,Americas,.do,+1 809,Dominican Republic
-Ecuador,EC,Americas,.ec,+593,Ecuador
-Egypt,EG,Africa,.eg,+20,Egypt
-El Salvador,SV,Americas,.sv,+503,El Salvador
-Equatorial Guinea,GQ,Africa,.gq,+240,Equatorial Guinea
-Eritrea,ER,Africa,.er,+291,Eritrea
-Estonia,EE,Europe,.ee,+372,Estonia
-Ethiopia,ET,Africa,.et,+251,Ethiopia
-Fiji,FJ,Oceania,.fj,+679,Fiji
-Finland,FI,Europe,.fi,+358,Finland
-France,FR,Europe,.fr,+33,France
-Gabon,GA,Africa,.ga,+241,Gabon
+Ecuador,EC,Americas,.ec,+593,Republic of Ecuador
+Egypt,EG,Africa,.eg,+20,Arab Republic of Egypt
+El Salvador,SV,Americas,.sv,+503,Republic of El Salvador
+Equatorial Guinea,GQ,Africa,.gq,+240,Republic of Equatorial Guinea
+Eritrea,ER,Africa,.er,+291,State of Eritrea
+Estonia,EE,Europe,.ee,+372,Republic of Estonia
+Ethiopia,ET,Africa,.et,+251,Federal Democratic Republic of Ethiopia
+Fiji,FJ,Oceania,.fj,+679,Republic of Fiji
+Finland,FI,Europe,.fi,+358,Republic of Finland
+France,FR,Europe,.fr,+33,French Republic
+Gabon,GA,Africa,.ga,+241,Gabonese Republic
 Georgia,GE,Asia,.ge,+995,Georgia
-Germany,DE,Europe,.de,+49,Germany
-Ghana,GH,Africa,.gh,+233,Ghana
-Greece,GR,Europe,.gr,+30,Greece
+Germany,DE,Europe,.de,+49,Federal Republic of Germany
+Ghana,GH,Africa,.gh,+233,Republic of Ghana
+Greece,GR,Europe,.gr,+30,Hellenic Republic
 Grenada,GD,Americas,.gd,+1 473,Grenada
-Guatemala,GT,Americas,.gt,+502,Guatemala
-Guinea,GN,Africa,.gn,+224,Guinea
-Guyana,GY,Americas,.gy,+592,Guyana
-Haiti,HT,Americas,.ht,+509,Haiti
-Honduras,HN,Americas,.hn,+504,Honduras
+Guatemala,GT,Americas,.gt,+502,Republic of Guatemala
+Guinea,GN,Africa,.gn,+224,Republic of Guinea
+Guyana,GY,Americas,.gy,+592,Co-Operative Republic of Guyana
+Haiti,HT,Americas,.ht,+509,Republic of Haiti
+Honduras,HN,Americas,.hn,+504,Republic of Honduras
 Hungary,HU,Europe,.hu,+36,Hungary
 Iceland,IS,Europe,.is,+354,Iceland
-India,IN,Asia,.in,+91,India
-Indonesia,ID,Asia,.id,+62,Indonesia
-Iran,IR,Asia,.ir,+98,Iran
-Iraq,IQ,Asia,.iq,+964,Iraq
+India,IN,Asia,.in,+91,Republic of India
+Indonesia,ID,Asia,.id,+62,Republic of Indonesia
+Iran,IR,Asia,.ir,+98,Islamic Republic of Iran
+Iraq,IQ,Asia,.iq,+964,Republic of Iraq
 Ireland,IE,Europe,.ie,+353,Ireland
-Israel,IL,Asia,.il,+972,Israel
-Italy,IT,Europe,.it,+39,Italy
+Israel,IL,Asia,.il,+972,State of Israel
+Italy,IT,Europe,.it,+39,Italian Republic
 Jamaica,JM,Americas,.jm,+1 876,Jamaica
 Japan,JP,Asia,.jp,+81,Japan
-Jordan,JO,Asia,.jo,+962,Jordan
-Kazakhstan,KZ,Asia,.kz,+7 6,Kazakhstan
-Kenya,KE,Africa,.ke,+254,Kenya
-Kiribati,KI,Oceania,.ki,+686,Kiribati
-South Korea,KP,Asia,.kp,+82,South Korea
-Kuwait,KW,Asia,.kw,+965,Kuwait
-Kyrgyzstan,KG,Asia,.kg,+996,Kyrgyzstan
-Laos,LA,Asia,.la,+856,Laos
-Latvia,LV,Europe,.lv,+371,Latvia
-Lebanon,LB,Asia,.lb,+961,Lebanon
-Lesotho,LS,Africa,.ls,+266,Lesotho
-Liberia,LR,Africa,.lr,+231,Liberia
-Libya,LY,Africa,.ly,+218,Libya
-Liechtenstein,LI,Europe,.li,+423,Liechtenstein
-Lithuania,LT,Europe,.lt,+370,Lithuania
-Luxembourg,LU,Europe,.lu,+352,Luxembourg
-Macedonia,MK,Europe,.mk,+389,Macedonia
-Madagascar,MG,Africa,.mg,+261,Madagascar
-Malawi,MW,Africa,.mw,+265,Malawi
+Jordan,JO,Asia,.jo,+962,Hashemite Kingdom of Jordan
+Kazakhstan,KZ,Asia,.kz,+7 6,Republic of Kazakhstan
+Kenya,KE,Africa,.ke,+254,Republic of Kenya
+Kiribati,KI,Oceania,.ki,+686,Republic of Kiribati
+South Korea,KP,Asia,.kp,+82,Republic of Korea
+Kuwait,KW,Asia,.kw,+965,State of Kuwait
+Kyrgyzstan,KG,Asia,.kg,+996,Kyrgyz Republic
+Laos,LA,Asia,.la,+856,Lao People's Democratic Republic
+Latvia,LV,Europe,.lv,+371,Republic of Latvia
+Lebanon,LB,Asia,.lb,+961,Republic of Lebanon
+Lesotho,LS,Africa,.ls,+266,Kingdom of Lesotho
+Liberia,LR,Africa,.lr,+231,Republic of Liberia
+Libya,LY,Africa,.ly,+218,State of Libya
+Liechtenstein,LI,Europe,.li,+423,Principality of Liechtenstein
+Lithuania,LT,Europe,.lt,+370,Republic of Lithuania
+Luxembourg,LU,Europe,.lu,+352,Grand Duchy of Luxembourg
+North Macedonia,MK,Europe,.mk,+389,Republic of North Macedonia
+Madagascar,MG,Africa,.mg,+261,Republic of Madagascar
+Malawi,MW,Africa,.mw,+265,Republic of Malawi
 Malaysia,MY,Asia,.my,+60,Malaysia
-Maldives,MV,Asia,.mv,+960,Maldives
-Mali,ML,Africa,.ml,+223,Mali
-Malta,MT,Europe,.mt,+356,Malta
-Marshall Islands,MH,Oceania,.mh,+692,Marshall Islands
-Mauritania,MR,Africa,.mr,+222,Mauritania
-Mauritius,MU,Africa,.mu,+230,Mauritius
-Mexico,MX,Americas,.mx,+52,Mexico
-Moldova,MD,Europe,.md,+373,Moldova
-Monaco,MC,Europe,.mc,+377,Monaco
+Maldives,MV,Asia,.mv,+960,Republic of Maldives
+Mali,ML,Africa,.ml,+223,Republic of Mali
+Malta,MT,Europe,.mt,+356,Republic of Malta
+Marshall Islands,MH,Oceania,.mh,+692,Republic of the Marshall Islands
+Mauritania,MR,Africa,.mr,+222,Islamic Republic of Mauritania
+Mauritius,MU,Africa,.mu,+230,Republic of Mauritius
+Mexico,MX,Americas,.mx,+52,United Mexican States
+Moldova,MD,Europe,.md,+373,Republic of Moldova
+Monaco,MC,Europe,.mc,+377,Principality of Monaco
 Mongolia,MN,Asia,.mn,+976,Mongolia
 Montenegro,ME,Europe,.me,+382,Montenegro
-Morocco,MA,Africa,.ma,+212,Morocco
-Mozambique,MZ,Africa,.mz,+258,Mozambique
-Myanmar,MM,Asia,.mm,+95,Myanmar
-Nauru,NR,Oceania,.nr,+674,Nauru
-Nepal,NP,Asia,.np,+977,Nepal
+Morocco,MA,Africa,.ma,+212,Kingdom of Morocco
+Mozambique,MZ,Africa,.mz,+258,Republic of Mozambique
+Myanmar,MM,Asia,.mm,+95,Republic of the Union of Myanmar
+Nauru,NR,Oceania,.nr,+674,Republic of Nauru
+Nepal,NP,Asia,.np,+977,Federal Democratic Republic of Nepal
 Netherlands,NL,Europe,.nl,+31,Netherlands
 New Zealand,NZ,Oceania,.nz,+64,New Zealand
-Nicaragua,NI,Americas,.ni,+505,Nicaragua
-Niger,NE,Africa,.ne,+227,Niger
-Nigeria,NG,Africa,.ng,+234,Nigeria
-Norway,NO,Europe,.no,+47,Norway
-Oman,OM,Asia,.om,+968,Oman
-Pakistan,PK,Asia,.pk,+92,Pakistan
-Palau,PW,Oceania,.pw,+680,Palau
-Panama,PA,Americas,.pa,+507,Panama
-Papua New Guinea,PG,Oceania,.pg,+675,Papua New Guinea
-Paraguay,PY,Americas,.py,+595,Paraguay
-Peru,PE,Americas,.pe,+51,Peru
-Philippines,PH,Asia,.ph,+63,Philippines
-Poland,PL,Europe,.pl,+48,Poland
-Portugal,PT,Europe,.pt,+351,Portugal
-Qatar,QA,Asia,.qa,+974,Qatar
+Nicaragua,NI,Americas,.ni,+505,Republic of Nicaragua
+Niger,NE,Africa,.ne,+227,Republic of the Niger
+Nigeria,NG,Africa,.ng,+234,Federal Republic of Nigeria
+Norway,NO,Europe,.no,+47,Kingdom of Norway
+Oman,OM,Asia,.om,+968,Sultanate of Oman
+Pakistan,PK,Asia,.pk,+92,Islamic Republic of Pakistan
+Palau,PW,Oceania,.pw,+680,Republic of Palau
+Panama,PA,Americas,.pa,+507,Republic of Panama
+Papua New Guinea,PG,Oceania,.pg,+675,Independent State of Papua New Guinea
+Paraguay,PY,Americas,.py,+595,Republic of Paraguay
+Peru,PE,Americas,.pe,+51,Republic of Peru
+Philippines,PH,Asia,.ph,+63,Republic of the Philippines
+Poland,PL,Europe,.pl,+48,Republic of Poland
+Portugal,PT,Europe,.pt,+351,Portuguese Republic
+Qatar,QA,Asia,.qa,+974,State of Qatar
 Romania,RO,Europe,.ro,+40,Romania
-Russia,RU,Europe,.ru,+7,Russia
-Rwanda,RW,Africa,.rw,+250,Rwanda
-Saint Kitts and Nevis,KN,Americas,.kn,+1 869,Saint Kitts And Nevis
+Russia,RU,Europe,.ru,+7,Russian Federation
+Rwanda,RW,Africa,.rw,+250,Republic of Rwanda
+Saint Kitts and Nevis,KN,Americas,.kn,+1 869,Federation of Saint Christopher and Nevis
 Saint Lucia,LC,Americas,.lc,+1 758,Saint Lucia
-Samoa,WS,Oceania,.ws,+685,Samoa
-San Marino,SM,Europe,.sm,+378,San Marino
-Sao Tome and Principe,ST,Africa,.st,+239,Sao Tome And Principe
-Saudi Arabia,SA,Asia,.sa,+966,Saudi Arabia
-Senegal,SN,Africa,.sn,+221,Senegal
-Serbia,RS,Europe,.rs,+381,Serbia
-Seychelles,SC,Africa,.sc,+248,Seychelles
-Sierra Leone,SL,Africa,.sl,+232,Sierra Leone
-Singapore,SG,Asia,.sg,+65,Singapore
-Slovakia,SK,Europe,.sk,+421,Slovakia
-Slovenia,SI,Europe,.si,+386,Slovenia
+Samoa,WS,Oceania,.ws,+685,Independent State of Samoa
+San Marino,SM,Europe,.sm,+378,Republic of San Marino
+Sao Tome and Principe,ST,Africa,.st,+239,Democratic Republic of Sao Tome and Principe
+Saudi Arabia,SA,Asia,.sa,+966,Kingdom of Saudi Arabia
+Senegal,SN,Africa,.sn,+221,Republic of Senegal
+Serbia,RS,Europe,.rs,+381,Republic of Serbia
+Seychelles,SC,Africa,.sc,+248,Republic of Seychelles
+Sierra Leone,SL,Africa,.sl,+232,Republic of Sierra Leone
+Singapore,SG,Asia,.sg,+65,Republic of Singapore
+Slovakia,SK,Europe,.sk,+421,Slovak Republic
+Slovenia,SI,Europe,.si,+386,Republic of Slovenia
 Solomon Islands,SB,Oceania,.sb,+677,Solomon Islands
-Somalia,SO,Africa,.so,+252,Somalia
-South Africa,ZA,Africa,.za,+27,South Africa
-South Sudan,SS,Africa,.ss,+211,South Sudan
-Spain,ES,Europe,.es,+34,Spain
+Somalia,SO,Africa,.so,+252,Federal Republic of Somalia
+South Africa,ZA,Africa,.za,+27,Republic of South Africa
+South Sudan,SS,Africa,.ss,+211,Republic of South Sudan
+Spain,ES,Europe,.es,+34,Kingdom of Spain
 Sri Lanka,LK,Asia,.lk,+94,Sri Lanka
-Sudan,SD,Africa,.sd,+249,Sudan
-Suriname,SR,Americas,.sr,+597,Suriname
-Sweden,SE,Europe,.se,+46,Sweden
-Switzerland,CH,Europe,.ch,+41,Switzerland
-Syria,SY,Asia,.sy,+963,Syria
-Tajikistan,TJ,Asia,.tj,+992,Tajikistan
-Tanzania,TZ,Africa,.tz,+255,Tanzania
-Thailand,TH,Asia,.th,+66,Thailand
-Togo,TG,Africa,.tg,+228,Togo
-Tonga,TO,Oceania,.to,+676,Tonga
-Trinidad and Tobago,TT,Americas,.tt,+1 868,Trinidad And Tobago
-Tunisia,TN,Africa,.tn,+216,Tunisia
-Turkey,TR,Asia,.tr,+90,Turkey
+Sudan,SD,Africa,.sd,+249,Republic of the Sudan
+Suriname,SR,Americas,.sr,+597,Republic of Suriname
+Sweden,SE,Europe,.se,+46,Kingdom of Sweden
+Switzerland,CH,Europe,.ch,+41,Swiss Confederation
+Syria,SY,Asia,.sy,+963,Syrian Arab Republic
+Tajikistan,TJ,Asia,.tj,+992,Republic of Tajikistan
+Taiwan,TW,Asia,.tw,+886,Republic of China
+Tanzania,TZ,Africa,.tz,+255,United Republic of Tanzania
+Thailand,TH,Asia,.th,+66,Kingdom of Thailand
+Togo,TG,Africa,.tg,+228,Togolese Republic
+Tonga,TO,Oceania,.to,+676,Kingdom of Tonga
+Trinidad and Tobago,TT,Americas,.tt,+1 868,Republic of Trinidad and Tobago
+Tunisia,TN,Africa,.tn,+216,Republic of Tunisia
+Turkey,TR,Asia,.tr,+90,Republic of Turkiye
 Turkmenistan,TM,Asia,.tm,+993,Turkmenistan
 Tuvalu,TV,Oceania,.tv,+688,Tuvalu
-Uganda,UG,Africa,.ug,+256,Uganda
+Uganda,UG,Africa,.ug,+256,Republic of Uganda
 Ukraine,UA,Europe,.ua,+380,Ukraine
 United Arab Emirates,AE,Asia,.ae,+971,United Arab Emirates
-United Kingdom,GB,Europe,.gb,+44,United Kingdom of Britain & Northern Ireland
-United States of America,US,Americas,.us,+1,United States of America
-Uruguay,UY,Americas,.uy,+598,Uruguay
-Uzbekistan,UZ,Asia,.uz,+998,Uzbekistan
-Vanuatu,VU,Oceania,.vu,+678,Vanuatu
-Venezuela,VE,Americas,.ve,+58,Venezuela
-Vietnam,VN,Asia,.vn,+84,Vietnam
-Yemen,YE,Asia,.ye,+967,Yemen
-Zambia,ZM,Africa,.zm,+260,Zambia
-Zimbabwe,ZW,Africa,.zw,+263,Zimbabwe
+United Kingdom,GB,Europe,.uk,+44,United Kingdom of Great Britain & Northern Ireland
+United States,US,Americas,.us,+1,United States of America
+Uruguay,UY,Americas,.uy,+598,Oriental Republic of Uruguay
+Uzbekistan,UZ,Asia,.uz,+998,Republic of Uzbekistan
+Vanuatu,VU,Oceania,.vu,+678,Republic of Vanuatu
+Venezuela,VE,Americas,.ve,+58,Bolivarian Republic of Venezuela
+Vietnam,VN,Asia,.vn,+84,Socialist Republic of Vietnam
+Yemen,YE,Asia,.ye,+967,Republic of Yemen
+Zambia,ZM,Africa,.zm,+260,Republic of Zambia
+Zimbabwe,ZW,Africa,.zw,+263,Republic of Zimbabwe
 Cook Islands,CK,Oceania,.ck,+682,Cook Islands
 Niue,NU,Oceania,.nu,+683,Niue
-Aland Islands,AX,Europe,.ax,+358 18,Aland Islands
+Aland Islands,AX,Europe,.ax,+358 18,Aland
 American Samoa,AS,Oceania,.as,+1 684,American Samoa
 Anguilla,AI,Americas,.ai,+1 264,Anguilla
 Aruba,AW,Americas,.aw,+297,Aruba
@@ -189,12 +190,12 @@ Caribbean Netherlands,BQ,Americas,.bq,+599,Caribbean Netherlands
 Bosnia And Herzegovina,BA,Europe,.ba,+387,Bosnia And Herzegovina
 Bouvet Island,BV,Americas,.bv,+47,Bouvet Island
 British Indian Ocean Territory,IO,Africa,.io,+246,British Indian Ocean Territory
-Brunei Darussalam,BN,Asia,.bn,+673,Brunei Darussalam
-Cabo Verde,CV,Africa,.cv,+238,Cabo Verde
+Brunei,BN,Asia,.bn,+673,Brunei Darussalam
+Cabo Verde,CV,Africa,.cv,+238,Republic of Cabo Verde
 Cayman Islands,KY,Americas,.ky,+1 345,Cayman Islands
-Christmas Island,CX,Oceania,.cx,+61 89164,Christmas Island
-Cocos (Keeling) Islands,CC,Oceania,.cc,+61 89162,Cocos (Keeling) Islands
+Christmas Island,CX,Oceania,.cx,+61 89164,Territory of Christmas Island
+Cocos (Keeling) Islands,CC,Oceania,.cc,+61 89162,Territory of Cocos (Keeling) Islands
 Republic of Congo,CG,Africa,.cg,+241,Republic Of Congo
 Democratic Republic Of The Congo,CD,Africa,.cd,+243,Democratic Republic Of The Congo
-Ivory Coast,CI,Africa,.ci,+225,Ivory Coast
-Curacao,CW,Americas,.cw,+5999,Curacao
+Ivory Coast,CI,Africa,.ci,+225,Republic of Cote d'Ivoire
+Curacao,CW,Americas,.cw,+5999,Country of Curacao

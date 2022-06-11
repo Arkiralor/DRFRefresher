@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from locationapp.model_choices import CountryModelChoice
 
 import uuid
 
@@ -14,16 +15,21 @@ class CountryModel(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    name = models.CharField(max_length=50, unique=True,
+    name = models.CharField(max_length=128, unique=True,
                             default="Default Country Name", help_text="Common name of the country.")
-    official_name = models.CharField(max_length=50, blank=True, null=True,
+    official_name = models.CharField(max_length=256, blank=True, null=True,
                                      help_text="Official name of the country as presented in legal documents.")
-    slug = models.SlugField(max_length=128, null=True, blank=True,
+    slug = models.SlugField(max_length=256, null=True, blank=True,
                             help_text="Slug used to identify/route to the country.")
     country_code = models.CharField(
-        max_length=10, blank=True, null=True, help_text="ISO 3166-1 alpha-3 country code.")
+        max_length=10, blank=True, null=True, help_text="ISO 3166-1 alpha-2 country code.")
     country_region = models.CharField(
-        max_length=128, blank=True, null=True, help_text="Region of the country.")
+        max_length=128, 
+        choices=CountryModelChoice.region_choices, 
+        blank=True, 
+        null=True, 
+        help_text="Region of the country."
+    )
     internet_tld = models.CharField(
         max_length=10, blank=True, null=True, help_text="Internet top level domain for the country")
     calling_code = models.CharField(
@@ -34,8 +40,7 @@ class CountryModel(models.Model):
         '''
         Extended save() method to create a slug for the story.
         '''
-        if not self.id or not self.slug:
-            self.slug = slugify(self.name)
+        self.slug = slugify(self.official_name)
         super(CountryModel, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -68,9 +73,8 @@ class LocationModel(models.Model):
         '''
         Extended save() method to create a slug for the story.
         '''
-        if not self.id or not self.slug:
-            self.slug = slugify(
-                f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.official_name}")
+        self.slug = slugify(
+                f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.name}")
         super(LocationModel, self).save(*args, **kwargs)
 
     def __str__(self):

@@ -8,6 +8,8 @@ from locationapp.models import CountryModel, LocationModel
 from locationapp.serializers import CountryModelSerializer, LocationModelSerializer
 from locationapp import logger
 
+from external_api_handlers.google_api import GoogleMapsAPIHandler
+
 
 class CountryAPI(APIView):
     """
@@ -231,3 +233,33 @@ class IndividualLocationAPI(APIView):
         return Response(
             status=status.HTTP_200_OK
         )
+
+class GetLocationCodeAPI(APIView):
+    """
+    API to get location code.
+    """
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        """
+        GET method to get location code.
+        """
+
+        location_name = request.query_params.get('location_name')
+        location_obj = LocationModel.objects.filter(city_town=location_name.title()).first()
+        if location_obj:
+            geo_code = GoogleMapsAPIHandler.get_city_geocode(location=location_obj)
+            return Response(
+                geo_code,
+                status=status.HTTP_200_OK
+            )
+        else:
+            resp = {
+                'error': 'Location not found in Native System',
+                'hint': "Try only adding the CITY name. Example: 'Mumbai'"
+            }
+            return Response(
+                resp,
+                status=status.HTTP_404_NOT_FOUND
+            )

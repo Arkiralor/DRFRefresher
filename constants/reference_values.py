@@ -7,9 +7,12 @@ class StringConstant:
     Class to contain global string constants for the project.
     """
     logger.info("Initiating String Constants.")
-    token_file_header = "token"
+
+    token_header = "token"
     at = "@"
     dot = "."
+    hypen = "-"
+    underscore = "_"
     slash = sep
 
 

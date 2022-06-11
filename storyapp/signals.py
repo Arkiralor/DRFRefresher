@@ -18,7 +18,6 @@ class StorySignalReciever:
         """
         Signal to send when a story is created.
         """
-        request = kwargs.get('request')
         if created:
             logger.info(f"Story: {instance.title} created by Author: {instance.author.username}.")
 
@@ -27,7 +26,6 @@ class StorySignalReciever:
         """
         Signal to send when a story is updated.
         """
-        request = kwargs.get('request')
         if not created:
             logger.info(f"Story {instance.title} updated by User {instance.author.username}.")
 
@@ -36,7 +34,6 @@ class StorySignalReciever:
         """
         Signal to send when a story is deleted.
         """
-        request = kwargs.get('request')
         logger.info(f"Story {instance.title} deleted.")
 
 post_save.connect(receiver=StorySignalReciever.story_created, sender=StorySignalReciever.model)
