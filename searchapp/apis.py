@@ -120,8 +120,7 @@ class SearchUserAPI(APIView):
                 email__icontains=email)
             results = UserSerializer(users, many=True).data
         else:
-            users = User.objects.all()
-            results = UserSerializer(users, many=True).data
+            results = User.objects.all().values("username")
 
         resp = {
             'results': results,

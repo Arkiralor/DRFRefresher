@@ -1,0 +1,101 @@
+city_town,country_name,country_code,state_province,district_county
+Tokyo,Japan,JP,Kanto,Tokyo Metropolitan Area
+Jakarta,Indonesia,ID,Java,Special Capital Region of Jakarta
+New Delhi,India,IN,Delhi,National Capital Region
+Manila,Philippines,PH,Manila,National Capital Region
+Sao Paulo,Brazil,BR,Sao Paulo,Sao Paulo
+Seoul,South Korea,KR,Seoul,Seoul
+Mumbai,India,IN,Maharashtra,Mumbai
+Shanghai,China,CN,Shanghai,Shanghai
+Mexico City,Mexico,MX,Ciudad de México,Mexico City
+Guangzhou,China,CN,Guangdong,Guangzhou
+Cairo,Egypt,EG,Al Qahirah,Cairo
+Beijing,China,CN,Beijing,Beijing
+New York,United States,US,New York,New York
+Kolkata,India,IN,West Bengal,Kolkata
+Moscow,Russia,RU,Moskva,Moscow
+Bangkok,Thailand,TH,Krung Thep Maha Nakhon,Bangkok
+Dhaka,Bangladesh,BD,Dhaka,Dhaka
+Buenos Aires,Argentina,AR,"Buenos Aires, Ciudad Autónoma de",Buenos Aires
+Osaka,Japan,JP,Osaka,Osaka
+Lagos,Nigeria,NG,Lagos,Lagos
+Istanbul,Turkey,TR,Istanbul,Istanbul
+Karachi,Pakistan,PK,Sindh,Karachi
+Kinshasa,Democratic Republic Of The Congo,CD,Kinshasa,Kinshasa
+Shenzhen,China,CN,Guangdong,Shenzhen
+Bangalore,India,IN,Karnātaka,Bangalore
+Ho Chi Minh City,Vietnam,VN,Ho Chi Minh,Ho Chi Minh City
+Tehran,Iran,IR,Tehran,Tehran
+Los Angeles,United States,US,California,Los Angeles
+Rio de Janeiro,Brazil,BR,Rio de Janeiro,Rio de Janeiro
+Chengdu,China,CN,Sichuan,Chengdu
+Baoding,China,CN,Hebei,Baoding
+Chennai,India,IN,Tamil Nadu,Chennai
+Lahore,Pakistan,PK,Punjab,Lahore
+London,United Kingdom,GB,City of London,London
+Paris,France,FR,Ile-de-France,Paris
+Tianjin,China,CN,Tianjin,Tianjin
+Linyi,China,CN,Shandong,Linyi
+Shijiazhuang,China,CN,Hebei,Shijiazhuang
+Zhengzhou,China,CN,Henan,Zhengzhou
+Nanyang,China,CN,Henan,Nanyang
+Hyderabad,India,IN,Telangana,Hyderabad
+Wuhan,China,CN,Hubei,Wuhan
+Handan,China,CN,Hebei,Handan
+Nagoya,Japan,JP,Aichi,Nagoya
+Weifang,China,CN,Shandong,Weifang
+Lima,Peru,PE,Lima,Lima
+Zhoukou,China,CN,Henan,Zhoukou
+Luanda,Angola,AO,Luanda,Luanda
+Ganzhou,China,CN,Jiangxi,Ganzhou
+Tongshan,China,CN,Jiangsu,Tongshan
+Kuala Lumpur,Malaysia,MY,Kuala Lumpur,Kuala Lumpur
+Chicago,United States,US,Illinois,Chicago
+Heze,China,CN,Shandong,Heze
+Chongqing,China,CN,Chongqing,Chongqing
+Hanoi,Vietnam,VN,Ha Noi,Hanoi
+Fuyang,China,CN,Anhui,Fuyang
+Changsha,China,CN,Hunan,Changsha
+Dongguan,China,CN,Guangdong,Dongguan
+Jining,China,CN,Shandong,Jining
+Jinan,China,CN,Shandong,Jinan
+Pune,India,IN,Maharashtra,Pune
+Foshan,China,CN,Guangdong,Foshan
+Bogota,Colombia,CO,Bogota,Bogota
+Ahmedabad,India,IN,Gujarat,Ahmedabad
+Nanjing,China,CN,Jiangsu,Nanjing
+Changchun,China,CN,Jilin,Changchun
+Tangshan,China,CN,Hebei,Tangshan
+Cangzhou,China,CN,Hebei,Cangzhou
+Dar es Salaam,Tanzania,TZ,Dar es Salaam,Dar es Salaam
+Hefei,China,CN,Anhui,Hefei
+Hong Kong,China,CN,Hong Kong,Hong Kong
+Shaoyang,China,CN,Hunan,Shaoyang
+Zhanjiang,China,CN,Guangdong,Zhanjiang
+Shangqiu,China,CN,Henan,Shangqiu
+Nantong,China,CN,Jiangsu,Nantong
+Yancheng,China,CN,Jiangsu,Yancheng
+Nanning,China,CN,Guangxi,Nanning
+Hengyang,China,CN,Hunan,Hengyang
+Zhumadian,China,CN,Henan,Zhumadian
+Shenyang,China,CN,Liaoning,Shenyang
+Xingtai,China,CN,Hebei,Xingtai
+Xi'an,China,CN,Shaanxi,Xi'an
+Santiago,Chile,CL,Región Metropolitana,Santiago
+Yantai,China,CN,Shandong,Yantai
+Riyadh,Saudi Arabia,SA,Ar Riyad,Riyadh
+Luoyang,China,CN,Henan,Luoyang
+Kunming,China,CN,Yunnan,Kunming
+Shangrao,China,CN,Jiangxi,Shangrao
+Hangzhou,China,CN,Zhejiang,Hangzhou
+Bijie,China,CN,Guizhou,Bijie
+Quanzhou,China,CN,Fujian,Quanzhou
+Miami,United States,US,Florida,Miami
+Wuxi,China,CN,Jiangsu,Wuxi
+Huanggang,China,CN,Hubei,Huanggang
+Maoming,China,CN,Guangdong,Maoming
+Nanchong,China,CN,Sichuan,Nanchong
+Zunyi,China,CN,Guizhou,Zunyi
+Qujing,China,CN,Yunnan,Qujing
+Baghdad,Iraq,IQ,Baghdad,Baghdad
+Xinyang,China,CN,Henan,Xinyang

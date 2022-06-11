@@ -41,8 +41,7 @@ class Story(models.Model):
         '''
         Extended save() method to create a slug for the story.
         '''
-        if not self.id or not self.slug:
-            self.slug = slugify(f"{self.title}-{self.author.username}")
+        self.slug = slugify(f"{self.title}-{self.author.username}")
         super(Story, self).save(*args, **kwargs)
 
     def __str__(self):
