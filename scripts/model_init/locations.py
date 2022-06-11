@@ -11,7 +11,7 @@ def add_locations():
     logger.info("Creating all first 100 locations...")
     
     
-    df = pd.read_csv("D:\\Libraries\\Arkiralor's Documents\\Programs\\gits\\DRFRefresher\\scripts\\model_init\\data\\cities_init.csv")
+    df = pd.read_csv("scripts\model_init\data\cities_init.csv")
     logger.info(f"Retrieved {len(df)} locations.")
 
     list_of_locations = df.to_dict(orient='records')

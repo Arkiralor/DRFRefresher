@@ -12,5 +12,5 @@ class CountryModelAdmin(admin.ModelAdmin):
 class LocationModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'city_town', 'country', 'created_at')
     search_fields = ('city_town', 'district_county', 'state_province', 'country__name')
-    ordering = ('-created_at',)
+    ordering = ('city_town', 'country__name')
     raw_id_fields = ('country',)

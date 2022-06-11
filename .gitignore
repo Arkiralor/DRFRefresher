@@ -150,3 +150,15 @@ prototyping/
 
 # Fixtures for Models
 */fixtures/*.json
+
+# Test data files
+test_data/*.json
+test_data/*.txt
+test_data/*.csv
+test_data/*.xml
+test_data/*.xls
+test_data/*.xlsx
+test_data/*.doc
+test_data/*.docx
+test_data/*.rtf
+
