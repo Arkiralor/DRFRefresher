@@ -21,7 +21,8 @@ class Story(models.Model):
     )
     title = models.CharField(max_length=250, help_text="Title of the story.")
     slug = models.SlugField(max_length=250, null=True, blank=True)
-    description = models.TextField(max_length=1000, null=True, blank=True, help_text="Short summary of the story.")
+    description = models.TextField(
+        max_length=1000, null=True, blank=True, help_text="Short summary of the story.")
     body = models.TextField()
     author = models.ForeignKey(
         User,

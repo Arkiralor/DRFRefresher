@@ -24,10 +24,10 @@ class CountryModel(models.Model):
     country_code = models.CharField(
         max_length=10, blank=True, null=True, help_text="ISO 3166-1 alpha-2 country code.")
     country_region = models.CharField(
-        max_length=128, 
-        choices=CountryModelChoice.region_choices, 
-        blank=True, 
-        null=True, 
+        max_length=128,
+        choices=CountryModelChoice.region_choices,
+        blank=True,
+        null=True,
         help_text="Region of the country."
     )
     internet_tld = models.CharField(
@@ -74,7 +74,7 @@ class LocationModel(models.Model):
         Extended save() method to create a slug for the story.
         '''
         self.slug = slugify(
-                f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.name}")
+            f"{self.city_town}-{self.district_county}-{self.state_province}-{self.country.name}")
         super(LocationModel, self).save(*args, **kwargs)
 
     def __str__(self):

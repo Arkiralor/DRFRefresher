@@ -19,7 +19,8 @@ class StorySignalReciever:
         Signal to send when a story is created.
         """
         if created:
-            logger.info(f"Story: {instance.title} created by Author: {instance.author.username}.")
+            logger.info(
+                f"Story: {instance.title} created by Author: {instance.author.username}.")
 
     @classmethod
     def story_updated(cls, sender, instance, created, **kwargs):
@@ -27,7 +28,8 @@ class StorySignalReciever:
         Signal to send when a story is updated.
         """
         if not created:
-            logger.info(f"Story {instance.title} updated by User {instance.author.username}.")
+            logger.info(
+                f"Story {instance.title} updated by User {instance.author.username}.")
 
     @classmethod
     def story_deleted(cls, sender, instance, **kwargs):
@@ -36,6 +38,10 @@ class StorySignalReciever:
         """
         logger.info(f"Story {instance.title} deleted.")
 
-post_save.connect(receiver=StorySignalReciever.story_created, sender=StorySignalReciever.model)
-post_save.connect(receiver=StorySignalReciever.story_updated, sender=StorySignalReciever.model)
-post_delete.connect(receiver=StorySignalReciever.story_deleted, sender=StorySignalReciever.model)
+
+post_save.connect(receiver=StorySignalReciever.story_created,
+                  sender=StorySignalReciever.model)
+post_save.connect(receiver=StorySignalReciever.story_updated,
+                  sender=StorySignalReciever.model)
+post_delete.connect(receiver=StorySignalReciever.story_deleted,
+                    sender=StorySignalReciever.model)

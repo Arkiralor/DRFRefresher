@@ -6,8 +6,10 @@ from locationapp.models import LocationModel
 from external_api_handlers.google_api import GoogleMapsAPIHandler
 from scripts import logger
 
+
 def test_get_city_geocode():
-    cities = ['mumbai', 'kolkata', 'berlin', 'paris', 'new york', 'london', 'rome', 'madrid', 'tokyo', 'sydney']
+    cities = ['mumbai', 'kolkata', 'berlin', 'paris', 'new york',
+              'london', 'rome', 'madrid', 'tokyo', 'sydney']
     for city in cities:
         location = LocationModel.objects.filter(city_town=city.title()).first()
         if not location:

@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from locationapp.models import CountryModel, LocationModel
 
+
 class CountryModelSerializer(ModelSerializer):
     class Meta:
         model = CountryModel

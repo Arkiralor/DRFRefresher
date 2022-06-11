@@ -2,6 +2,7 @@
 Module to hold all choices for storyapp.models
 """
 
+
 class StoryChoice:
     """
     Class to hold all choices for storyapp.models.Story.genre
@@ -39,6 +40,3 @@ class StoryChoice:
         (saga, "Saga"),
         (science_fiction, "Science Fiction"),
     )
-
-
-    

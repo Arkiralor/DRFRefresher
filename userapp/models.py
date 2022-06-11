@@ -105,11 +105,11 @@ class UserProfile(models.Model):
         Extended save() method to create a slug for the user.
         '''
         ## prithoo: Create a slug, every time the user is updated.
-        self.profile_slug = slugify(f"profile{StringConstant.hypen}{self.user.user_slug}")
+        self.profile_slug = slugify(
+            f"profile{StringConstant.hypen}{self.user.user_slug}")
         super(UserProfile, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'User Profile'
         verbose_name_plural = 'User Profiles'
         ordering = ('-created_at', 'id')
-        

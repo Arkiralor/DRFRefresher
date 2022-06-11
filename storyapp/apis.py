@@ -191,6 +191,7 @@ class IndividualStoryAPI(APIView):
             status=status.HTTP_200_OK
         )
 
+
 class IndividualStoryBySlugAPI(APIView):
     """
     API to retrieve a single story by slug.
@@ -214,5 +215,3 @@ class IndividualStoryBySlugAPI(APIView):
             serialized.data,
             status=status.HTTP_200_OK
         )
-
-        

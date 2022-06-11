@@ -8,11 +8,11 @@ class ModelUtils:
     """
     Utility class for user models.
     """
-    
+
     DEFAULT_ATTR: str = 'NaN'
 
     @classmethod
-    def create_slug(cls, model_instance, field_names:List[str]) -> str:
+    def create_slug(cls, model_instance, field_names: List[str]) -> str:
         """
         Create a unique slug for a model instance.
         """

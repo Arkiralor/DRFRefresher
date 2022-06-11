@@ -64,7 +64,7 @@ class AddUserView(APIView):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
-        
+
         if len(data.get('username')) == 0 or len(data.get('password')) == 0 or len(data.get('email')) == 0:
             return Response(
                 {
@@ -117,7 +117,6 @@ class UserLoginView(GenericAPIView):
     View to login a user and create their token:
     '''
     serializer_class = LoginSerializer
-
 
     def post(self, request):
         data = request.data
@@ -330,6 +329,7 @@ class MakeModeratorView(APIView):
             resp,
             status_code
         )
+
 
 class GetAllProfilesAPI(APIView):
     '''

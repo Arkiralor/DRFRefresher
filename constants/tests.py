@@ -8,6 +8,7 @@ from os import path
 from constants import logger
 from core.settings import LOG_DIR, ENV_LOG_FILE, DJANGO_LOG_FILE
 
+
 class TestIfPathsExist(TestCase):
     """
     Test if the paths exist.

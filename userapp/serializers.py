@@ -47,6 +47,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = '__all__'
 
+
 class LoginSerializer(serializers.Serializer):
     """
     Serializer for login.

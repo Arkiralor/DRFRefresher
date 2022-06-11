@@ -4,13 +4,13 @@ from scripts import logger
 from django.db.models import Q
 import pandas as pd
 
+
 def add_locations():
     """
     Add locations to the database.
     """
     logger.info("Creating all first 100 locations...")
-    
-    
+
     df = pd.read_csv("scripts\model_init\data\cities_init.csv")
     logger.info(f"Retrieved {len(df)} locations.")
 
@@ -21,9 +21,9 @@ def add_locations():
         country = location.get('country_name')
         cc = location.get('country_code')
         country_obj = CountryModel.objects.filter(
-                Q(name=country) 
-                & Q(country_code=cc)
-            ).first()
+            Q(name=country)
+            & Q(country_code=cc)
+        ).first()
         location['country'] = country_obj.id
         del location['country_code']
         del location['country_name']

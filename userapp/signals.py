@@ -65,7 +65,8 @@ class UserProfileSignalReciever:
         Signal to send when a story is created.
         """
         if created:
-            logger.info(f"UserProfile: {instance.id} created for User: {instance.user.username}.")
+            logger.info(
+                f"UserProfile: {instance.id} created for User: {instance.user.username}.")
 
     @classmethod
     def userprofile_updated(cls, sender, instance, created, **kwargs):
@@ -73,14 +74,16 @@ class UserProfileSignalReciever:
         Signal to send when a story is updated.
         """
         if not created:
-            logger.info(f"UserProfile: {instance.id} updated for User: {instance.user.username}.")
+            logger.info(
+                f"UserProfile: {instance.id} updated for User: {instance.user.username}.")
 
     @classmethod
     def userprofile_deleted(cls, sender, instance, **kwargs):
         """
         Signal to send when a story is deleted.
         """
-        logger.info(f"UserProfile: {instance.id} deleted for User: {instance.user.username}.")
+        logger.info(
+            f"UserProfile: {instance.id} deleted for User: {instance.user.username}.")
 
 
 ## Signal to send when a userprofile is created.

@@ -3,6 +3,7 @@ import requests
 from locationapp.models import LocationModel
 from external_api_handlers import logger
 
+
 class GoogleMapsAPIHandler:
     """
     Class to handle API calls to Google Maps.
@@ -18,10 +19,10 @@ class GoogleMapsAPIHandler:
     reverse_geocode_endpoint = 'reversegeocode/json'
     distance_matrix_endpoint = 'distancematrix/json'
 
-    params = { 
+    params = {
         'key': api_key,
     }
-    
+
     @classmethod
     def make_request(cls, endpoint=None, data=None, params=None):
         """
@@ -36,15 +37,15 @@ class GoogleMapsAPIHandler:
 
         logger.info(f'Making request to {url}')
         response = requests.post(
-            url, 
-            params=params, 
+            url,
+            params=params,
             json=data
         )
         logger.info(f"Response received from {url}: {response.status_code}")
         return response.json()
 
     @classmethod
-    def get_city_geocode(cls, location:LocationModel):
+    def get_city_geocode(cls, location: LocationModel):
         """
         Get the geocode for a city.
         """
@@ -60,7 +61,8 @@ class GoogleMapsAPIHandler:
         if response.get('status') in ('OK', ):
             ## prithoo (issue_004): Raw reponse can be seen in 'test_data/gmaps_geocode.json'.
             ## If not found within your clone of the repository, ask me for the file.
-            response = response.get('results')[0] # if the response is valid, set the first result as the result.
+            # if the response is valid, set the first result as the result.
+            response = response.get('results')[0]
             ## Massage the response to be more useful.
             resp['location'] = response.get('formatted_address')
             resp['geometry'] = response.get('geometry')

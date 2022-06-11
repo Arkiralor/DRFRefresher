@@ -8,7 +8,7 @@ schema_view = get_schema_view(
         default_version='v0.7',
         description="A basic django apllication used to refresh up on core concepts of Django and Django Restframework.",
         terms_of_service="",
-        contact=openapi.Contact(email="prithoo11335@gmail.com"),
+        contact=openapi.Contact(email="fablelordarkalon11235@gmail.com"),
         license=openapi.License(name="Test License"),
     ),
     public=True,

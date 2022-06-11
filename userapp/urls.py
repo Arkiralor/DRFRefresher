@@ -10,6 +10,7 @@ urlpatterns = [
     path('details/<str:slug>', UserGetView.as_view(), name='get_user'),
     path('make_super/<str:slug>', SetSuperView.as_view(), name='set_super'),
     path('make_staff/<str:slug>', SetStaffView.as_view(), name='set_staff'),
-    path('make_moderator/<str:slug>', MakeModeratorView.as_view(), name='make_moderator'),
+    path('make_moderator/<str:slug>',
+         MakeModeratorView.as_view(), name='make_moderator'),
     path('profile/all', GetAllProfilesAPI.as_view(), name='all_user_profiles'),
 ]

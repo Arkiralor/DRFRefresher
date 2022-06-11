@@ -3,6 +3,7 @@ from locationapp.models import CountryModel
 from locationapp.serializers import CountryModelSerializer
 import pandas as pd
 
+
 def create_countries():
     """
     Creates all countries in the database.

@@ -234,6 +234,7 @@ class IndividualLocationAPI(APIView):
             status=status.HTTP_200_OK
         )
 
+
 class GetLocationCodeAPI(APIView):
     """
     API to get location code.
@@ -247,9 +248,11 @@ class GetLocationCodeAPI(APIView):
         """
 
         location_name = request.query_params.get('location_name')
-        location_obj = LocationModel.objects.filter(city_town=location_name.title()).first()
+        location_obj = LocationModel.objects.filter(
+            city_town=location_name.title()).first()
         if location_obj:
-            geo_code = GoogleMapsAPIHandler.get_city_geocode(location=location_obj)
+            geo_code = GoogleMapsAPIHandler.get_city_geocode(
+                location=location_obj)
             return Response(
                 geo_code,
                 status=status.HTTP_200_OK
