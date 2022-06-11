@@ -16,7 +16,6 @@ class GoogleMapsAPIHandler:
 
     api_base_url = 'https://maps.googleapis.com/maps/api/'
     geocode_endpoint = 'geocode/json'
-    reverse_geocode_endpoint = 'reversegeocode/json'
     distance_matrix_endpoint = 'distancematrix/json'
 
     params = {
@@ -66,6 +65,39 @@ class GoogleMapsAPIHandler:
             ## Massage the response to be more useful.
             resp['location'] = response.get('formatted_address')
             resp['geometry'] = response.get('geometry')
+            resp['place_id'] = response.get('place_id')
+            return resp
+        ## If the response is not valid, return the errors.
+        resp['error_message'] = response.get('error_message')
+        resp['status'] = response.get('status')
+        return resp
+
+    @classmethod
+    def get_city_reverse_geocode(cls, geocode: dict = None):
+        """
+        Get the reverse geocode for a city.
+        """
+        resp = {}
+
+        params = {
+            'sensor': 'false',
+            'language': 'en-GB'
+        }
+
+        if geocode.get('place_id', None):
+            params['place_id'] = geocode.get('place_id')
+        elif geocode.get('location', None):
+            params['latlng'] = f"{geocode.get('location').get('lat')},{geocode.get('location').get('lng')}"
+
+        response = cls.make_request(cls.geocode_endpoint, params=params)
+        logger.info(f"Response from Google Maps API: {response.get('status')}")
+        if response.get('status') in ('OK', ):
+            ## prithoo (issue_004): Raw reponse can be seen in 'test_data/gmaps_reverse_geocode.json'.
+            ## If not found within your clone of the repository, ask me for the file.
+            # if the response is valid, set the first result as the result.
+            response = response.get('results')[0]
+            ## Massage the response to be more useful.
+            resp['location'] = response.get('formatted_address')
             resp['place_id'] = response.get('place_id')
             return resp
         ## If the response is not valid, return the errors.

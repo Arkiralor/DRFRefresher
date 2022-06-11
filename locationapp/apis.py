@@ -245,6 +245,10 @@ class GetLocationCodeAPI(APIView):
     def get(self, request):
         """
         GET method to get location code.
+
+        :params:
+            - `request`: Request object.
+            - `name`: `name_of_city/town.
         """
 
         location_name = request.query_params.get('location_name')
@@ -266,3 +270,25 @@ class GetLocationCodeAPI(APIView):
                 resp,
                 status=status.HTTP_404_NOT_FOUND
             )
+
+    def post(self, request):
+        """
+        GET method to get address from geocode.
+
+        request.data: self.get() 
+        ## Takes the response dict of the class's get() method.
+        """
+
+        geocode = request.data.get('geometry', None)
+        geocode['place_id'] = request.data.get('place_id', None)
+        logger.info(f"Geocode: {geocode}")
+        address = GoogleMapsAPIHandler.get_city_reverse_geocode(geocode=geocode)
+        logger.info(f"Address: {address}")
+        return Response(
+            address,
+            status=status.HTTP_200_OK
+        )
+
+
+
+    

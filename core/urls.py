@@ -12,7 +12,7 @@ urlpatterns = [
     path('search/', include('searchapp.urls')),
 ]
 
-if settings.DEBUG or settings.env_type == 'dev':
+if settings.DEBUG or settings.ENV_TYPE == 'dev':
     urlpatterns += [
         re_path(r'^swagger(?P<format>\.json|\.yaml)$',
                 schema_view.without_ui(cache_timeout=0), name='schema_json'),

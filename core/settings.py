@@ -5,7 +5,7 @@ from core import logger
 from core.apps import DEFAULT_APPS, THIRD_PARTY_APPS, CUSTOM_APPS
 from core.middleware import DEFAULT_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE, CUSTOM_MIDDLEWARE
 
-env_type = environ.get('ENV_TYPE', 'dev').lower()
+ENV_TYPE = environ.get('ENV_TYPE', 'prod').lower()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,7 +77,7 @@ LOG_DIR = path.join(BASE_DIR, 'logs/')
 if not path.exists(LOG_DIR):
     logger.info('Creating log directory.')
     makedirs(LOG_DIR)
-ENV_LOG_FILE = path.join(LOG_DIR, f'{env_type}.log')
+ENV_LOG_FILE = path.join(LOG_DIR, f'{ENV_TYPE}.log')
 DJANGO_LOG_FILE = path.join(LOG_DIR, 'django.log')
 
 LOGGING = {
@@ -91,7 +91,8 @@ LOGGING = {
         'root_file': {
             'class': 'logging.FileHandler',
             'filename': ENV_LOG_FILE,
-            'formatter': 'verbose'
+            'formatter': 'verbose',
+            'encoding': 'utf-8',
         },
         'django_file': {
             'level': 'DEBUG',
