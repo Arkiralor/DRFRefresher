@@ -149,4 +149,4 @@ prototyping/
 *.ipynb
 
 # Fixtures for Models
-fixtures/*.json
+*/fixtures/*.json
