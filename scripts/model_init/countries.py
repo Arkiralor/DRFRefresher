@@ -8,6 +8,7 @@ def create_countries():
     Creates all countries in the database.
     """
     logger.info("Creating all countries...")
+
     df = pd.read_csv("scripts\model_init\data\countries.csv")
     logger.info(f"Retrieved {len(df)} countries.")
 
@@ -17,9 +18,9 @@ def create_countries():
     for country in list_of_dicts:
         logger.info(f"Creating Country: {country.get('name')}.")
         serializer = CountryModelSerializer(data=country)
+
         if serializer.is_valid():
             serializer.save()
-            logger.info(f"Created Country: {serializer.data}")
         else:
             logger.error(f"Error creating Country: {serializer.errors}")
 

@@ -13,16 +13,5 @@ class FilePath:
         BASE_DIR, "temp", "SQLDump", f"{environ.get('PGDATABASE')}.sql")
 
 
-class StringConstant:
-    """
-    Class to contain global string constants for the project.
-    """
-    logger.info("Initiating String Constants.")
-    token_file_header = "token"
-    at = "@"
-    dot = "."
-    slash = sep
-
-
-if __name__=="__main__":
+if __name__ == "__main__":
     pass

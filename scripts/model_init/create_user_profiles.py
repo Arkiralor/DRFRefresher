@@ -25,11 +25,7 @@ def add_profile():
         if not profile:
             logger.info(f"No profile found for User: {user.username}.")
             profile = UserProfile.objects.create(user=user)
-            logger.info(
-                f"Creating Profile: {profile} for User: {user.username}.")
             profile.save()
-
-        logger.info(f"Profile: {profile.id} for User: {user.username}.")
 
 
 if __name__ == "__main__":

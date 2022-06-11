@@ -8,6 +8,7 @@ from django.contrib.auth.models import AbstractUser
 from locationapp.models import LocationModel
 from userapp.model_choices import UserChoice
 from userapp.constants import UserRegex
+from constants.reference_values import StringConstant
 # Create your models here.
 
 
@@ -55,8 +56,8 @@ class User(AbstractUser):
         '''
         Extended save() method to create a slug for the user.
         '''
-        if not self.id or not self.user_slug:
-            self.user_slug = slugify(f"{self.username}-{self.email}")
+        ## prithoo: Create a slug, every time the user is updated.
+        self.user_slug = slugify(f"{self.username}-{self.email}")
         super(User, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -83,6 +84,7 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         related_name='owning_user'
     )
+    profile_slug = models.SlugField(max_length=250, null=True, blank=True)
     headline = models.CharField(max_length=128, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     location = models.ForeignKey(
@@ -97,6 +99,14 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        '''
+        Extended save() method to create a slug for the user.
+        '''
+        ## prithoo: Create a slug, every time the user is updated.
+        self.profile_slug = slugify(f"profile{StringConstant.at}{self.user.user_slug}")
+        super(UserProfile, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'User Profile'

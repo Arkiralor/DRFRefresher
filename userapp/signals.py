@@ -31,6 +31,8 @@ class UserSignalReciever:
         """
         if not created:
             logger.info(f"User {instance.username} updated.")
+            profile = UserProfile.objects.get(user=instance)
+            profile.save()
 
     @classmethod
     def user_deleted(cls, sender, instance, **kwargs):

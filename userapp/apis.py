@@ -1,5 +1,7 @@
 from userapp.models import User, UserProfile
-from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer
+from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
+from userapp.constants import UserRegex
+from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,7 +10,9 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from auth.custom_permissions import IsModerator
-from file_operations.operations import FileIO
+from operations.file_operations import FileIO
+
+import re
 
 
 # Create your views here.
@@ -52,14 +56,40 @@ class AddUserView(APIView):
         POST a new user to the system:
         '''
         data = request.data
+
+        if not data.get('username') or not data.get('password') or not data.get('email'):
+            return Response(
+                {
+                    "error": "USERNAME, PASSWORD and EMAIL are MANDATORY"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        if len(data.get('username')) == 0 or len(data.get('password')) == 0 or len(data.get('email')) == 0:
+            return Response(
+                {
+                    "error": "USERNAME, PASSWORD and EMAIL are MANDATORY"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        ## prrithoo: We are validating the password here because we cannot do that once the password
+        ## has been hashed and salted.
+        if not UserRegex.PASSWORD_REGEX.search(data.get('password')):
+            return Response(
+                {
+                    "error": "Password MUST contain 1 UPPERCASE character, 1 lowercase character and 1 numerical character."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         data['password'] = make_password(data.get('password'))
 
+        ## Sanitizing request data
         if 'is_staff' in data.keys():
             data['is_staff'] = False
         if 'is_superuser' in data.keys():
             data['is_superuser'] = False
-        if 'has_key' in data.keys():
-            data['has_key'] = False
         if 'user_type' in data.keys():
             data['user_type'] = 'normal_user'
 
@@ -82,10 +112,12 @@ class AddUserView(APIView):
             )
 
 
-class UserLoginView(APIView):
+class UserLoginView(GenericAPIView):
     '''
     View to login a user and create their token:
     '''
+    serializer_class = LoginSerializer
+
 
     def post(self, request):
         data = request.data

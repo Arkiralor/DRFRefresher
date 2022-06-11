@@ -1,5 +1,5 @@
 """
-File oprations for the project.   
+Operations for the project.   
 """
 
 ## Initialize the logger for the application.

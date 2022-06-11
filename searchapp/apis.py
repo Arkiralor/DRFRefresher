@@ -14,6 +14,7 @@ from userapp.serializers import UserSerializer
 
 from datetime import datetime
 
+
 class SearchStoryAPI(APIView):
     """
     API to search for stories.
@@ -34,7 +35,8 @@ class SearchStoryAPI(APIView):
 
         if params.get('title', None):
             title = params.get('title')
-            stories = Story.objects.filter(title__icontains=title).order_by('-created_at')
+            stories = Story.objects.filter(
+                title__icontains=title).order_by('-created_at')
             results = StorySerializer(stories, many=True).data
         elif params.get('like', None):
             like = params.get('like')
@@ -52,6 +54,39 @@ class SearchStoryAPI(APIView):
 
         return Response(
             resp,
+            status=status.HTTP_200_OK
+        )
+
+
+class AllStoriesByAuthorAPI(APIView):
+    """
+    API to retrieve all stories by a single author
+    """
+
+    def get(self, request):
+        """
+        GET method to get all stories by a single author
+        """
+        author = request.query_params.get('author')
+        if not author:
+            return Response(
+                {
+                    "error": "Please provide author"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        stories = Story.objects.filter(
+            author__username=author).order_by('-created_at')
+        if not stories:
+            return Response(
+                {
+                    "error": f"No stories submitted by {author}"
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+        serialized = StorySerializer(stories, many=True)
+        return Response(
+            serialized.data,
             status=status.HTTP_200_OK
         )
 
@@ -76,14 +111,16 @@ class SearchUserAPI(APIView):
 
         if params.get('username', None):
             username = params.get('username')
-            users = User.objects.filter(username__icontains=username).order_by('-created_at')
+            users = User.objects.filter(
+                username__icontains=username)
             results = UserSerializer(users, many=True).data
         elif params.get('email', None):
             email = params.get('email')
-            users = User.objects.filter(email__icontains=email).order_by('-created_at')
+            users = User.objects.filter(
+                email__icontains=email)
             results = UserSerializer(users, many=True).data
         else:
-            users = User.objects.all().order_by('-created_at')
+            users = User.objects.all()
             results = UserSerializer(users, many=True).data
 
         resp = {
@@ -97,5 +134,3 @@ class SearchUserAPI(APIView):
             data=resp,
             status=status.HTTP_200_OK
         )
-
-

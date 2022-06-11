@@ -126,6 +126,16 @@ LOGGING = {
     },
 }
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token eg [token (JWT) ]": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
+
 LANGUAGE_CODE = environ['LANGUAGE_CODE']
 TIME_ZONE = environ['TIME_ZONE']
 USE_I18N = eval(environ['USE_I18N'])

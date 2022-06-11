@@ -214,3 +214,5 @@ class IndividualStoryBySlugAPI(APIView):
             serialized.data,
             status=status.HTTP_200_OK
         )
+
+        

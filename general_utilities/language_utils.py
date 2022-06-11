@@ -4,7 +4,7 @@ from spacy_langdetect import LanguageDetector
 import en_core_web_md
 
 from general_utilities import logger
-from general_utilities.constants import LANG_DICT
+from constants.reference_values import ProjectConstants
 
 
 class LanguageHandlers:
@@ -50,11 +50,11 @@ class LanguageHandlers:
             lang_code = doc._.language.get("language")
             confidence_score = doc._.language.get("score")
 
-            if confidence_score >= self.confidence_threshold and lang_code in LANG_DICT.keys():
-                return LANG_DICT.get(lang_code)
+            if confidence_score >= self.confidence_threshold and lang_code in ProjectConstants.LANG_DICT.keys():
+                return ProjectConstants.LANG_DICT.get(lang_code)
             else:
                 lang_code = "default"
-                return LANG_DICT.get(lang_code)
+                return ProjectConstants.LANG_DICT.get(lang_code)
 
         except Exception as ex:
             logger.info(f"Error: {ex}")
