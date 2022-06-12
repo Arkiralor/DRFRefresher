@@ -15,7 +15,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'headline', 'bio', 'location')
+    list_display = ('id', 'user', 'headline', 'location')
     raw_id_fields = ('user',)
     search_fields = ('user__username', 'user__email')
     ordering = ('-created_at',)
