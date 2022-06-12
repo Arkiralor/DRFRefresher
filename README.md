@@ -21,6 +21,11 @@ _This project will be updated as needed and should only be treated as a sample._
 3. __`SearchApp`:__ _Used for search operations on both: stories and users_
 4. __`LocationApp`:__ _Used for location CRUD operations for User Profiles_
 
+## Screenshots
+
+1. [The Index Page on a laptop (1366x768)](/static\assets\screenshots_for_readme\index_page_laptop.png) ![Index Page on Mobile](static\assets\screenshots_for_readme\index_page_laptop.png)
+2. [The Index Page on a mobile device (1080x1920)](/static\assets\screenshots_for_readme\index_page_mobile.png) ![Index Page on Mobile](static\assets\screenshots_for_readme\index_page_mobile.png)
+
 ## Development Setup
 
 1. Clone the repository using:  `git clone <link.git>`
