@@ -56,7 +56,7 @@ p {
 
 .MainTitle a h1 {
     padding: 3px;
-    margin: 3mm;
+    margin: 3px;
     left: 25%;
     position: relative;
     font-size: 70px;
@@ -84,7 +84,7 @@ p {
     background-size: cover;
     background-position: top;
     border-radius: 1px;
-    box-shadow: 10px 10px 10px 10px #242424;
+    box-shadow: 0px 0px 10px 10px #242424;
 }
 
 .LinkTable tr {
@@ -93,15 +93,12 @@ p {
     height: 25px;
     color: #fff;
     text-align: center;
-    /* border: 1px solid #fdfdfd; */
 }
 
 .LinkTable tr td {
     height: 25px;
     width: 35%;
     text-align: center;
-    /* border: 1px solid #fdfdfd; */
-
 }
 
 
@@ -126,16 +123,24 @@ p {
     border: 1px solid #fdfdfd;
 }
 
-.logo img{
+.logo {
     position: absolute;
-    top: 5px;
+    top: 3px;
+    left: 3px;
+    width: 100px;
+    height: 100px;
+}
+
+.logo img {
+    position: absolute;
+    /* top: 5px;
     left: 5px;
     margin-left: 1mm;
-    margin-top: 1mm;
+    margin-top: 1mm; */
+    padding: 3px;
     opacity: 1;
     width: 100px;
     height: auto;
-               
 }
 
 .SubTitle {
@@ -166,9 +171,30 @@ p {
 }
 
 .header ul {
-    list-style-type: none; 
+    list-style-type: none;
 }
 
 .header ul li {
     margin-left: 1mm;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 1mm;
+    margin-top: 1mm;
+    padding: 1mm;
+    color: rgb(206, 206, 206);
+    font-size: 12px;
+    font-family: "Century Gothic";
+    text-align: right;
+}
+
+.footer p a {
+    color: rgb(192, 192, 192);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: "Century Gothic";
+    text-align: right;
 }

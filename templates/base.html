@@ -13,19 +13,19 @@
     <div class="header">
         <ul>
             <li>
-                <div class = "MainTitle">
+                <div class="MainTitle">
                     <a href="/">
                         <h1>
                             {% block main_title %}
                             {% endblock %}
                         </h1>
                     </a>
-                    <p class="SubTitle"> - <a href="https://www.linkedin.com/in/prithoo11335">Prithoo Medhi</a></p>
+                    <p class="SubTitle"> - <a href={{linkedin_profile}}>Prithoo Medhi</a></p>
                 </div>
             </li>
             <li>
-                <div class = "logo">
-                    <a href ="/">
+                <div class="logo">
+                    <a href="/">
                         <img src="static/assets/images/logo_white_150p.png" alt="logo">
                     </a>
                 </div>
@@ -34,6 +34,12 @@
     </div>
     {% block content %}
     {% endblock %}
+    <div>
+        &nbsp;
+    </div>
+    <div class="footer">
+        <p>&copy; 2022, Prithoo Medhi (<a href="https://www.github.com/Arkiralor">Arkiralor@GitHub</a>)</p>
+    </div>
 </body>
 
 </html>

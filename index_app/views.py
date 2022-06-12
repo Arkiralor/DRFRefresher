@@ -15,6 +15,7 @@ def index(request):
         'title': 'Index',
         'welcome_message': 'Welcome to the index page.',
         'message': 'Please use the APIs to interface with the backend.',
+        'linkedin_profile': environ.get('LINKEDIN_PROFILE', ''),
         'documentation': {
             'userapp_docs': environ.get('USERAPP_DOCS'),
             'locationapp_docs': environ.get('LOCATIONAPP_DOCS'),

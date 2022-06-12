@@ -13,7 +13,7 @@ urlpatterns = [
     path('search/', include('searchapp.urls')),
 ]
 
-## These url patterns are only available in an development environment
+## These url patterns are only available in a development environment
 if settings.DEBUG or settings.ENV_TYPE == 'dev':
     urlpatterns += [
         path('', include('index_app.urls')),
@@ -26,7 +26,7 @@ if settings.DEBUG or settings.ENV_TYPE == 'dev':
                 cache_timeout=0), name='schema_redoc'),
     ]
 
-## These url patterns are only available in an production environment
+## These url patterns are only available in a production environment
 elif settings.ENV_TYPE == 'prod' and not settings.DEBUG:
     urlpatterns += [
         path('8ccb652246c932d0/', admin.site.urls),
