@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 from core.swagger_schema import schema_view
 from core import settings
 
 urlpatterns = [
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('assets/images/favicon.ico'))),
     path('user/', include('userapp.urls')),
     path('story/', include('storyapp.urls')),
     path('location/', include('locationapp.urls')),

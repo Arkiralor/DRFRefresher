@@ -14,10 +14,14 @@ SECRET_KEY = environ['SECRET_KEY']
 DEBUG = eval(environ['DEBUG'])
 
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-]
+if ENV_TYPE == 'dev':
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1',
+    ]
+
+elif ENV_TYPE == 'prod':
+    ALLOWED_HOSTS = [None]
 
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
@@ -146,7 +150,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = path.join(BASE_DIR, 'static_assets')
+# STATIC_ROOT = path.join(BASE_DIR, 'static_assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = path.join(BASE_DIR, 'media/')

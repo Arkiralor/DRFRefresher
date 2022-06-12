@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django Refresher</title>
+{% block page_title %}
+    DRF Refresher - Home
+{% endblock %}
+
+{% block stylesheet %}
     <link rel="stylesheet" type="text/css" href="static/css/index_styles.css">
-</head>
+{% endblock %}
 
-<body>
-    <h1>Welcome to the Backend API</h1>
+{% block main_title %}
+    Django Refresher
+{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Backend API</h2>
     <p>Please use the APIs described in the documentation to interact with this project.</p>
     <table class="LinkTable">
-        <tr>
-            <td style="font-size: medium;">App</td>
-            <td style="font-size: medium;">URL</td>
+        <tr class="ColNames">
+            <td style="font-size: 3em;">Application</td>
+            <td style="font-size: 3em;">Documentation URL</td>
         </tr>
         <tr>
             <td>UserApp</td>
@@ -34,6 +37,4 @@
             <td><a href= {{ documentation.searchapp_docs }} >Search Application Docs</a></td>
         </tr>
     </table>
-</body>
-
-</html>
+{% endblock %}

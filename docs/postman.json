@@ -1,0 +1,1494 @@
+{
+	"info": {
+		"_postman_id": "13c19992-fe44-4fc9-84e3-8c8dcf047647",
+		"name": "DjangoRefresher",
+		"description": "A basic CRUD application in Django for users to publish stories using RestAPIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17779018"
+	},
+	"item": [
+		{
+			"name": "UserApp",
+			"item": [
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"testuser_001\",\r\n    \"password\": \"Password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/user/login/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"login",
+								""
+							]
+						},
+						"description": "API to login an user."
+					},
+					"response": [
+						{
+							"name": "TestUser Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"testuser_001\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/user/login/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 05 Jun 2022 23:05:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"9240ce802afe8bf6e5f4d968866bb4181e201c11\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/user/all",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"all"
+							]
+						},
+						"description": "API for admins to list out all users in the system."
+					},
+					"response": [
+						{
+							"name": "List All Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{UserToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/user/all",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"all"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 05 Jun 2022 23:14:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "994"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c63d1bc4-1052-4da1-be7a-343fae3d9ec4\",\n        \"username\": \"admin\",\n        \"email\": \"admin@admin.com\",\n        \"first_name\": \"\",\n        \"last_name\": \"\",\n        \"user_slug\": \"admin-adminadmincom\",\n        \"user_type\": \"user_admin\",\n        \"last_login\": \"2022-06-05T05:13:17+05:30\",\n        \"is_superuser\": true,\n        \"is_staff\": true,\n        \"is_active\": true,\n        \"date_joined\": \"2022-06-05T05:13:06+05:30\"\n    },\n    {\n        \"id\": \"732eddf7-2bbe-4899-b848-5f1e3bfb709f\",\n        \"username\": \"prithoo\",\n        \"email\": \"prithoo11335@gmail.com\",\n        \"first_name\": \"Prithoo\",\n        \"last_name\": \"Medhi\",\n        \"user_slug\": \"prithoo-prithoo11335gmailcom\",\n        \"user_type\": \"normal_user\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2022-06-05T05:45:09.244481+05:30\"\n    },\n    {\n        \"id\": \"8e892492-7eca-455d-b3f5-c40ca1a6754b\",\n        \"username\": \"testuser_001\",\n        \"email\": \"test_user_001@gmail.com\",\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"user_slug\": \"testuser_001-test_user_001gmailcom\",\n        \"user_type\": \"normal_user\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2022-06-06T04:32:30.879060+05:30\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Fablelord\",\r\n    \"last_name\": \"Arkalon\",\r\n    \"username\": \"arkiralor\",\r\n    \"password\": \"Driftking11235\",\r\n    \"email\": \"fablelordarkalon11235@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/user/add/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"add",
+								""
+							]
+						},
+						"description": "API to add a new user to the system."
+					},
+					"response": [
+						{
+							"name": "Add New User - testuser",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"Test\",\r\n    \"last_name\": \"User\",\r\n    \"username\": \"testuser_001\",\r\n    \"password\": \"password\",\r\n    \"email\": \"test_user_001@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/user/add/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"add",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 05 Jun 2022 23:02:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"User: testuser_001 created.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All User Profiles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/user/profile/all",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"profile",
+								"all"
+							]
+						},
+						"description": "API for admins to view all generated user-profiles."
+					},
+					"response": []
+				}
+			],
+			"description": "Django App to deal with internal user authentication/registration."
+		},
+		{
+			"name": "StoryApp",
+			"item": [
+				{
+					"name": "Get All Stories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/story/all",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story",
+								"all"
+							]
+						},
+						"description": "API to list out all stories with the latest published being the first in the list."
+					},
+					"response": [
+						{
+							"name": "Retrieving All Stories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/story/all",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"story",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 07 Jun 2022 00:45:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "12744"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"hits\": [\n        {\n            \"id\": \"be3a781e-35cf-4e1f-bd17-e63fbcbb17ea\",\n            \"title\": \"Little Red Riding Hood\",\n            \"slug\": \"little-red-riding-hood-testuser_002\",\n            \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\n            \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\n            \"genre\": \"fairy Tale\",\n            \"created_at\": \"2022-06-07T06:14:46.273833+05:30\",\n            \"updated_at\": \"2022-06-07T06:14:46.273833+05:30\",\n            \"author\": \"209f33a7-3bc4-4ae6-b5db-d38f48ef5c1d\"\n        },\n        {\n            \"id\": \"c6858829-1317-495e-ae5d-e9aad0aefc83\",\n            \"title\": \"After College\",\n            \"slug\": \"after-college-testuser_001\",\n            \"description\": \"A short personal summary of life after college but before beginning your career.\",\n            \"body\": \"So, as you all know I recently completed my post-graduation and am now sitting at home. I am not actively looking for a job right now as there are things I need to learn before I can even apply for a job, since college trains you on the workings of the subject, how everything works and why. It absolutely doesn’t prepare you for the job market; it can’t do that even if it wanted to since job requirements and specifications change every other year and nowhere else is this more apparent than in computer science. College is supposed to teach you the ins and outs of the subject, not what you need to do in an occupation, you will be able to figure that out on your own in your own time if you know how everything works. If you want to learn how to do a job then it is vocational training you are looking for, not a college degree. College is a place of higher learning, not a place for job-training; which is why I find it so very absurd that job providers expect new recruits to know everything about a job with minimal training even though they want a college degree on your résumé and not a certificate from a vocational institute.\\r\\n\\r\\nBut no, I am not here to talk about how the job-market in my country is flawed in its recruitment strategies and how all the moguls seem to disregard any and all changes suggested by experts. That’s a landmine with educated morons giving out falsified anecdotal accounts of why proven paradigms and actual research suggesting a serious flaw in the system are wrong and they are right, since they know all that is to know even though they probably never worked at more than two positions from maybe three highly urbanized cities, in their life. Yes, yes, I know that that was a glaring generalization but sometimes these functional idiots get on my nerves.\\r\\n\\r\\nWhat I am here to talk about, instead is the sudden sense of emptiness and loneliness that starts to consume you the day your college life ends and you find yourself staring out through the window from a chair or up at the ceiling from your bed with absolutely nothing to do all day. All the friends you made over the course of these last few years have suddenly moved away, back to their hometowns or to other cities to find jobs or to start their lives (yes, I know they probably feel the same but I am writing this from my own perspective) and you do not even have people left that you can hang out with or go places with because for the last several years, they were the vast majority of your social circle. There are so many articles and books by so-called ‘life-coaches’ that tell you what to do after college but aside from the fact that most of them are utter-bullshit and probably written by someone with absolutely no connection to the real world, the fact remains that all of these are long-term plans; nothing ever tells you effectively what to do in your day-to-day. Some tell you to learn a singular new skill which is good, but then they say that you should only do that in your free time, everything else can wait, do nothing else, no need to relax and no need for leisurely activities. Like thanks, crazy person who probably needs some serious therapy and probably only wrote this article for the $15 the publisher promised, I will do exactly that. It is not like I just spent up to four years doing the exact same thing that probably messed up my psychological characteristics to such a degree that I will probably be paying for that for the rest of my life. Nope, I will continue doing that and just mess up myself even more, by acting like a machine and neglecting my mental health and social relationships and any and all soft-skills that I have somehow managed to retain these past few years despite the life I have led.\\r\\n\\r\\nBut they do manage to get one thing right: learning a new skill is a great way to ward away those feelings of emptiness and loneliness that always accompany the period between the end of your college life and the start of your career, just maybe not learn it with the intensity they suggest? I seriously think we have enough people skilled in a field with absolutely no social skills or emotional intelligence. Barring that, do anything to fill up your empty time: volunteer, go to new events, try arts and crafts and of course, meet new people, see what the city/town/village you live in is like now; but still leave yourself with some free time. You just spent years roughly sticking to a strict schedule and will probably spend the rest of your life doing the same once you start your career. So just for this once, give yourself at least some time in the whole day to unwind and just do…nothing.\\r\\n\\r\\nFinding a new hobby is probably the best way to spend all this newfound free time; a lot of them will even boost your résumé for those of you looking for that sort of thing. It allows you a way to not only learn a new skill, but to express yourself in your own little way that acts as a therapeutic measure against the maddening uniformity of this world. This is what I try to do and from my own experiences, it works.\\r\\n\\r\\nI for the matter of this discussion, am trying to learn a new programming language. You see, back during my final semester all of us had to submit a major project that showcased the knowledge and skills that we had picked up over the course of these last two years. I was one of the four students that took a project in embedded systems programming which is usually implemented using an Arduino micro-controller board. The Arduino uses a language eerily similar to another language called C, maybe you have heard of it somewhere. Now for the four of us, C was a language we had been using since we started learning to program so it was not like we had to learn a whole new language for our projects (we only had to learn a lifetime’s worth of electronics in about six months and some basic physics and engineering and all four of us probably lost a good twelve kilos or so just from the stress alone, but that is a story for another time). But the majority of the students in my class, considering the complexity of their projects along with the open-ended implementation goals they were given, chose a language known as Python for their projects (and by ‘majority’ I mean that in a class of around thirty students, only five or six did not use Python, including us four in Embedded Systems).\\r\\n\\r\\nNow for those of you who still remember their college days, you know it isn’t uncommon for students to ask each other for help during projects (as this is one of the many, many advantages of going to a traditional college, whatever the tier maybe: you get to be surrounded by people studying the same subject and who will probably end up working in the same field as you) as your professors may be too bogged down by administrative or research work to always be available to help you. So this was how it was for us as well, everyone was good friends with everyone else so all of us were vividly exposed to and familiar with the ideas and workings of each other’s projects. We would barter with each other by solving each other’s problems and this is how I was introduced to Python for the first time, by helping a classmate with some problems they were facing with their work.\\r\\n\\r\\nAfter a lifetime of dealing with the strict, immutable syntaxes of the languages I’ve used, the idea that a programming language can resemble basic human speech was too good for me to resist. So after everything was said and done, I sat down and began reading the documentation and watching tutorials online. I was able to get basic functionality in my codes within one week, that is how easy Python is: everything was just like a normal human language. The last two weeks I have spent learning this amazing new (I know, it was released decades ago but it is new for me) language seemed to go by in a blur and I rarely felt empty or lonely. Time just seemed to fly by; I would sit down at around 10 in the night and the next time I looked at the clock, it would be around 4 in the morning.\\r\\n\\r\\nBut as I said, this is not how I spend my entire day. I go out and meet my friends, I try to help them out with random errands, I make trips that I had been putting off, I finally started that DIY project that I had been promising myself I would start once college is over. I try to take as much time as I require to do all the things I want to do. Life isn’t a monotonous sequence of events that only flows in one direction. It is a tapestry with thousands of millions of interleaving twines criss-crossing and overlapping each other to form something beautiful.\\r\\n\\r\\nThis has of course been a personal example, everyone here might need to find their own hobbies to spend the time but I assure you that whatever you choose to spend your time doing, despite what some others might say, it will never be wasted time. Time spent learning new skills, developing a new hobby or just plain meeting new people or going to new places, even if they are it the town where you live, is never wasted. In this life, the greatest investment we can make is time and there are very few instances where this investment leads to a loss; all others lead to eventual personal gain, either material or emotional.\\r\\n\\r\\nWith that, I bid you all goodnight for now. I hope to see you all along with maybe a few new faces next time.\",\n            \"genre\": \"drama\",\n            \"created_at\": \"2022-06-06T23:52:10.957832+05:30\",\n            \"updated_at\": \"2022-06-06T23:52:10.957832+05:30\",\n            \"author\": \"da146a7f-4d77-4b62-b311-620ac5062a35\"\n        }\n    ],\n    \"total\": 2,\n    \"requested_at\": \"2022-06-07T06:15:25.576209\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Story",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Little Red Riding Hood\",\r\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\r\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\r\n    \"genre\": \"fairy Tale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/story/add/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story",
+								"add",
+								""
+							]
+						},
+						"description": "API for an user to add a story to the system."
+					},
+					"response": [
+						{
+							"name": "Added New Story",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{UserToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Little Red Riding Hood\",\r\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\r\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\r\n    \"genre\": \"fairy Tale\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/story/add/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"story",
+										"add",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 07 Jun 2022 00:44:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2892"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"be3a781e-35cf-4e1f-bd17-e63fbcbb17ea\",\n    \"title\": \"Little Red Riding Hood\",\n    \"slug\": \"little-red-riding-hood-testuser_002\",\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\n    \"genre\": \"fairy Tale\",\n    \"created_at\": \"2022-06-07T06:14:46.273833+05:30\",\n    \"updated_at\": \"2022-06-07T06:14:46.273833+05:30\",\n    \"author\": \"209f33a7-3bc4-4ae6-b5db-d38f48ef5c1d\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Individual Story",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/story?story_slug=little-red-riding-hood-testuser_002",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story"
+							],
+							"query": [
+								{
+									"key": "story_slug",
+									"value": "little-red-riding-hood-testuser_002"
+								}
+							]
+						},
+						"description": "API for authenticated users to retrieve individual stories using either the slug or the UUID as query parameters."
+					},
+					"response": [
+						{
+							"name": "Retrieve Individual Story",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{UserToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/story?story_slug=little-red-riding-hood-testuser_002",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"story"
+									],
+									"query": [
+										{
+											"key": "story_slug",
+											"value": "little-red-riding-hood-testuser_002"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 07 Jun 2022 00:57:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2892"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"60261b96-b2bc-4c2d-963e-36ac244876a3\",\n    \"title\": \"Little Red Riding Hood\",\n    \"slug\": \"little-red-riding-hood-testuser_002\",\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\n    \"genre\": \"fairy Tale\",\n    \"created_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"updated_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"author\": \"209f33a7-3bc4-4ae6-b5db-d38f48ef5c1d\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve by Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/story/little-red-riding-hood-testuser_002",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story",
+								"little-red-riding-hood-testuser_002"
+							]
+						},
+						"description": "API for unauthenticated users to retrieve stories using the slug.  \n  \nCan also be used to create permalink to individual stories."
+					},
+					"response": [
+						{
+							"name": "Retrieve by Slug",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/story/little-red-riding-hood-testuser_002",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"story",
+										"little-red-riding-hood-testuser_002"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 07 Jun 2022 01:02:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2892"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"60261b96-b2bc-4c2d-963e-36ac244876a3\",\n    \"title\": \"Little Red Riding Hood\",\n    \"slug\": \"little-red-riding-hood-testuser_002\",\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\n    \"genre\": \"fairy Tale\",\n    \"created_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"updated_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"author\": \"209f33a7-3bc4-4ae6-b5db-d38f48ef5c1d\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Django App to deal with story creation, retrieval and all such."
+		},
+		{
+			"name": "LocationApp",
+			"item": [
+				{
+					"name": "All Locations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/location/location/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"location",
+								""
+							]
+						},
+						"description": "API to list out all locations stored in system.  \n  \n__NB:__ _A country is not a location; a country __contains__ a location._"
+					},
+					"response": []
+				},
+				{
+					"name": "All Countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/location/country/all",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"country",
+								"all"
+							]
+						},
+						"description": "API to list out all countries stored in the system."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual Location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/location/location/guwahati-kamrup-metro-assam-republic-of-india",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"location",
+								"guwahati-kamrup-metro-assam-republic-of-india"
+							]
+						},
+						"description": "API to retrieve an individual location via its slug."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual Country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/location/country/british-indian-ocean-territory",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"country",
+								"british-indian-ocean-territory"
+							]
+						},
+						"description": "StartFragment\n\nAPI to retrieve an individual country via its slug.\n\nEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Country",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"India\",\r\n    \"official_name\": \"Republic of India\",\r\n    \"country_code\": \"IN\",\r\n    \"country_region\": \"Asia\",\r\n    \"internet_tld\": \".in\",\r\n    \"calling_code\": \"+91\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/location/country/all",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"country",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add New Country (USA)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{UserToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"United States of America\",\r\n    \"common_name\": \"USA\",\r\n    \"internet_tld\": \".us\",\r\n    \"calling_code\": \"+1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/location/country/all",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"location",
+										"country",
+										"all"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jun 2022 11:02:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6b19814e-da78-4948-8a96-f78550dd9029\",\n    \"name\": \"United States of America\",\n    \"common_name\": \"USA\",\n    \"slug\": \"united-states-of-america\",\n    \"internet_tld\": \".us\",\n    \"calling_code\": \"+1\",\n    \"created_at\": \"2022-06-09T16:32:50.793167+05:30\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city_town\": \"New York City\",\r\n    \"district_county\": \"New York Metropolitan Area\",\r\n    \"state_province\": \"New York\",\r\n    \"country\": \"f29f7e00-7f60-4d38-8a7a-9b38d837bd25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/location/location/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"location",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add New Location (New York, USA)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{UserToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"city_town\": \"New York City\",\r\n    \"district_county\": \"New York Metropolitan Area\",\r\n    \"state_province\": \"New York\",\r\n    \"country\": \"f29f7e00-7f60-4d38-8a7a-9b38d837bd25\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/location/location/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"location",
+										"location",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jun 2022 12:16:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "329"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0a05cf8e-4dc1-4c50-bdb4-e61390740bbd\",\n    \"city_town\": \"New York City\",\n    \"district_county\": \"New York Metropolitan Area\",\n    \"state_province\": \"New York\",\n    \"slug\": \"new-york-city-new-york-metropolitan-area-new-york-united-states-of-america\",\n    \"created_at\": \"2022-06-09T17:46:12.358159+05:30\",\n    \"country\": \"f29f7e00-7f60-4d38-8a7a-9b38d837bd25\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Location Geocode",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/location/code?location_name=New York",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"code"
+							],
+							"query": [
+								{
+									"key": "location_name",
+									"value": "New York"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Location Geocode (New York City)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AdminUserToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/location/code?location_name=New York",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"location",
+										"code"
+									],
+									"query": [
+										{
+											"key": "location_name",
+											"value": "New York"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jun 2022 23:40:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "412"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"location\": \"New York, NY, USA\",\n    \"geometry\": {\n        \"bounds\": {\n            \"northeast\": {\n                \"lat\": 40.9175771,\n                \"lng\": -73.70027209999999\n            },\n            \"southwest\": {\n                \"lat\": 40.4773991,\n                \"lng\": -74.25908989999999\n            }\n        },\n        \"location\": {\n            \"lat\": 40.7127753,\n            \"lng\": -74.0059728\n        },\n        \"location_type\": \"APPROXIMATE\",\n        \"viewport\": {\n            \"northeast\": {\n                \"lat\": 40.9175771,\n                \"lng\": -73.70027209999999\n            },\n            \"southwest\": {\n                \"lat\": 40.4773991,\n                \"lng\": -74.25908989999999\n            }\n        }\n    },\n    \"place_id\": \"ChIJOwg_06VPwokRYv534QaPC8g\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Address from Geocode",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geometry\": {\r\n        \"location\": {\r\n            \"lat\": 36.4598667,\r\n            \"lng\": 139.6911374\r\n        }\r\n            \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/location/code/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"location",
+								"code",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Address from Geocode (Guwahati)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AdminUserToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"geometry\": {\r\n        \"location\": {\r\n            \"lat\": 26.1445169,\r\n            \"lng\": 91.7362365\r\n        }\r\n            \r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/location/code/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"location",
+										"code",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jun 2022 23:39:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"location\": \"4PVP+RF9, Barsapara, Guwahati, Assam 781009, India\",\n    \"place_id\": \"ChIJT9Bb2AJbWjcRxj-6njDMRjs\"\n}"
+						},
+						{
+							"name": "Get Address from Geocode (Tokyo)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{AdminUserToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"geometry\": {\r\n        \"location\": {\r\n            \"lat\": 36.4598667,\r\n            \"lng\": 139.6911374\r\n        }\r\n            \r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/location/code/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"location",
+										"code",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jun 2022 23:42:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"location\": \"2325 Tsugamachi Ōgaki, Tochigi, 328-0101, Japan\",\n    \"place_id\": \"ChIJ52AjQlUVH2ARgrsqltO_gr8\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Test Google Reverse API",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://maps.googleapis.com/maps/api/geocode/json?key={{GoogleAPIKey}}&language=en-GB&latlng=26.1445169, 91.7362365",
+							"protocol": "https",
+							"host": [
+								"maps",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"maps",
+								"api",
+								"geocode",
+								"json"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{GoogleAPIKey}}"
+								},
+								{
+									"key": "language",
+									"value": "en-GB"
+								},
+								{
+									"key": "latlng",
+									"value": "26.1445169, 91.7362365"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This app deals with the CRUD of locations in countries."
+		},
+		{
+			"name": "Site Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}",
+					"host": [
+						"{{BaseURL}}"
+					]
+				},
+				"description": "Landing page for the backend of the project."
+			},
+			"response": [
+				{
+					"name": "Index",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}",
+							"host": [
+								"{{BaseURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 08 Jun 2022 05:54:26 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.3"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1230"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Django Refresher</title>\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"static/css/index_styles.css\">\n    </head>\n    <body>\n        <h1>Welcome to the Backend API</h1>\n        <p>Please use the APIs described in the documentation to interact with this project.</p>\n        <table class=\"LinkTable\">\n            <tr>\n                <td style=\"font-size: medium;\">App</td>\n                <td style=\"font-size: medium;\">URL</td>\n            </tr>\n            <tr>\n                <td>UserApp</td>\n                <td>\n                    <a href=\"https://documenter.getpostman.com/view/17779018/Uz5JHayD#91ed5d75-c047-4b2a-ade3-17275c1905f6\">User\n                    Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>StoryApp</td>\n                <td>\n                    <a href=\"https://documenter.getpostman.com/view/17779018/Uz5JHayD#f91e4c95-7b89-4ea0-b273-a3d8fa30c151\">Story\n                    Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>SearchApp</td>\n                <td>\n                    <a href=\"/\">Search Application Docs</a>\n                </td>\n            </tr>\n        </table>\n    </body>\n</html>"
+				}
+			]
+		}
+	]
+}
