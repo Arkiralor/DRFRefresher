@@ -1,0 +1,405 @@
+swagger: '2.0'
+info:
+  title: DRF Refresher API
+  description: A basic django apllication used to refresh up on core concepts of Django
+    and Django Restframework.
+  termsOfService: ''
+  contact:
+    email: fablelordarkalon11235@gmail.com
+  license:
+    name: Test License
+  version: v0.7
+host: localhost:8000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Auth Token eg [token (JWT) ]:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+  - Auth Token eg [token (JWT) ]: []
+paths:
+  /location/code/:
+    get:
+      operationId: location_code_list
+      summary: GET method to get location code.
+      description: |-
+        :params:
+            - `request`: Request object.
+            - `name`: `name_of_city/town.
+      parameters: ['location_name']
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    post:
+      operationId: location_code_create
+      summary: GET method to get address from geocode.
+      description: |-
+        request.data: self.get() 
+        ## Takes the response dict of the class's get() method.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - location
+    parameters: []
+  /location/country/all:
+    get:
+      operationId: location_country_all_list
+      description: List all countries.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    post:
+      operationId: location_country_all_create
+      description: Add a new country to the system
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - location
+    parameters: []
+  /location/country/{slug}/:
+    get:
+      operationId: location_country_read
+      description: Get a single country.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    put:
+      operationId: location_country_update
+      description: Update a single country.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    delete:
+      operationId: location_country_delete
+      description: Delete a single country.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - location
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /location/location/:
+    get:
+      operationId: location_location_list
+      description: GET method to list all locations.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    post:
+      operationId: location_location_create
+      description: POST method to add a new location.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - location
+    parameters: []
+  /location/location/{slug}:
+    get:
+      operationId: location_location_read
+      description: GET method to get a single location.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    put:
+      operationId: location_location_update
+      description: PUT method to update a single location.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - location
+    delete:
+      operationId: location_location_delete
+      description: DELETE method to delete a single location.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - location
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /search/story/:
+    get:
+      operationId: search_story_list
+      description: GET method to search for stories based on various parameters.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - search
+    parameters: []
+  /search/story/by:
+    get:
+      operationId: search_story_by_list
+      description: GET method to get all stories by a single author
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - search
+    parameters: []
+  /search/user/:
+    get:
+      operationId: search_user_list
+      description: GET method to search for users based on various parameters.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - search
+    parameters: []
+  /story/:
+    get:
+      operationId: story_list
+      description: GET method to get a single story.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - story
+    put:
+      operationId: story_update
+      description: PUT method to update a single story.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - story
+    delete:
+      operationId: story_delete
+      description: DELETE method to delete a single story.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - story
+    parameters: []
+  /story/add/:
+    post:
+      operationId: story_add_create
+      description: POST method to add a new story to system
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - story
+    parameters: []
+  /story/all/:
+    get:
+      operationId: story_all_list
+      description: GET method to get all stories in system
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - story
+    parameters: []
+  /story/{slug}:
+    get:
+      operationId: story_read
+      description: GET method to get a single story.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - story
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /user/add/:
+    post:
+      operationId: user_add_create
+      description: 'POST a new user to the system:'
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - user
+    parameters: []
+  /user/all/:
+    get:
+      operationId: user_all_list
+      description: 'GET a list of all users in system:'
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    parameters: []
+  /user/details/{slug}:
+    get:
+      operationId: user_details_read
+      description: 'Get a single user via ID:'
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    delete:
+      operationId: user_details_delete
+      description: 'Delete a single user via slug:'
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - user
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /user/login/:
+    post:
+      operationId: user_login_create
+      description: 'View to login a user and create their token:'
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Login'
+      tags:
+        - user
+    parameters: []
+  /user/logout/:
+    get:
+      operationId: user_logout_list
+      description: 'View to logout user and destroy their token:'
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    parameters: []
+  /user/make_moderator/{slug}:
+    post:
+      operationId: user_make_moderator_create
+      description: POST request to assign a moderator
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - user
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /user/make_staff/{slug}:
+    post:
+      operationId: user_make_staff_create
+      description: 'Class to set superusers:'
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - user
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /user/make_super/{slug}:
+    post:
+      operationId: user_make_super_create
+      description: 'Class to set superusers:'
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - user
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+  /user/profile/all:
+    get:
+      operationId: user_profile_all_list
+      description: GET request to get all profiles
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    parameters: []
+definitions:
+  Login:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
