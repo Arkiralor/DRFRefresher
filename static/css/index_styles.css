@@ -2,7 +2,12 @@
     margin: 0px;
     padding: 3px;
     font-family: "Century Gothic";
-    src: url("https://fonts.googleapis.com/css?family=Century+Gothic");
+    src: url("../assets/fonts/CenturyGothic.ttf");
+}
+
+@font-face {
+    font-family: "Century Gothic";
+    src: url("../assets/fonts/CenturyGothic.ttf");
 }
 
 body {
