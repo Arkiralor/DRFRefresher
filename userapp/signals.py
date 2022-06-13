@@ -2,8 +2,10 @@
 This module stores the signals used in the storyapp.
 """
 from django.db.models.signals import post_save, post_delete, m2m_changed
+from os import environ
 
 from userapp.models import User, UserProfile
+from userapp.helpers import EmailHelper
 from userapp import logger
 
 
@@ -12,6 +14,7 @@ class UserSignalReciever:
     Class to store all signals used in the storyapp.
     """
     model = User
+    notofication_reciever = environ.get("MANAGER_EMAIL", "")
 
     @classmethod
     def user_created(cls, sender, instance, created, **kwargs):
@@ -23,6 +26,14 @@ class UserSignalReciever:
             # Create a profile for the user upon creation.
             profile = UserProfile.objects.create(user=instance)
             profile.save()
+            ## TODO: Implement an email notification queue to the user.
+            ## otherwise, this process takes too long.
+            # EmailHelper.send_new_user_email(
+            #         user=instance, 
+            #         recipients=[
+            #             cls.notofication_reciever
+            #         ]
+            #     )
 
     @classmethod
     def user_updated(cls, sender, instance, created, **kwargs):
@@ -40,7 +51,6 @@ class UserSignalReciever:
         Signal to send when a story is deleted.
         """
         logger.info(f"User {instance.username} deleted.")
-
 
 ## Signal to send when a user is created.
 post_save.connect(receiver=UserSignalReciever.user_created,
@@ -67,6 +77,7 @@ class UserProfileSignalReciever:
         if created:
             logger.info(
                 f"UserProfile: {instance.id} created for User: {instance.user.username}.")
+            
 
     @classmethod
     def userprofile_updated(cls, sender, instance, created, **kwargs):

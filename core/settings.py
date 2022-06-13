@@ -97,7 +97,7 @@ LOGGING = {
             'encoding': 'utf-8',
         },
         'django_file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': DJANGO_LOG_FILE,
             'maxBytes': 50000,
@@ -112,7 +112,7 @@ LOGGING = {
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
         'local': {
-            'format': '[%(levelname)s|%(asctime)s.%(msecs)d|%(name)s|%(module)s|%(funcName)s:%(lineno)s]    %(message)s',
+            'format': '[%(asctime)s|%(name)s|%(module)s|%(funcName)s:%(lineno)s]    %(message)s',
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
     },
@@ -156,3 +156,12 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userapp.User'
 CORS_ALLOW_ALL_ORIGINS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = environ['EMAIL_HOST']
+EMAIL_PORT = environ['EMAIL_PORT']
+EMAIL_HOST_USER = environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = environ['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS = eval(environ['EMAIL_USE_TLS'])
+EMAIL_USE_SSL = eval(environ['EMAIL_USE_SSL'])
+

@@ -6,6 +6,7 @@ from locationapp.models import CountryModel, LocationModel
 class CountryModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'internet_tld', 'calling_code', 'created_at')
     search_fields = ('name', 'official_name', 'internet_tld', 'calling_code')
+    list_filter= ('country_region',)
     ordering = ('name',)
 
 
@@ -16,3 +17,4 @@ class LocationModelAdmin(admin.ModelAdmin):
                      'state_province', 'country__name')
     ordering = ('city_town', 'country__name')
     raw_id_fields = ('country',)
+    list_filter = ('country__country_region', 'country__name',)
