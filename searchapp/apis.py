@@ -10,7 +10,7 @@ from storyapp.models import Story
 from storyapp.serializers import StorySerializer
 from searchapp.helpers import SearchHelper
 from userapp.models import User
-from userapp.serializers import UserSerializer
+from userapp.serializers import UserSearchSerializer
 
 from datetime import datetime
 
@@ -42,10 +42,16 @@ class SearchStoryAPI(APIView):
             like = params.get('like')
             results = SearchHelper.find_similiar(like)
         else:
-            stories = Story.objects.all().order_by('-created_at')
-            results = StorySerializer(stories, many=True).data
+            results = []
+            return Response(
+                {
+                    'error': 'No search parameters provided.',
+                    'results': results,
+                }
+            )
 
         resp = {
+            'hits': len(results),
             'results': results,
             'query': dict(params),
             'requester': request.user.username,
@@ -113,12 +119,12 @@ class SearchUserAPI(APIView):
             username = params.get('username')
             users = User.objects.filter(
                 username__icontains=username)
-            results = UserSerializer(users, many=True).data
+            results = UserSearchSerializer(users, many=True).data
         elif params.get('email', None):
             email = params.get('email')
             users = User.objects.filter(
                 email__icontains=email)
-            results = UserSerializer(users, many=True).data
+            results = UserSearchSerializer(users, many=True).data
         else:
             results = User.objects.all().values("username")
 

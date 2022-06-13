@@ -94,6 +94,14 @@ LINKEDIN_PROFILE = " "
 ## Google Settings:
 # distance_matrix, geolocation, geocoding, timezone APIs allowed
 GOOGLE_API_KEY = " " 
+
+## Email Settings:
+EMAIL_HOST = ' '
+EMAIL_USE_TLS = True/False
+EMAIL_USE_SSL = True/False
+EMAIL_PORT = int
+EMAIL_HOST_USER = " "
+EMAIL_HOST_PASSWORD = "Generated App Password"
 ```
 
 ## Documentation

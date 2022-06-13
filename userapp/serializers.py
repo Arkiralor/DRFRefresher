@@ -39,6 +39,22 @@ class UserAdminSerializer(serializers.ModelSerializer):
         }
 
 
+class UserSearchSerializer(serializers.ModelSerializer):
+    """
+    Serializer for User model when an admin is viewing.
+    """
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'user_slug'
+        )
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     """
     Serializer for UserProfile model.

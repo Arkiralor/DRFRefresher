@@ -1,5 +1,6 @@
 autopep8                ## Used to format the code
 coverage                ## Used to test code coverage and which tests need to be written
+faker                   ## Used to generate fake data
 django                  ## Main framework for project
 django-cors-headers     ## Used to allow cross-origin requests
 django-dotenv           ## Used to read environment variables from .env file

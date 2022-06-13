@@ -20,12 +20,13 @@ class GetAllStoriesAPI(APIView):
         """
         GET method to get all stories in system
         """
-        stories = Story.objects.all()
-        serialized = StorySerializer(stories, many=True)
+        qryset=Story.objects.all()
+        
+        serialized = StorySerializer(qryset, many=True)
         resp = {
-            "hits": serialized.data,
             "total": len(serialized.data),
-            "requested_at": datetime.now()
+            "requested_at": datetime.now(),
+            "hits": serialized.data,
         }
         return Response(
             resp,
