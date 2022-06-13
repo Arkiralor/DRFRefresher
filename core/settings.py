@@ -79,7 +79,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LOG_DIR = path.join(BASE_DIR, 'logs/')
 if not path.exists(LOG_DIR):
     makedirs(LOG_DIR)
-ENV_LOG_FILE = path.join(LOG_DIR, f'{ENV_TYPE}.log')
+ENV_LOG_FILE = path.join(LOG_DIR, f'{ENV_TYPE}_root.log')
 DJANGO_LOG_FILE = path.join(LOG_DIR, 'django.log')
 
 LOGGING = {
