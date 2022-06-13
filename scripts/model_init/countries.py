@@ -2,6 +2,7 @@ from scripts import logger
 from locationapp.models import CountryModel
 from locationapp.serializers import CountryModelSerializer
 import pandas as pd
+from os import path
 
 
 def create_countries():
@@ -10,7 +11,9 @@ def create_countries():
     """
     logger.info("Creating all countries...")
 
-    df = pd.read_csv("scripts\model_init\data\countries.csv")
+    # df = pd.read_csv("scripts\model_init\data\countries.csv")
+    file = path.join("scripts", "model_init", "data", "countries.csv")
+    df = pd.read_csv(file)
     logger.info(f"Retrieved {len(df)} countries.")
 
     list_of_dicts = df.to_dict('records')

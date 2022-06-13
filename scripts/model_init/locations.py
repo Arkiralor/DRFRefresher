@@ -3,6 +3,7 @@ from locationapp.serializers import LocationModelSerializer
 from scripts import logger
 from django.db.models import Q
 import pandas as pd
+from os import path
 
 
 def add_locations():
@@ -11,7 +12,8 @@ def add_locations():
     """
     logger.info("Creating all first 100 locations...")
 
-    df = pd.read_csv("scripts\model_init\data\cities_init.csv")
+    file = path.join("scripts", "model_init", "data", "cities_init.csv")
+    df = pd.read_csv(file)
     logger.info(f"Retrieved {len(df)} locations.")
 
     list_of_locations = df.to_dict(orient='records')
