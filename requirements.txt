@@ -82,18 +82,24 @@ djangorestframework==3.13.1
     # via
     #   -r requirements.in
     #   drf-yasg
+dnspython==2.2.1
+    # via eventlet
 drf-yasg==1.20.0
     # via -r requirements.in
 entrypoints==0.4
     # via
     #   jupyter-client
     #   nbconvert
+eventlet==0.33.1
+    # via -r requirements.in
 executing==0.8.3
     # via stack-data
 faker==13.13.0
     # via -r requirements.in
 fastjsonschema==2.15.3
     # via nbformat
+greenlet==1.1.2
+    # via eventlet
 idna==3.3
     # via requests
 inflection==0.5.1
@@ -304,6 +310,7 @@ six==1.16.0
     # via
     #   asttokens
     #   bleach
+    #   eventlet
     #   langdetect
     #   python-dateutil
 smart-open==5.2.1

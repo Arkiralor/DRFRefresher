@@ -14,7 +14,7 @@ class UserSignalReciever:
     Class to store all signals used in the storyapp.
     """
     model = User
-    notofication_reciever = environ.get("MANAGER_EMAIL", "")
+    notification_reciever = environ.get("MANAGER_EMAIL", "")
 
     @classmethod
     def user_created(cls, sender, instance, created, **kwargs):
@@ -28,12 +28,12 @@ class UserSignalReciever:
             profile.save()
             ## TODO: Implement an email notification queue to the user.
             ## otherwise, this process takes too long.
-            # EmailHelper.send_new_user_email(
-            #         user=instance, 
-            #         recipients=[
-            #             cls.notofication_reciever
-            #         ]
-            #     )
+            EmailHelper.send_new_user_email(
+                    user=instance, 
+                    recipients=[
+                        cls.notification_reciever
+                    ]
+                )
 
     @classmethod
     def user_updated(cls, sender, instance, created, **kwargs):

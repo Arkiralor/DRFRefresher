@@ -6,6 +6,7 @@ django-cors-headers     ## Used to allow cross-origin requests
 django-dotenv           ## Used to read environment variables from .env file
 djangorestframework     ## Used to create RESTful APIs
 drf-yasg                ## Used to autogenerate Swagger documentation
+eventlet                ## Used to create a threaded server
 jupyter                 ## Used to create Jupyter notebooks for prototyping.
 pandas                  ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
 psycopg2-binary         ## Used to connect to PostgreSQL database
