@@ -71,9 +71,6 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
 
-    - name: Official SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v1.1.0
-
       
     
   
