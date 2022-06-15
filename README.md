@@ -85,31 +85,31 @@ __NB:__ _The environment file can be obtained upon request to the author._
 ## .env File Format
 
 ```env
+APP_NAME = "DRF Refresher"
+
+# Site Settings:
 SECRET_KEY = 'some_random_32_bit__hex_key'
 DEBUG = True/False
 ENV_TYPE = 'DEV/PROD'
 
+# Database Settings:
 PGDATABASE = 'name_of_db'
 PGHOST = 'host/url_of_db'
 PGPORT = 'port_of_db'
 PGUSER = 'username_for_db'
 PGPASSWORD = 'password_for_db'
 
+# Internationalization Settings:
 LANGUAGE_CODE = 'language_code'
 TIME_ZONE = 'standard_time_location as city/continent'
 USE_I18N = True/False
 USE_TZ = True/False
 
+## Documentation Links:
 USERAPP_DOCS = 'link_to_docs'
 LOCATIONAPP_DOCS = 'link_to_docs'
 STORYAPP_DOCS = 'link_to_docs'
 SEARCHAPP_DOCS = 'link_to_docs'
-
-## Documentation Links:
-USERAPP_DOCS = ' '
-LOCATIONAPP_DOCS = ' '
-STORYAPP_DOCS = ' '
-SEARCHAPP_DOCS = ' '
 
 ## Personal Information
 LINKEDIN_PROFILE = " "
