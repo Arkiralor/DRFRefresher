@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from userapp.models import User, UserProfile
+from userapp.models import User, UserProfile, UserOTP
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -74,3 +74,12 @@ class LoginSerializer(serializers.Serializer):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+
+class UserOTPSerializer(serializers.ModelSerializer):
+    """
+    Serializer for UserOTP model.
+    """
+    class Meta:
+        model = UserOTP
+        fields = ('id', 'user', 'otp', 'created_at', 'expiry')

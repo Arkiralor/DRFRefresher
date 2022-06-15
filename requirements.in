@@ -7,6 +7,7 @@ django-dotenv           ## Used to read environment variables from .env file
 djangorestframework     ## Used to create RESTful APIs
 drf-yasg                ## Used to autogenerate Swagger documentation
 eventlet                ## Used to create a threaded server
+furl                    ## Used to create a URL object
 jupyter                 ## Used to create Jupyter notebooks for prototyping.
 pandas                  ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
 psycopg2-binary         ## Used to connect to PostgreSQL database
@@ -16,3 +17,4 @@ spacy                   ## Used to perform natural language processing
 spacy-langdetect        ## Language detector module used to detect language of text
 scipy                   ## Used to perform scientific mathematical operations
 sympy                   ## Used to perform symbolic mathematical operations
+tldextract              ## Used to extract the domain name from a URL

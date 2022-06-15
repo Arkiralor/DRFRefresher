@@ -23,7 +23,9 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(UserOTP)
 class UserOTPAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'otp', 'expiry')
+    list_display = ('id', 'user', 'created_at', 'expiry')
     raw_id_fields = ('user',)
     search_fields = ('user__username', 'user__email')
     ordering = ('-created_at',)
+
+

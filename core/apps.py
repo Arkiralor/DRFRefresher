@@ -17,4 +17,5 @@ CUSTOM_APPS = [
     'searchapp.apps.SearchappConfig',
     'index_app.apps.IndexAppConfig',
     'locationapp.apps.LocationappConfig',
+    'blacklist.apps.BlacklistConfig',
 ]

@@ -15,7 +15,6 @@ from operations.file_operations import FileIO
 from userapp.helpers import EmailHelper, OTPHelper
 from userapp import logger
 
-import re
 from django.utils import timezone
 
 
@@ -294,7 +293,7 @@ class UserLoginOTPAPI(APIView):
         )
         user_otp.save()
 
-        EmailHelper.send_otp_email(user, otp, [user.email])
+        EmailHelper.send_otp_email(user, otp)
 
         return Response(
             {
@@ -329,16 +328,17 @@ class UserValidateOTPAPI(APIView):
         if not user_otp:
             return Response(
                 {
-                    "error": "user does not exist."
+                    "error": f"OTP for user '{email}' does not exist."
                 },
                 status=status.HTTP_404_NOT_FOUND
             )
 
         # Check if OTP is expired:
         if timezone.now() > user_otp.expiry:
+            user_otp.delete()
             return Response(
                 {
-                    "error": "OTP has expired."
+                    "error": "OTP has expired. Generate a new OTP."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )

@@ -52,16 +52,13 @@ class EmailHelper:
             logger.warn(f"Error sending email: {ex}")
 
     @classmethod
-    def send_otp_email(cls, user, otp: str, recipients: List[str]):
+    def send_otp_email(cls, user, otp: str):
         """
-        Send an email to the recipient
+        Send an email with the OTP to the user
         """
-        recipient_list = []
-        if len(recipients) < 1:
-            raise Exception("No recipients provided")
+        
 
-        for recipient in recipients:
-            recipient_list.append(str(recipient))
+        recipient_list = [user.email]
 
         subject = f"OTP for {user.username} Login"
         site = environ.get('APP_NAME', '')
