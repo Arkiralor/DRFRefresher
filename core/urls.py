@@ -6,11 +6,12 @@ from core.swagger_schema import schema_view
 from core import settings
 
 urlpatterns = [
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('assets/images/favicon.ico'))),
-    path('user/', include('userapp.urls')),
+    path('blacklist/', include('blacklist.urls')),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('assets/images/favicon.ico'))),    
+    path('search/', include('searchapp.urls')),
     path('story/', include('storyapp.urls')),
     path('location/', include('locationapp.urls')),
-    path('search/', include('searchapp.urls')),
+    path('user/', include('userapp.urls')),    
 ]
 
 ## These url patterns are only available in a development environment

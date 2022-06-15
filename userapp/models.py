@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import uuid
 
 from django.core.validators import EmailValidator, RegexValidator
@@ -9,6 +9,8 @@ from locationapp.models import LocationModel
 from userapp.model_choices import UserChoice
 from userapp.constants import UserRegex
 from constants.reference_values import StringConstant
+from django.utils import timezone
+
 # Create your models here.
 
 
@@ -56,6 +58,8 @@ class User(AbstractUser):
         '''
         Extended save() method to create a slug for the user.
         '''
+        self.username = self.username.lower()
+        self.email = self.email.lower()
         ## prithoo: Create a slug, every time the user is updated.
         self.user_slug = slugify(f"{self.username}-{self.email}")
         super(User, self).save(*args, **kwargs)
@@ -112,4 +116,39 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = 'User Profile'
         verbose_name_plural = 'User Profiles'
+        ordering = ('-created_at', 'id')
+
+
+class UserOTP(models.Model):
+    """
+    Model to hold one-time-passwords generated for users to login with.
+    """
+    id = models.UUIDField(
+        primary_key=True,
+        unique=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='assigned_user'
+    )
+    otp = models.CharField(max_length=256)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expiry = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        """
+        Extended save() method to auto-generate an exipration for the OTP.
+        """
+        self.expiry = timezone.now() + timedelta(minutes=15)
+        super(UserOTP, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'User OTP'
+        verbose_name_plural = 'User OTPs'
         ordering = ('-created_at', 'id')

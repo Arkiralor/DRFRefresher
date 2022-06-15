@@ -1,5 +1,5 @@
 from django.contrib import admin
-from userapp.models import User, UserProfile
+from userapp.models import User, UserProfile, UserOTP
 
 # Register your models here.
 
@@ -19,3 +19,13 @@ class UserProfileAdmin(admin.ModelAdmin):
     raw_id_fields = ('user',)
     search_fields = ('user__username', 'user__email')
     ordering = ('-created_at',)
+
+
+@admin.register(UserOTP)
+class UserOTPAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'created_at', 'expiry')
+    raw_id_fields = ('user',)
+    search_fields = ('user__username', 'user__email')
+    ordering = ('-created_at',)
+
+
