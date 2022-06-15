@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +15,13 @@
     <div class="header">
         <ul>
             <li>
+                <div class="logo">
+                    <a href="/">
+                        <img src=" {% static 'assets/images/logo_white_150p.png' %}" alt="logo">
+                    </a>
+                </div>
+            </li>
+            <li>
                 <div class="MainTitle">
                     <a href="/">
                         <h1>
@@ -20,13 +29,6 @@
                         </h1>
                     </a>
                     <p class="SubTitle"> - <a href={{linkedin_profile}}>Prithoo Medhi</a></p>
-                </div>
-            </li>
-            <li>
-                <div class="logo">
-                    <a href="/">
-                        <img src="static/assets/images/logo_white_150p.png" alt="logo">
-                    </a>
                 </div>
             </li>
         </ul>
