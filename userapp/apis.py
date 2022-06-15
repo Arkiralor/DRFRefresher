@@ -1,4 +1,4 @@
-from userapp.models import User, UserProfile
+from userapp.models import User, UserProfile, UserOTP
 from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
 from userapp.constants import UserRegex
 from rest_framework.generics import GenericAPIView
@@ -6,16 +6,21 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.hashers import make_password, check_password
+from django.db.models import Q
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from auth.custom_permissions import IsModerator
 from operations.file_operations import FileIO
+from userapp.helpers import EmailHelper, OTPHelper
+from userapp import logger
 
 import re
+from django.utils import timezone
 
 
 # Create your views here.
+
 
 class GetUserView(APIView):
     '''
@@ -73,8 +78,8 @@ class AddUserView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        ## prrithoo: We are validating the password here because we cannot do that once the password
-        ## has been hashed and salted.
+        # prrithoo: We are validating the password here because we cannot do that once the password
+        # has been hashed and salted.
         if not UserRegex.PASSWORD_REGEX.search(data.get('password')):
             return Response(
                 {
@@ -85,7 +90,7 @@ class AddUserView(APIView):
 
         data['password'] = make_password(data.get('password'))
 
-        ## Sanitizing request data
+        # Sanitizing request data
         if 'is_staff' in data.keys():
             data['is_staff'] = False
         if 'is_superuser' in data.keys():
@@ -171,72 +176,6 @@ class UserLogoutView(APIView):
         )
 
 
-class SetSuperView(APIView):
-    '''
-    Class to set superusers:
-    '''
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
-
-    def post(self, request, slug: str):
-        try:
-            user = User.objects.get(user_slug=slug)
-            if user.is_superuser:
-                return Response(
-                    {
-                        "error": "user is already superuser."
-                    },
-                    status=status.HTTP_200_OK
-                )
-            user.is_superuser = True
-            user.save()
-            serialized = UserAdminSerializer(user)
-            return Response(
-                serialized.data,
-                status=status.HTTP_200_OK
-            )
-        except User.DoesNotExist:
-            return Response(
-                {
-                    "error": "User does not exist"
-                },
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-
-class SetStaffView(APIView):
-    '''
-    Class to set superusers:
-    '''
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
-
-    def post(self, request, slug: str):
-        try:
-            user = User.objects.get(user_slug=slug)
-            if user.is_staff:
-                return Response(
-                    {
-                        "error": "user is already staff."
-                    },
-                    status=status.HTTP_200_OK
-                )
-            user.is_staff = True
-            user.save()
-            serialized = UserAdminSerializer(user)
-            return Response(
-                serialized.data,
-                status=status.HTTP_200_OK
-            )
-        except User.DoesNotExist:
-            return Response(
-                {
-                    "error": "User does not exist"
-                },
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-
 class UserGetView(APIView):
     '''
     API to get/delete details of a single user:
@@ -288,49 +227,6 @@ class UserGetView(APIView):
             )
 
 
-class MakeModeratorView(APIView):
-    '''
-    API to assign a user as a moderator
-    '''
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAdminUser, IsModerator)
-
-    def post(self, request):
-        '''
-        POST request to assign a moderator
-        '''
-        target_user_slug = request.data.get("target_user_slug")
-        target_user = User.objects.get(user_slug=target_user_slug)
-        if target_user is None:
-            raise User.DoesNotExist
-
-        if target_user.user_type == "moderator":
-            resp = {
-                "error": "this user is already a moderator."
-            }
-            status_code = status.HTTP_406_NOT_ACCEPTABLE
-
-        if target_user.user_type == "maintainence" or target_user.user_type == "user_admin":
-            resp = {
-                "warning": f"this user is of higher access: {target_user.user_type}"
-            }
-            target_user.user_type == "moderator"
-            target_user.save()
-            status_code = status.HTTP_202_ACCEPTED
-
-        target_user.user_type == "moderator"
-        target_user.save()
-        status_code = status.HTTP_201_CREATED
-        serialized = UserSerializer(target_user)
-
-        resp = serialized.data
-
-        return Response(
-            resp,
-            status_code
-        )
-
-
 class GetAllProfilesAPI(APIView):
     '''
     API to get all profiles
@@ -347,4 +243,125 @@ class GetAllProfilesAPI(APIView):
         return Response(
             serialized.data,
             status=status.HTTP_200_OK
+        )
+
+
+class UserLoginOTPAPI(APIView):
+    """
+    API to generate OTP and send it to the user's email.
+    """
+
+    def post(self, request):
+        """
+        POST request to generate OTP and send it to the user's email.
+        """
+        data = request.data
+        username = data.get("username")
+        email = data.get("email")
+
+        if not username and not email:
+            return Response(
+                {
+                    "error": "username or email is required."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user = User.objects.filter(
+            Q(username=username)
+            & Q(email=email)
+        ).first()
+
+        if not user:
+            return Response(
+                {
+                    "error": "user does not exist."
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        otp = OTPHelper.generate_otp()
+        hashed_otp = make_password(otp)
+
+        user_otp = UserOTP.objects.filter(user=user).first()
+        if user_otp:
+            user_otp.delete()
+            user_otp = None
+
+        user_otp = UserOTP.objects.create(
+            user=user,
+            otp=hashed_otp
+        )
+        user_otp.save()
+
+        EmailHelper.send_otp_email(user, otp, [user.email])
+
+        return Response(
+            {
+                "message": f"OTP generated for user: {username} and sent to {user.email}",
+            },
+            status=status.HTTP_201_CREATED
+        )
+
+
+class UserValidateOTPAPI(APIView):
+    """
+    API to validate OTP.
+    """
+
+    def post(self, request):
+        """
+        POST request to validate OTP.
+        """
+        email = request.data.get("email")
+        otp = request.data.get("otp")
+
+        if not email or not otp:
+            return Response(
+                {
+                    "error": "email or otp is required."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user_otp = UserOTP.objects.filter(user__email=email).last()
+
+        if not user_otp:
+            return Response(
+                {
+                    "error": "user does not exist."
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Check if OTP is expired:
+        if timezone.now() > user_otp.expiry:
+            return Response(
+                {
+                    "error": "OTP has expired."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if not check_password(otp, user_otp.otp):
+            return Response(
+                {
+                    "error": "Invalid OTP"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user = User.objects.filter(email=email).first()
+
+        token = Token.objects.get_or_create(user=user)
+
+        FileIO.write_token_to_file(user.username, token)
+        logger.info(f"OTP validated for user: {user.username}")
+        user_otp.delete()
+
+        return Response(
+            {
+                "token": str(token[0])
+            },
+            status=status.HTTP_202_ACCEPTED
         )

@@ -4,7 +4,7 @@ This module stores the signals used in the storyapp.
 from django.db.models.signals import post_save, post_delete, m2m_changed
 from os import environ
 
-from userapp.models import User, UserProfile
+from userapp.models import User, UserProfile, UserOTP
 from userapp.helpers import EmailHelper
 from userapp import logger
 
@@ -106,3 +106,49 @@ post_save.connect(receiver=UserProfileSignalReciever.userprofile_updated,
 ## Signal to send when a userprofile is deleted.
 post_delete.connect(receiver=UserProfileSignalReciever.userprofile_deleted,
                     sender=UserProfileSignalReciever.model)
+
+
+
+class UserOTPSignalReciever:
+    """
+    Class to store all signals used in the storyapp.
+    """
+    model = UserOTP
+
+    @classmethod
+    def userotp_created(cls, sender, instance, created, **kwargs):
+        """
+        Signal to send when a story is created.
+        """
+        if created:
+            logger.info(
+                f"UserOTP: {instance.id} created for User: {instance.user.username}.")
+        
+    @classmethod
+    def userotp_updated(cls, sender, instance, created, **kwargs):
+        """
+        Signal to send when a story is updated.
+        """
+        if not created:
+            logger.info(
+                f"UserOTP: {instance.id} updated for User: {instance.user.username}.")
+
+    @classmethod
+    def userotp_deleted(cls, sender, instance, **kwargs):
+        """
+        Signal to send when a story is deleted.
+        """
+        logger.info(
+            f"UserOTP: {instance.id} deleted for User: {instance.user.username}.")
+
+
+## Signal to send when a userotp is created.
+post_save.connect(receiver=UserOTPSignalReciever.userotp_created,
+                    sender=UserOTPSignalReciever.model)
+## Signal to send when a userotp is updated.
+post_save.connect(receiver=UserOTPSignalReciever.userotp_updated,
+                    sender=UserOTPSignalReciever.model)
+## Signal to send when a userotp is deleted.
+post_delete.connect(receiver=UserOTPSignalReciever.userotp_deleted,
+                    sender=UserOTPSignalReciever.model)
+                    
