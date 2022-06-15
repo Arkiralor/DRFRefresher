@@ -58,6 +58,8 @@ class User(AbstractUser):
         '''
         Extended save() method to create a slug for the user.
         '''
+        self.username = self.username.lower()
+        self.email = self.email.lower()
         ## prithoo: Create a slug, every time the user is updated.
         self.user_slug = slugify(f"{self.username}-{self.email}")
         super(User, self).save(*args, **kwargs)

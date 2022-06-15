@@ -27,7 +27,7 @@ class BlacklistedEmailViewSet(ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         """
-        Override the list method to hash the password.
+        List out all black listed emails.
         """
         queryset = self.filter_queryset(self.get_queryset())
         page = self.paginate_queryset(queryset)
@@ -41,7 +41,7 @@ class BlacklistedEmailViewSet(ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         """
-        Override the retrieve method to hash the password.
+        Retrieve a black listed email.
         """
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -49,7 +49,7 @@ class BlacklistedEmailViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         """
-        Override the create method to hash the password.
+        Create a new black listed email.
         """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -58,7 +58,7 @@ class BlacklistedEmailViewSet(ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         """
-        Override the update method to hash the password.
+        Update a black listed email.
         """
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
@@ -70,7 +70,7 @@ class BlacklistedEmailViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         """
-        Override the destroy method to delete the object.
+        Remove an email from the blacklist.
         """
         instance = self.get_object()
         instance.delete()
@@ -92,7 +92,7 @@ class BlacklistedPhoneNumberViewSet(ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         """
-        Override the list method to hash the password.
+        List out all black listed phone numbers.
         """
         queryset = self.filter_queryset(self.get_queryset())
         page = self.paginate_queryset(queryset)
@@ -106,7 +106,7 @@ class BlacklistedPhoneNumberViewSet(ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         """
-        Override the retrieve method to hash the password.
+        Retrieve a black listed phone number.
         """
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -114,7 +114,7 @@ class BlacklistedPhoneNumberViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         """
-        Override the create method to hash the password.
+        Create a new black listed phone number.
         """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -123,7 +123,7 @@ class BlacklistedPhoneNumberViewSet(ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         """
-        Override the update method to hash the password.
+        Update a black listed phone number.
         """
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
@@ -135,7 +135,7 @@ class BlacklistedPhoneNumberViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         """
-        Override the destroy method to delete the object.
+        Remove a phone number from the blacklist.
         """
         instance = self.get_object()
         instance.delete()
@@ -157,7 +157,7 @@ class BlacklistedPasswordViewSet(ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         """
-        Override the list method to hash the password.
+        List out all black listed passwords.
         """
         queryset = self.filter_queryset(self.get_queryset())
         page = self.paginate_queryset(queryset)
@@ -171,7 +171,7 @@ class BlacklistedPasswordViewSet(ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         """
-        Override the retrieve method to hash the password.
+        Retrieve a black listed password.
         """
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -179,7 +179,7 @@ class BlacklistedPasswordViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         """
-        Override the create method to hash the password.
+        Create a new black listed password.
         """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -188,7 +188,7 @@ class BlacklistedPasswordViewSet(ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         """
-        Override the update method to hash the password.
+        Update a black listed password.
         """
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
@@ -200,7 +200,7 @@ class BlacklistedPasswordViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         """
-        Override the destroy method to delete the object.
+        Remove a password from the blacklist.
         """
         instance = self.get_object()
         instance.delete()

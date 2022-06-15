@@ -1,21 +1,23 @@
-from userapp.models import User, UserProfile, UserOTP
-from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
-from userapp.constants import UserRegex
+
+from auth.custom_permissions import IsModerator
+from django.contrib.auth.hashers import make_password, check_password
+from django.db.models import Q
+from django.utils import timezone
 from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.hashers import make_password, check_password
-from django.db.models import Q
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.models import Token
-from auth.custom_permissions import IsModerator
+
+from blacklist.utils import banned_passwords, banned_emails, banned_phone_numbers
 from operations.file_operations import FileIO
 from userapp.helpers import EmailHelper, OTPHelper
 from userapp import logger
-
-from django.utils import timezone
+from userapp.models import User, UserProfile, UserOTP
+from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
+from userapp.constants import UserRegex
 
 
 # Create your views here.
@@ -58,6 +60,14 @@ class AddUserView(APIView):
     def post(self, request):
         '''
         POST a new user to the system:
+
+        data:
+            username: str
+            email: str
+            password: str
+            first_name: Optional[str]
+            last_name: Optional[str]
+            user_phone_primary: Optional[str]
         '''
         data = request.data
 
@@ -75,6 +85,33 @@ class AddUserView(APIView):
                     "error": "USERNAME, PASSWORD and EMAIL are MANDATORY"
                 },
                 status=status.HTTP_400_BAD_REQUEST
+            )
+
+        ## Make sure that a banned user is not trying to get back in.
+        if data.get('email') in banned_emails():
+            return Response(
+                {
+                    "error": "Whoa! Whoa there, buddy! You know you're not allowed back in here after what you pulled!"
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        ## Make sure that a banned user is not trying to get back in.
+        if 'user_phone_primary' in data.keys() and data.get('user_phone_primary') in banned_phone_numbers():
+            return Response(
+                {
+                    "error": "Whoa! Whoa there, buddy! You know you're not allowed back in here after what you pulled!"
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        ## Make sure that the user is not setting up a STUPID password.
+        if data.get('password') in banned_passwords():
+            return Response(
+                {
+                    "error": "Really, bro/sis? You could've used a better password. Get back to me when you come up with a better one."
+                },
+                status=status.HTTP_403_FORBIDDEN
             )
 
         # prrithoo: We are validating the password here because we cannot do that once the password
@@ -203,6 +240,39 @@ class UserGetView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+    def put(self, request, slug: str):
+        '''
+        Update a single user via ID:
+        '''
+        user_data = User.objects.get(user_slug=slug)
+
+        if request.user == user_data or request.user.is_staff:
+            data = request.data
+            serialized = UserAdminSerializer(user_data, data=data)
+
+            if serialized.is_valid():
+                serialized.save()
+                return Response(
+                    {
+                        "success": f"User: {serialized.data.get('username')} updated."
+                    },
+                    status=status.HTTP_200_OK
+                )
+            else:
+                return Response(
+                    {
+                        "error": str(serialized.errors)
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+        else:
+            return Response(
+                {
+                    "error": "Unauthorised access"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
     def delete(self, request, slug: str):
         '''
         Delete a single user via slug:
@@ -274,7 +344,7 @@ class UserLoginOTPAPI(APIView):
         if not user:
             return Response(
                 {
-                    "error": "user does not exist."
+                    "error": f"User '{username}' with the email '{email}' does not exist."
                 },
                 status=status.HTTP_404_NOT_FOUND
             )
@@ -283,6 +353,8 @@ class UserLoginOTPAPI(APIView):
         hashed_otp = make_password(otp)
 
         user_otp = UserOTP.objects.filter(user=user).first()
+
+        ## If user has already generated OTP, delete the old OTP.
         if user_otp:
             user_otp.delete()
             user_otp = None
@@ -318,7 +390,7 @@ class UserValidateOTPAPI(APIView):
         if not email or not otp:
             return Response(
                 {
-                    "error": "email or otp is required."
+                    "error": "email AND otp are required."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )

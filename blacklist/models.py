@@ -64,6 +64,13 @@ class BlacklistedEmail(models.Model):
     def __str__(self):
         return self.email
 
+    def save(self, *args, **kwargs):
+        """
+        Override the save method to normalize the email ID.
+        """
+        self.email = self.email.lower()
+        super(BlacklistedEmail, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Blacklisted Email"
         verbose_name_plural = "Blacklisted Emails"
