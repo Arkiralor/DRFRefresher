@@ -25,11 +25,11 @@ _This project will be updated as needed and should only be treated as a sample._
 
 1. [_The Index Page on a laptop (1366x768)_](/static/assets/screenshots_for_readme/index_page_laptop.png)
 
-    ![Index Page on Mobile](static/assets/screenshots_for_readme/index_page_laptop.png)
+    ![Index Page on Mobile](static/assets/screenshots_for_readme/index_page_laptop_thumbnail.png)
 
 2. [_The Index Page on a mobile device (1080x1920)_](/static/assets/screenshots_for_readme/index_page_mobile.png)
 
-    ![Index Page on Mobile](static/assets/screenshots_for_readme/index_page_mobile.png)
+    ![Index Page on Mobile](static/assets/screenshots_for_readme/index_page_mobile_thumbnail.png)
 
 ## Development Setup
 
