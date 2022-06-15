@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+    DRF Refresher - Users
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index_styles.css' %}">
+{% endblock %}
+
+{% block main_title %}
+    Django Refresher - Users
+{% endblock %}
+
+{% block content %}
+    <h3>Users currently registered in the System</h3>
+    &nbsp;
+    <table class="UserList">
+        <tr class="ColNames">
+            <td style="font-size: 3em;">Username</td>
+            <td style="font-size: 3em;">Email</td>
+            <td style="font-size: 3em;">First Name</td>
+            <td style="font-size: 3em;">Last Name</td>
+        </tr>
+        {% for user in users %}
+        <tr class="UserItems">
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

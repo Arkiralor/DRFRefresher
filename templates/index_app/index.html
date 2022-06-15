@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
     DRF Refresher - Home
 {% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="static/css/index_styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index_styles.css' %}">
 {% endblock %}
 
 {% block main_title %}
