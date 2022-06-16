@@ -13,14 +13,7 @@ SECRET_KEY = environ['SECRET_KEY']
 DEBUG = eval(environ['DEBUG'])
 
 
-if ENV_TYPE == 'dev':
-    ALLOWED_HOSTS = [
-        'localhost',
-        '127.0.0.1',
-    ]
-
-elif ENV_TYPE == 'prod':
-    ALLOWED_HOSTS = [None]
+ALLOWED_HOSTS = environ['ALLOWED_HOSTS'].split(', ')
 
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
