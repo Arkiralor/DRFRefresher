@@ -1,15 +1,16 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 import uuid
 
 from django.core.validators import EmailValidator, RegexValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
+
+from constants.reference_values import StringConstant
 from locationapp.models import LocationModel
 from userapp.model_choices import UserChoice
 from userapp.constants import UserRegex
-from constants.reference_values import StringConstant
-from django.utils import timezone
 
 # Create your models here.
 

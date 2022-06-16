@@ -71,6 +71,7 @@ class AddUserView(APIView):
         '''
         data = request.data
 
+        ## Checking if the mandatory fields are Null:
         if not data.get('username') or not data.get('password') or not data.get('email'):
             return Response(
                 {
@@ -79,6 +80,7 @@ class AddUserView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+        ## Checking if the mandatory fields are blank:
         if len(data.get('username')) == 0 or len(data.get('password')) == 0 or len(data.get('email')) == 0:
             return Response(
                 {
@@ -415,6 +417,7 @@ class UserValidateOTPAPI(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+        ## Check if OTP is valid for the requesting user:
         if not check_password(otp, user_otp.otp):
             return Response(
                 {
@@ -429,6 +432,7 @@ class UserValidateOTPAPI(APIView):
 
         FileIO.write_token_to_file(user.username, token)
         logger.info(f"OTP validated for user: {user.username}")
+        ## Deleting the consumed OTP.
         user_otp.delete()
 
         return Response(

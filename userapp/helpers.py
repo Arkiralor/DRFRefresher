@@ -1,17 +1,14 @@
-import secrets
-from django.shortcuts import render
-from core import settings
-from django.core.mail import send_mail
-from django.template.defaultfilters import slugify
-from typing import List
-from userapp import logger
-from userapp.models import User, UserOTP
-
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
 from datetime import datetime
 from os import environ
 from secrets import token_hex
+from typing import List
+
+from django.template.defaultfilters import slugify
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+
+from core import settings
+from userapp import logger
 
 
 class EmailHelper:
@@ -56,7 +53,6 @@ class EmailHelper:
         """
         Send an email with the OTP to the user
         """
-        
 
         recipient_list = [user.email]
 
