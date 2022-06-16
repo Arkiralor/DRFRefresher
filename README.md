@@ -18,11 +18,11 @@ _This project will be updated as needed and should only be treated as a sample._
 
 ## Custom Apps
 
-1. __`UserApp`:__ _Used for user CRUD operations to login and use the system._
+1. __`UserApp`:__ _Used for user CRUD operations, to login and to use the system._
 2. __`StoryApp`:__ _Used for story/blog CRUD operations_
 3. __`SearchApp`:__ _Used for search operations on both: stories and users._
-4. __`LocationApp`:__ _Used for location CRUD operations for User Profiles._
-5. __`BlackList`:__ _Used for location CRUD operations for blacklist entities like emails, phone-numbers, passwords, etc._
+4. __`LocationApp`:__ _Used for CRUD operations for Locations._
+5. __`BlackList`:__ _Used for CRUD operations for blacklist entities like emails, phone-numbers, passwords, etc._
 
 ## Screenshots
 
