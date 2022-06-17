@@ -161,4 +161,6 @@ test_data/*.xlsx
 test_data/*.doc
 test_data/*.docx
 test_data/*.rtf
+temp/*.csv
+temp/SQLDump/*
 
