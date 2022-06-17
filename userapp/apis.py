@@ -1,5 +1,4 @@
 
-from auth.custom_permissions import IsModerator
 from django.contrib.auth.hashers import make_password, check_password
 from django.db.models import Q
 from django.utils import timezone
@@ -18,9 +17,6 @@ from userapp import logger
 from userapp.models import User, UserProfile, UserOTP
 from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
 from userapp.constants import UserRegex
-
-
-# Create your views here.
 
 
 class GetUserView(APIView):
@@ -157,11 +153,18 @@ class AddUserView(APIView):
 
 class UserLoginView(GenericAPIView):
     '''
-    View to login a user and create their token:
+    View to login a user with a username and password and create their token:
     '''
     serializer_class = LoginSerializer
 
     def post(self, request):
+        """
+        POST request handler to endpoint.
+
+        request.data:
+            username: str
+            password: str
+        """
         data = request.data
 
         username = data.get('username')
@@ -204,6 +207,15 @@ class UserLogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        """
+        POST request handler to endpoint.
+
+        request.headers:
+            Authorization: "token <string>"
+
+        request.data:
+            None
+        """
         token = Token.objects.filter(user=request.user).first()
         token.delete()
 
@@ -330,7 +342,7 @@ class GenerateUserLoginOTPAPI(APIView):
         username = data.get("username")
         email = data.get("email")
 
-        if not username and not email:
+        if not username or not email:
             return Response(
                 {
                     "error": "username and email is required."
@@ -339,9 +351,9 @@ class GenerateUserLoginOTPAPI(APIView):
             )
 
         user = User.objects.filter(
-            Q(username=username)
-            & Q(email=email)
-        ).first()
+                                Q(username=username)
+                                & Q(email=email)
+                            ).first()
 
         if not user:
             return Response(
@@ -366,7 +378,7 @@ class GenerateUserLoginOTPAPI(APIView):
             user=user,
             otp=hashed_otp
         )
-        user_otp.save()
+        # user_otp.save()
 
         EmailHelper.send_otp_email(user, otp)
         return Response(

@@ -1,6 +1,6 @@
 from datetime import datetime
 from os import environ
-from secrets import token_hex, randbelow, choice
+from secrets import token_hex, choice
 from typing import List
 
 from django.template.defaultfilters import slugify
