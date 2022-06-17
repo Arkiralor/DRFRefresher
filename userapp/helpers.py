@@ -1,6 +1,6 @@
 from datetime import datetime
 from os import environ
-from secrets import token_hex
+from secrets import token_hex, randbelow, choice
 from typing import List
 
 from django.template.defaultfilters import slugify
@@ -79,14 +79,30 @@ class EmailHelper:
 
 class OTPHelper:
 
+    num_list = [str(i) for i in range(1000, 10000)]
+
     @classmethod
-    def generate_otp(cls):
+    def generate_hex_otp(cls):
         """
         Generate a random OTP
         """
         logger.info("Generating OTP")
+
+        ## OTP is a 8 character hex sequence
         part_1 = token_hex(2)
         part_2 = token_hex(2)
+
+        otp = slugify(f"{part_1}-{part_2}")
+        return otp
+
+    @classmethod
+    def generate_int_otp(cls):
+        """
+        Generate a random OTP
+        """
+        logger.info("Generating OTP")
+        part_1 = choice(cls.num_list)
+        part_2 = choice(cls.num_list)
 
         otp = slugify(f"{part_1}-{part_2}")
         return otp

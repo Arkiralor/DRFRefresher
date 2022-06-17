@@ -317,7 +317,7 @@ class GetAllProfilesAPI(APIView):
         )
 
 
-class UserLoginOTPAPI(APIView):
+class GenerateUserLoginOTPAPI(APIView):
     """
     API to generate OTP and send it to the user's email.
     """
@@ -333,7 +333,7 @@ class UserLoginOTPAPI(APIView):
         if not username and not email:
             return Response(
                 {
-                    "error": "username or email is required."
+                    "error": "username and email is required."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
@@ -351,7 +351,8 @@ class UserLoginOTPAPI(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        otp = OTPHelper.generate_otp()
+        ## Generate an OTP and generate a hash for the OTP:
+        otp = OTPHelper.generate_int_otp()
         hashed_otp = make_password(otp)
 
         user_otp = UserOTP.objects.filter(user=user).first()
@@ -368,7 +369,6 @@ class UserLoginOTPAPI(APIView):
         user_otp.save()
 
         EmailHelper.send_otp_email(user, otp)
-
         return Response(
             {
                 "message": f"OTP generated for user: {username} and sent to {user.email}",
@@ -431,7 +431,10 @@ class UserValidateOTPAPI(APIView):
         token = Token.objects.get_or_create(user=user)
 
         FileIO.write_token_to_file(user.username, token)
+        
         logger.info(f"OTP validated for user: {user.username}")
+        logger.info(f"{user.username} has sucessfully logged in.")
+
         ## Deleting the consumed OTP.
         user_otp.delete()
 
