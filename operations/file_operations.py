@@ -37,10 +37,9 @@ class FileIO:
             -> None:
         """
         logger.info(f"Compiling output data for {username}'s authtoken.")
-
-        #TODO: This file CRITICALLY needs to be untracked by the VC system.
         file_data = f"{datetime.now()}, {username}, {str(token[0])}\n"
 
+        #TODO: This file CRITICALLY needs to be untracked by the VC system.
         with open(FilePath.token_file, "a+t", encoding="utf-8")as token_csv:
             token_csv.write(file_data)
             logger.info(
