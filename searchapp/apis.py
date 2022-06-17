@@ -40,6 +40,7 @@ class SearchStoryAPI(APIView):
             results = StorySerializer(stories, many=True).data
         elif params.get('like', None):
             like = params.get('like')
+            ## TODO: This needs to be offloaded to a messaging queue.
             results = SearchHelper.find_similiar(like)
         else:
             results = []
