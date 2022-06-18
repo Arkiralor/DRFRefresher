@@ -1,4 +1,3 @@
-
 from django.contrib.auth.hashers import make_password, check_password
 from django.db.models import Q
 from django.utils import timezone
@@ -11,12 +10,16 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.models import Token
 
 from blacklist.utils import banned_passwords, banned_emails, banned_phone_numbers
+from core.settings import OTP_ATTEMPT_LIMIT, OTP_ATTEMPT_TIMEOUT
 from operations.file_operations import FileIO
 from userapp.helpers import EmailHelper, OTPHelper
 from userapp import logger
 from userapp.models import User, UserProfile, UserOTP
 from userapp.serializers import UserSerializer, UserAdminSerializer, UserAdminSerializer, UserProfileSerializer, LoginSerializer
 from userapp.constants import UserRegex
+
+from datetime import timedelta
+
 
 
 class GetUserView(APIView):
@@ -157,6 +160,9 @@ class UserLoginView(GenericAPIView):
     '''
     serializer_class = LoginSerializer
 
+    MAX_ATTEMPTS = OTP_ATTEMPT_LIMIT
+    USER_TIMEOUT = OTP_ATTEMPT_TIMEOUT
+
     def post(self, request):
         """
         POST request handler to endpoint.
@@ -178,8 +184,31 @@ class UserLoginView(GenericAPIView):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
+        ## Checking if user is blocked
+        if user.blocked_until and timezone.now() < user.blocked_until:
+            return Response(
+                {
+                    "error": f"User '{username}' is blocked until {user.blocked_until}."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
         if not check_password(password, user.password):
+            user.unsuccessful_login_attempts += 1
+            user.save()
+
+            if user.unsuccessful_login_attempts >= self.MAX_ATTEMPTS:
+                user.blocked_until = timezone.now() + timedelta(minutes=self.USER_TIMEOUT)
+                user.unsuccessful_login_attempts = 0
+                user.save()
+
+                return Response(
+                    {
+                        "error": f"User '{username}' has been blocked for {self.USER_TIMEOUT} minutes, until {user.blocked_until}."
+                    },
+                    status=status.HTTP_403_FORBIDDEN
+                )
             return Response(
                 {
                     "error": "Invalid Password"
@@ -188,6 +217,11 @@ class UserLoginView(GenericAPIView):
             )
 
         token = Token.objects.get_or_create(user=user)
+
+        ## Resetting the Login attempt data if login is successfull:
+        user.blocked_until = None
+        user.unsuccessful_login_attempts = 0
+        user.save()
 
         FileIO.write_token_to_file(username, token)
 
@@ -333,6 +367,8 @@ class GenerateUserLoginOTPAPI(APIView):
     """
     API to generate OTP and send it to the user's email.
     """
+    MAX_OTP_ATTEMPTS = OTP_ATTEMPT_LIMIT
+    USER_TIMEOUT = OTP_ATTEMPT_TIMEOUT
 
     def post(self, request):
         """
@@ -362,6 +398,19 @@ class GenerateUserLoginOTPAPI(APIView):
                 },
                 status=status.HTTP_404_NOT_FOUND
             )
+        
+        ## Checking if user is blocked
+        if user.blocked_until and timezone.now() < user.blocked_until:
+            return Response(
+                {
+                    "error": f"User with the email '{email}' is blocked until {user.blocked_until}."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        elif user.blocked_until and timezone.now() >= user.blocked_until:
+            user.blocked_until = None
+            user.save()
 
         ## Generate an OTP and generate a hash for the OTP:
         otp = OTPHelper.generate_int_otp()
@@ -393,6 +442,9 @@ class UserValidateOTPAPI(APIView):
     API to validate OTP.
     """
 
+    MAX_OTP_ATTEMPTS = OTP_ATTEMPT_LIMIT
+    USER_TIMEOUT = OTP_ATTEMPT_TIMEOUT
+
     def post(self, request):
         """
         POST request to validate OTP.
@@ -406,6 +458,16 @@ class UserValidateOTPAPI(APIView):
                     "error": "email AND otp are required."
                 },
                 status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user_obj = User.objects.get(email=email)
+        
+        if not user_obj:
+            return Response(
+                {
+                    "error": f"User with the email '{email}' does not exist."
+                },
+                status=status.HTTP_404_NOT_FOUND
             )
 
         user_otp = UserOTP.objects.filter(user__email=email).last()
@@ -430,6 +492,25 @@ class UserValidateOTPAPI(APIView):
 
         ## Check if OTP is valid for the requesting user:
         if not check_password(otp, user_otp.otp):
+            user_obj.unsuccessful_login_attempts += 1
+            user_obj.save()
+
+            ## If the number of unsuccessful login attempts is exceeds the limit, block the user;
+            ## then, delete their OTP
+            if user_obj.unsuccessful_login_attempts >= self.MAX_OTP_ATTEMPTS:
+                user_obj.blocked_until = timezone.now() + timedelta(minutes=self.USER_TIMEOUT)
+                user_obj.unsuccessful_login_attempts = 0
+                user_obj.save()
+
+                user_otp.delete()
+
+                return Response(
+                    {
+                        "error": f"User '{email}' has been blocked for {self.USER_TIMEOUT} minutes, until {user_obj.blocked_until}."
+                    },
+                    status=status.HTTP_403_FORBIDDEN
+                )
+
             return Response(
                 {
                     "error": "Invalid OTP"
@@ -437,14 +518,17 @@ class UserValidateOTPAPI(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        user = User.objects.filter(email=email).first()
-
-        token = Token.objects.get_or_create(user=user)
-
-        FileIO.write_token_to_file(user.username, token)
+        token = Token.objects.get_or_create(user=user_obj)
         
-        logger.info(f"OTP validated for user: {user.username}")
-        logger.info(f"{user.username} has sucessfully logged in.")
+        ## Clearing Login attempt data:
+        user_obj.blocked_until = None
+        user_obj.unsuccessful_login_attempts = 0
+        user_obj.save()
+
+        FileIO.write_token_to_file(user_obj.username, token)
+        
+        logger.info(f"OTP validated for user: {user_obj.username}")
+        logger.info(f"{user_obj.username} has sucessfully logged in.")
 
         ## Deleting the consumed OTP.
         user_otp.delete()
@@ -452,11 +536,11 @@ class UserValidateOTPAPI(APIView):
         return Response(
                     {
                         "status": True,
-                        'user_id': user.id, 
-                        'username': user.username,
-                        'first_name': user.first_name, 
-                        'last_name': user.last_name, 
-                        'email': user.email,
+                        'user_id': user_obj.id, 
+                        'username': user_obj.username,
+                        'first_name': user_obj.first_name, 
+                        'last_name': user_obj.last_name, 
+                        'email': user_obj.email,
                         "token": str(token[0]),
                     },
                     status=status.HTTP_202_ACCEPTED
