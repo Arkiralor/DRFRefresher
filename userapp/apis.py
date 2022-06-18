@@ -378,7 +378,6 @@ class GenerateUserLoginOTPAPI(APIView):
             user=user,
             otp=hashed_otp
         )
-        # user_otp.save()
 
         EmailHelper.send_otp_email(user, otp)
         return Response(
@@ -451,8 +450,14 @@ class UserValidateOTPAPI(APIView):
         user_otp.delete()
 
         return Response(
-            {
-                "token": str(token[0])
-            },
-            status=status.HTTP_202_ACCEPTED
-        )
+                    {
+                        "status": True,
+                        'user_id': user.id, 
+                        'username': user.username,
+                        'first_name': user.first_name, 
+                        'last_name': user.last_name, 
+                        'email': user.email,
+                        "token": str(token[0]),
+                    },
+                    status=status.HTTP_202_ACCEPTED
+                )
