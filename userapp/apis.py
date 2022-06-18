@@ -193,6 +193,9 @@ class UserLoginView(GenericAPIView):
                 },
                 status=status.HTTP_403_FORBIDDEN
             )
+        elif user.blocked_until and timezone.now() >= user.blocked_until:
+            user.blocked_until = None
+            user.save()
 
         if not check_password(password, user.password):
             user.unsuccessful_login_attempts += 1
