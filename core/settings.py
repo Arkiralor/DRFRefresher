@@ -34,6 +34,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -149,6 +150,7 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userapp.User'
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = environ.get('CORS_ORIGIN_WHITELIST', '').split(', ')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = environ['EMAIL_HOST']
@@ -157,4 +159,7 @@ EMAIL_HOST_USER = environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = eval(environ['EMAIL_USE_TLS'])
 EMAIL_USE_SSL = eval(environ['EMAIL_USE_SSL'])
+
+OTP_ATTEMPT_LIMIT = int(environ.get('OTP_ATTEMPT_LIMIT', 10000))
+OTP_ATTEMPT_TIMEOUT = int(environ.get('OTP_ATTEMPT_TIMEOUT', 0))
 

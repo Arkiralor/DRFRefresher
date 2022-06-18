@@ -54,6 +54,18 @@ class User(AbstractUser):
         blank=True,
         null=True
     )
+    unsuccessful_login_attempts = models.PositiveIntegerField(
+        default=0,
+        blank=True,
+        null=True,
+        help_text="Number of unsuccessful login attempts"
+    )
+    blocked_until = models.DateTimeField(
+        blank=True,
+        null=True,
+        help_text="Blocked until"
+    )
+
 
     def save(self, *args, **kwargs):
         '''

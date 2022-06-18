@@ -10,6 +10,7 @@ eventlet                ## Used to create a threaded server
 furl                    ## Used to create a URL object
 jupyter                 ## Used to create Jupyter notebooks for prototyping.
 pandas                  ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
+pillow                   ## Used to create and manipulate images
 psycopg2-binary         ## Used to connect to PostgreSQL database
 pytest-django           ## Used to automate testing of Django apps
 requests                ## Used to make HTTP requests to external APIs
