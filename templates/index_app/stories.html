@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+    DRF Refresher - Users
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index_styles.css' %}">
+{% endblock %}
+
+{% block main_title %}
+    Django Refresher - Users
+{% endblock %}
+
+{% block content %}
+    <h3>Latest Stories</h3>
+    &nbsp;
+    <ol>
+        {% for story in stories %}
+            <li>
+                <div>
+                    <h4>{{ story.title }}</h4>
+                    <p>{{ story.description }}</p>
+                     - {{ story.author }}
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

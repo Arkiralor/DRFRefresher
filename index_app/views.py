@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
 from os import environ
 
 from index_app import logger
+from storyapp.models import Story
+from storyapp.serializers import StorySerializer
 from userapp.models import User, UserProfile
 from userapp.serializers import UserSearchSerializer, UserProfileSerializer
 
@@ -53,3 +56,33 @@ def see_users(request):
         template_name='index_app/users.html',
         context=context
     )
+
+def see_stories(request):
+    """
+    View to preview the latest stories in the system.
+    """
+    logger.info("Stories page loaded.")
+
+    qryset = Story.objects.all().order_by('-created_at')[:15]
+
+    serialized_stories = StorySerializer(qryset, many=True).data
+
+    for story in serialized_stories:
+        del story['body']
+        del story['slug']
+        del story['updated_at']
+        author = User.objects.get(id=story['author'])
+        story['author'] = UserSearchSerializer(author).data.get('username')
+        logger.info(f"Story: {story}")
+
+    context = {
+        "stories": serialized_stories,
+    }
+
+    return render(
+        request, 
+        'index_app/stories.html', 
+        context
+    )
+        
+
