@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "13c19992-fe44-4fc9-84e3-8c8dcf047647",
 		"name": "DjangoRefresher",
-		"description": "A basic CRUD application in Django for users to publish stories using RestAPIs.",
+		"description": "A basic CRUD application in Django for users to publish stories using RestAPIs.\n\n**Notes:**\n\n1.  **AuthToken Format:** \"token string\"\n2.  **OTP Format:** \"<4xChar>-<4xChar>\"",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17779018"
 	},
@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testuser_001\",\r\n    \"password\": \"Password123\"\r\n}",
+							"raw": "{\r\n    \"username\": \"arkiralor\",\r\n    \"password\": \"Driftking11235\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,6 +111,288 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"token\": \"9240ce802afe8bf6e5f4d968866bb4181e201c11\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate New OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"arkiralor\",\r\n    \"email\": \"fablelordarkalon11235@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/user/otp-login/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"otp-login",
+								""
+							]
+						},
+						"description": "Generate a new OTP for a given registered user."
+					},
+					"response": [
+						{
+							"name": "Generate New OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"arkiralor\",\r\n    \"email\": \"fablelordarkalon11235@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/user/otp-login/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"otp-login",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jun 2022 06:35:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OTP generated for user: arkiralor and sent to fablelordarkalon11235@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Validate OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fablelordarkalon11235@gmail.com\",\r\n    \"otp\": \"4362-4117\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/user/otp-validate/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"otp-validate",
+								""
+							]
+						},
+						"description": "Get AuthToken via OTP."
+					},
+					"response": [
+						{
+							"name": "Validate OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"fablelordarkalon11235@gmail.com\",\r\n    \"otp\": \"8606-3f5a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/user/otp-validate/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"otp-validate",
+										""
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 15 Jun 2022 11:53:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"70490fa9ede1fc2d33a5f9d8684440e3a4e0fb4b\"\n}"
+						},
+						{
+							"name": "Expired OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"fablelordarkalon11235@gmail.com\",\r\n    \"otp\": \"80e4-73f9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/user/otp-validate/",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"user",
+										"otp-validate",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 15 Jun 2022 14:43:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"OTP has expired. Generate a new OTP.\"\n}"
 						}
 					]
 				},
@@ -217,7 +499,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Fablelord\",\r\n    \"last_name\": \"Arkalon\",\r\n    \"username\": \"arkiralor\",\r\n    \"password\": \"Driftking11235\",\r\n    \"email\": \"fablelordarkalon11235@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"first_name\": \"Default\",\r\n    \"last_name\": \"Author III\",\r\n    \"username\": \"default_author_003\",\r\n    \"password\": \"Password123\",\r\n    \"email\": \"default.author_003@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +603,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{UserToken}}",
+								"value": "{{AdminUserToken}}",
 								"type": "text"
 							}
 						],
@@ -337,6 +619,81 @@
 							]
 						},
 						"description": "API for admins to view all generated user-profiles."
+					},
+					"response": []
+				},
+				{
+					"name": "User Logout All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/user/logout/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a User's Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/user/profile/arkiralor-fablelordarkalon11235gmailcom",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"profile",
+								"arkiralor-fablelordarkalon11235gmailcom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get own Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/user/profile/edit",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"user",
+								"profile",
+								"edit"
+							]
+						}
 					},
 					"response": []
 				}
@@ -443,7 +800,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Little Red Riding Hood\",\r\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\r\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\r\n    \"genre\": \"fairy Tale\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Little Red Riding Hood\",\r\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\r\n    \"body\": \"The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep\",\r\n    \"genre\": \"fairy Tale\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -553,12 +910,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{UserToken}}",
+								"value": "{{AdminUserToken}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{BaseURL}}/story?story_slug=little-red-riding-hood-testuser_002",
+							"raw": "{{BaseURL}}/story?story_slug=art-turn-tv-tree-break-responsibility-hour-pass-default_author",
 							"host": [
 								"{{BaseURL}}"
 							],
@@ -568,7 +925,7 @@
 							"query": [
 								{
 									"key": "story_slug",
-									"value": "little-red-riding-hood-testuser_002"
+									"value": "art-turn-tv-tree-break-responsibility-hour-pass-default_author"
 								}
 							]
 						},
@@ -658,13 +1015,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseURL}}/story/little-red-riding-hood-testuser_002",
+							"raw": "{{BaseURL}}/story/ind/art-turn-tv-tree-break-responsibility-hour-pass-default_author",
 							"host": [
 								"{{BaseURL}}"
 							],
 							"path": [
 								"story",
-								"little-red-riding-hood-testuser_002"
+								"ind",
+								"art-turn-tv-tree-break-responsibility-hour-pass-default_author"
 							]
 						},
 						"description": "API for unauthenticated users to retrieve stories using the slug.  \n  \nCan also be used to create permalink to individual stories."
@@ -1419,6 +1777,112 @@
 			"description": "This app deals with the CRUD of locations in countries."
 		},
 		{
+			"name": "SearchApp",
+			"item": [
+				{
+					"name": "Search Stories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/search/story/?title=little red riding",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"search",
+								"story",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "little red riding"
+								},
+								{
+									"key": "like",
+									"value": "a young girl with a wolf",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search for stories either by their title or by their similarity to a given text (similarity needs work, maybe offload it to a queue)."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Story by Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/search/story/by?author=default_author",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"search",
+								"story",
+								"by"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "default_author"
+								}
+							]
+						},
+						"description": "Search stories by authors."
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AdminUserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/search/user/?email=prithoo11335@gmail.com",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"search",
+								"user",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "arkiralor",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "prithoo11335@gmail.com"
+								}
+							]
+						},
+						"description": "Search for a user by either their username or their email."
+					},
+					"response": []
+				}
+			],
+			"description": "App to search for stories and users in the project."
+		},
+		{
 			"name": "Site Index",
 			"request": {
 				"method": "GET",
@@ -1450,11 +1914,11 @@
 					"header": [
 						{
 							"key": "Date",
-							"value": "Wed, 08 Jun 2022 05:54:26 GMT"
+							"value": "Mon, 13 Jun 2022 02:57:05 GMT"
 						},
 						{
 							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.9.3"
+							"value": "WSGIServer/0.2 CPython/3.9.12"
 						},
 						{
 							"key": "Content-Type",
@@ -1470,7 +1934,7 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "1230"
+							"value": "2322"
 						},
 						{
 							"key": "X-Content-Type-Options",
@@ -1486,7 +1950,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Django Refresher</title>\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"static/css/index_styles.css\">\n    </head>\n    <body>\n        <h1>Welcome to the Backend API</h1>\n        <p>Please use the APIs described in the documentation to interact with this project.</p>\n        <table class=\"LinkTable\">\n            <tr>\n                <td style=\"font-size: medium;\">App</td>\n                <td style=\"font-size: medium;\">URL</td>\n            </tr>\n            <tr>\n                <td>UserApp</td>\n                <td>\n                    <a href=\"https://documenter.getpostman.com/view/17779018/Uz5JHayD#91ed5d75-c047-4b2a-ade3-17275c1905f6\">User\n                    Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>StoryApp</td>\n                <td>\n                    <a href=\"https://documenter.getpostman.com/view/17779018/Uz5JHayD#f91e4c95-7b89-4ea0-b273-a3d8fa30c151\">Story\n                    Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>SearchApp</td>\n                <td>\n                    <a href=\"/\">Search Application Docs</a>\n                </td>\n            </tr>\n        </table>\n    </body>\n</html>"
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>\n    DRF Refresher - Home\n</title>\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"static/css/index_styles.css\">\n\n\n    </head>\n    <body>\n        <div class=\"header\">\n            <ul>\n                <li>\n                    <div class=\"MainTitle\">\n                        <a href=\"/\">\n                            <h1>\n                            \n    Django Refresher\n\n                        </h1>\n                        </a>\n                        <p class=\"SubTitle\"> - \n                            <a href=https://www.linkedin.com/in/prithoo11335>Prithoo Medhi</a>\n                        </p>\n                    </div>\n                </li>\n                <li>\n                    <div class=\"logo\">\n                        <a href=\"/\">\n                            <img src=\"static/assets/images/logo_white_150p.png\" alt=\"logo\">\n                    \n                        </a>\n                    </div>\n                </li>\n            </ul>\n        </div>\n        <h2>Welcome to the Backend API</h2>\n        <p>Please use the APIs described in the documentation to interact with this project.</p>\n        <table class=\"LinkTable\">\n            <tr class=\"ColNames\">\n                <td style=\"font-size: 3em;\">Application</td>\n                <td style=\"font-size: 3em;\">Documentation URL</td>\n            </tr>\n            <tr>\n                <td>UserApp</td>\n                <td>\n                    <a href= https://documenter.getpostman.com/view/17779018/Uz5JHayD#91ed5d75-c047-4b2a-ade3-17275c1905f6 >User Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>StoryApp</td>\n                <td>\n                    <a href= https://documenter.getpostman.com/view/17779018/Uz5JHayD#f91e4c95-7b89-4ea0-b273-a3d8fa30c151 >Story Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>LocationApp</td>\n                <td>\n                    <a href= https://documenter.getpostman.com/view/17779018/Uz5JHayD#d40a3b73-0a38-43ed-84e8-d39b36839722 >Location Application Docs</a>\n                </td>\n            </tr>\n            <tr>\n                <td>SearchApp</td>\n                <td>\n                    <a href= / >Search Application Docs</a>\n                </td>\n            </tr>\n        </table>\n        <div>\n        &nbsp;\n    </div>\n        <div class=\"footer\">\n            <p>&copy; 2022, Prithoo Medhi (\n                <a href=\"https://www.github.com/Arkiralor\">Arkiralor@GitHub</a>)\n            </p>\n        </div>\n    </body>\n</html>"
 				}
 			]
 		}
