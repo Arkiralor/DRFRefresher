@@ -90,7 +90,9 @@ APP_NAME = "DRF Refresher"
 # Site Settings:
 SECRET_KEY = 'some_random_32_bit__hex_key'
 DEBUG = True/False
-ENV_TYPE = 'DEV/PROD'
+ENV_TYPE = DEV/PROD
+ALLOWED_HOSTS = " , "
+CORS_ORIGIN_WHITELIST = " , "
 
 # Database Settings:
 PGDATABASE = 'name_of_db'
@@ -113,6 +115,7 @@ SEARCHAPP_DOCS = 'link_to_docs'
 
 ## Personal Information
 LINKEDIN_PROFILE = " "
+GITHUB_PROFILE = " "
 
 ## Google Settings:
 # distance_matrix, geolocation, geocoding, timezone APIs allowed
@@ -125,6 +128,9 @@ EMAIL_USE_SSL = True/False
 EMAIL_PORT = int
 EMAIL_HOST_USER = " "
 EMAIL_HOST_PASSWORD = "Generated App Password"
+
+OTP_ATTEMPT_LIMIT = int
+OTP_ATTEMPT_TIMEOUT = int_minutes
 ```
 
 ## Documentation

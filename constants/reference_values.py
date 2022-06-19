@@ -14,6 +14,7 @@ class StringConstant:
     hypen = "-"
     underscore = "_"
     slash = sep
+    comma_space = ", "
 
 
 class ProjectConstants:

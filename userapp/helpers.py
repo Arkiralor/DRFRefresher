@@ -19,6 +19,9 @@ class EmailHelper:
     def send_new_user_email(cls, user, recipients: List[str]):
         """
         Send an email to the recipient
+        args:
+            user: User model instance
+            recipients: List[Plaintext email IDs]
         """
         recipient_list = []
         if len(recipients) < 1:
@@ -44,7 +47,7 @@ class EmailHelper:
         )
         try:
             resp = email.send()
-            logger.info(f"Email sent to {recipient_list}: {resp}")
+            logger.info(f"Email sent to {recipient_list[0]}: {resp}")
         except Exception as ex:
             logger.warn(f"Error sending email: {ex}")
 
@@ -52,6 +55,9 @@ class EmailHelper:
     def send_otp_email(cls, user, otp: str):
         """
         Send an email with the OTP to the user
+        args:
+            user: User model instance
+            otp: Plaintext OTP
         """
 
         recipient_list = [user.email]
@@ -72,7 +78,7 @@ class EmailHelper:
         )
         try:
             resp = email.send()
-            logger.info(f"Email sent to {recipient_list}: {resp}")
+            logger.info(f"Email sent to {recipient_list[0]}: {resp}")
         except Exception as ex:
             logger.warn(f"Error sending email: {ex}")
 
