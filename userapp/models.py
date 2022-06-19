@@ -102,6 +102,11 @@ class UserProfile(models.Model):
         related_name='owning_user'
     )
     profile_slug = models.SlugField(max_length=250, null=True, blank=True)
+    profile_picture = models.ImageField(
+        upload_to='images/profile_pictures/',
+        blank=True,
+        default='images/defaults/profile_picture.png'
+    )
     headline = models.CharField(max_length=128, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     location = models.ForeignKey(
