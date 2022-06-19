@@ -915,7 +915,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{BaseURL}}/story?story_slug=art-turn-tv-tree-break-responsibility-hour-pass-default_author",
+							"raw": "{{BaseURL}}/story?story_slug=william-tell-act-1-arkiralor",
 							"host": [
 								"{{BaseURL}}"
 							],
@@ -925,7 +925,7 @@
 							"query": [
 								{
 									"key": "story_slug",
-									"value": "art-turn-tv-tree-break-responsibility-hour-pass-default_author"
+									"value": "william-tell-act-1-arkiralor"
 								}
 							]
 						},
@@ -1093,6 +1093,75 @@
 							"body": "{\n    \"id\": \"60261b96-b2bc-4c2d-963e-36ac244876a3\",\n    \"title\": \"Little Red Riding Hood\",\n    \"slug\": \"little-red-riding-hood-testuser_002\",\n    \"description\": \"An European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.\",\n    \"body\": \"The story revolves around a girl called Little Red Riding Hood. In Perrault's versions of the tale, she is named after her red hooded cape/cloak that she wears. The girl walks through the woods to deliver food to her sickly grandmother (wine and cake depending on the translation). In the Grimms' version, her mother had ordered her to stay strictly on the path.\\n\\nA Big Bad Wolf wants to eat the girl and the food in the basket. He asks her where she's going. She says she's going to her grandma to deliver food.He secretly stalks her behind trees, bushes, shrubs, and patches of little and tall grass. He approaches Little Red Riding Hood, who naively tells him where she is going. He suggests that the girl pick some flowers as a present for her grandmother, which she does. In the meantime, he goes to the grandmother's house and gains entry by pretending to be her. He swallows the grandmother whole (in some stories, he locks her in the closet) and waits for the girl, disguised as the grandmother.\\n\\nGustave Doré's engraving of the scene: 'She was astonished to see how her grandmother looked.'\\n\\nWhen the girl arrives, she notices that her grandmother looks very strange. Little Red then says, 'What a deep voice you have!' ('The better to greet you with', responds the wolf), 'Goodness, what big eyes you have!' ('The better to see you with', responds the wolf), 'And what big hands you have!' ('The better to embrace you with', responds the wolf), and lastly, 'What a big mouth you have' ('The better to eat you with!', responds the wolf), at which point the wolf jumps out of the bed and eats her, too. Then he falls asleep. In Charles Perrault's version of the story (the first version to be published), the tale ends here. However, in later and more well-known versions, the story continues generally as follows:\\n\\nA woodcutter in the French version, but a hunter in the Brothers Grimm and traditional German versions, comes to the rescue with an axe, and cuts open the sleeping wolf. Little Red Riding Hood and her grandmother emerge shaken, but unharmed. Then they fill the wolf's body with heavy stones. The wolf awakens and attempts to flee, but the stones cause him to collapse and die. In Grimm's version, the wolf leaves the house and tries to drink out of a well, but the stones in his stomach cause him to fall in and drown.\",\n    \"genre\": \"fairy Tale\",\n    \"created_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"updated_at\": \"2022-06-07T06:24:30.808477+05:30\",\n    \"author\": \"209f33a7-3bc4-4ae6-b5db-d38f48ef5c1d\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Edit Story by Slug",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"William Tell Act 1\",\r\n    \"description\": \"William Tell's Story\",\r\n    \"body\": \"Testing the PUT API\",\r\n    \"genre\": \"folklore\",\r\n    \"author\": \"749c1a28-e85a-4535-b5dc-0db50ea9208e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/story/?story_slug=william-tell-act-1-arkiralor",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story",
+								""
+							],
+							"query": [
+								{
+									"key": "story_slug",
+									"value": "william-tell-act-1-arkiralor"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Story by Slug",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{UserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/story/?story_slug=william-tell-act-1-arkiralor",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"story",
+								""
+							],
+							"query": [
+								{
+									"key": "story_slug",
+									"value": "william-tell-act-1-arkiralor"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Django App to deal with story creation, retrieval and all such."

@@ -75,26 +75,36 @@ class IndividualStoryAPI(APIView):
         story_id = request.query_params.get('story_id')
         story_slug = request.query_params.get('story_slug')
 
+        identifier = ""
+
         if story_id and not story_slug:
-            story = Story.objects.get(id=story_id)
             identifier = story_id
+            try:
+                story = Story.objects.get(id=story_id)
+            except Story.DoesNotExist:
+                return Response(
+                    {
+                        "error": f"Story with identifier {identifier} not found"
+                    },
+                    status=status.HTTP_404_NOT_FOUND
+                )
         elif story_slug and not story_id:
-            story = Story.objects.get(slug=story_slug)
             identifier = story_slug
+            try:
+                story = Story.objects.get(slug=story_slug)
+            except Story.DoesNotExist:
+                return Response(
+                    {
+                        "error": f"Story with identifier {identifier} not found"
+                    },
+                    status=status.HTTP_404_NOT_FOUND
+                )
         else:
             return Response(
                 {
                     "error": "Please provide either story_id or story_slug"
                 },
                 status=status.HTTP_400_BAD_REQUEST
-            )
-
-        if not story:
-            return Response(
-                {
-                    "error": f"Story with identifier {identifier} not found"
-                },
-                status=status.HTTP_404_NOT_FOUND
             )
 
         serialized = StorySerializer(story)
@@ -184,6 +194,14 @@ class IndividualStoryAPI(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
+        if story.author != request.user and not request.user.is_superuser:
+            return Response(
+                {
+                    "error": f"You are not authorized to delete this story"
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
         story.delete()
         return Response(
             {
@@ -202,15 +220,15 @@ class IndividualStoryBySlugAPI(APIView):
         """
         GET method to get a single story.
         """
-        story = Story.objects.get(slug=slug)
-        if not story:
+        try:
+            story = Story.objects.get(slug=slug)
+        except Story.DoesNotExist:
             return Response(
                 {
                     "error": f"Story with slug {slug} not found"
                 },
                 status=status.HTTP_404_NOT_FOUND
             )
-
         serialized = StorySerializer(story)
         return Response(
             serialized.data,
