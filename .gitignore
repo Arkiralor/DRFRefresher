@@ -164,3 +164,7 @@ test_data/*.rtf
 temp/*.csv
 temp/SQLDump/*
 
+# User Nedia files:
+media/images/profile_pictures/*
+media/images/story_banners/*
+
