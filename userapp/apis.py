@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
 from django.db.models import Q
 from django.utils import timezone
@@ -214,7 +215,8 @@ class UserLoginView(GenericAPIView):
                 )
             return Response(
                 {
-                    "error": "Invalid Password"
+                    "error": "Invalid Password",
+                    "message": f"You have {self.MAX_ATTEMPTS - user.unsuccessful_login_attempts} attempts remaining."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
@@ -230,9 +232,17 @@ class UserLoginView(GenericAPIView):
 
         return Response(
             {
-                "token": str(token[0])
+                "status": True,
+                'user_id': user.id, 
+                'username': user.username,
+                'first_name': user.first_name, 
+                'last_name': user.last_name, 
+                'email': user.email,
+                "token": str(token[0]),
             },
-            status=status.HTTP_202_ACCEPTED
+            status=status.HTTP_202_ACCEPTED,
+            headers=self.headers,
+            content_type="application/json"
         )
 
 
@@ -431,6 +441,16 @@ class GenerateUserLoginOTPAPI(APIView):
             otp=hashed_otp
         )
 
+        if settings.DEBUG or settings.ENV_TYPE == "dev":
+            return Response(
+                {
+                    "message": "Sending OTP in Response.json() as Development Environment settings are activated.",
+                    "OTP": otp,
+                    "generating_user": user.username,
+                    "generated_at": timezone.now()
+                }
+            )
+
         EmailHelper.send_otp_email(user, otp)
         return Response(
             {
@@ -447,6 +467,13 @@ class UserValidateOTPAPI(APIView):
 
     MAX_OTP_ATTEMPTS = OTP_ATTEMPT_LIMIT
     USER_TIMEOUT = OTP_ATTEMPT_TIMEOUT
+
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type/JSON",
+        "Access-Control-Max-Age": "86400",
+    }
 
     def post(self, request):
         """
@@ -516,7 +543,8 @@ class UserValidateOTPAPI(APIView):
 
             return Response(
                 {
-                    "error": "Invalid OTP"
+                    "error": "Invalid OTP",
+                    "message": f"You have {self.MAX_OTP_ATTEMPTS - user_obj.unsuccessful_login_attempts} attempts remaining."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
@@ -546,5 +574,7 @@ class UserValidateOTPAPI(APIView):
                         'email': user_obj.email,
                         "token": str(token[0]),
                     },
-                    status=status.HTTP_202_ACCEPTED
+                    status=status.HTTP_202_ACCEPTED,
+                    headers=self.headers,
+                    content_type="application/json"
                 )
