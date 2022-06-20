@@ -164,3 +164,8 @@ test_data/*.rtf
 temp/*.csv
 temp/SQLDump/*
 
+## Media Files:
+media/images/profile_pictures/*.png
+media/images/profile_pictures/*.jpg
+media/images/profile_pictures/*.jpeg
+
