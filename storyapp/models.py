@@ -20,6 +20,12 @@ class Story(models.Model):
         editable=False
     )
     title = models.CharField(max_length=250, help_text="Title of the story.")
+    story_banner = models.ImageField(
+        upload_to='images/story_banners/',
+        blank=True,
+        default='images/defaults/story_banner.png',
+        help_text="Banner image for the story (Ref: 1280x640px)."
+    )
     slug = models.SlugField(max_length=250, null=True, blank=True)
     description = models.TextField(
         max_length=1000, null=True, blank=True, help_text="Short summary of the story.")

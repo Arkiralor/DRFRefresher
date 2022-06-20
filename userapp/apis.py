@@ -375,6 +375,91 @@ class GetAllProfilesAPI(APIView):
             status=status.HTTP_200_OK
         )
 
+class GetUserProfileAPI(APIView):
+    """
+    API endpoint to get a single user's profile
+    """
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, slug):
+        """
+        GET request handler to endpoint.
+
+        request.headers:
+            Authorization: "token <string>"
+
+        request.data:
+            None
+        """
+        user_profile = UserProfile.objects.get(user__user_slug=slug)
+        serialized = UserProfileSerializer(user_profile)
+        return Response(
+            serialized.data,
+            status=status.HTTP_200_OK
+        )
+
+
+class GetOwnUserProfileAPI(APIView):
+    """
+    API endpoint to edit a single user's profile
+    """
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        """
+        GET request handler to endpoint.
+
+        request.headers:
+            Authorization: "token <string>"
+
+        request.data:
+            None
+        """
+        user_profile = UserProfile.objects.get(user__id=request.user.id)
+        serialized = UserProfileSerializer(user_profile)
+        return Response(
+            serialized.data,
+            status=status.HTTP_200_OK
+        )
+
+    def put(self, request):
+        """
+        PUT request handler to endpoint.
+
+        request.headers:
+            Authorization: "token <string>"
+
+        request.data:
+            profile_picture: Optional[str]
+            headline: Optional[str]
+            bio: Optional[str]
+            location: Optional[location]
+        """
+        user_profile = UserProfile.objects.get(user__id=request.user.id)
+        data = request.data
+        serialized = UserProfileSerializer(user_profile, data=data)
+
+        if serialized.is_valid():
+            serialized.save()
+            return Response(
+                {
+                    "success": f"Profile: {serialized.data.get('user__username')} updated."
+                },
+                status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                {
+                    "error": str(serialized.errors)
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
 
 class GenerateUserLoginOTPAPI(APIView):
     """
