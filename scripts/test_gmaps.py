@@ -7,7 +7,7 @@ from external_api_handlers.google_api import GoogleMapsAPIHandler
 from scripts import logger
 
 
-def test_get_city_geocode():
+def main():
     cities = ['mumbai', 'kolkata', 'berlin', 'paris', 'new york',
               'london', 'rome', 'madrid', 'tokyo', 'sydney']
     for city in cities:
@@ -21,4 +21,4 @@ def test_get_city_geocode():
 
 
 if __name__ == '__main__':
-    test_get_city_geocode()
+    main()
