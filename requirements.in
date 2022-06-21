@@ -1,21 +1,21 @@
-autopep8                ## Used to format the code
-coverage                ## Used to test code coverage and which tests need to be written
-faker                   ## Used to generate fake data
-django                  ## Main framework for project
-django-cors-headers     ## Used to allow cross-origin requests
-django-dotenv           ## Used to read environment variables from .env file
-djangorestframework     ## Used to create RESTful APIs
-drf-yasg                ## Used to autogenerate Swagger documentation
-eventlet                ## Used to create a threaded server
-furl                    ## Used to create a URL object
-jupyter                 ## Used to create Jupyter notebooks for prototyping.
-pandas                  ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
-pillow                   ## Used to create and manipulate images
-psycopg2-binary         ## Used to connect to PostgreSQL database
-pytest-django           ## Used to automate testing of Django apps
-requests                ## Used to make HTTP requests to external APIs
-spacy                   ## Used to perform natural language processing
-spacy-langdetect        ## Language detector module used to detect language of text
-scipy                   ## Used to perform scientific mathematical operations
-sympy                   ## Used to perform symbolic mathematical operations
-tldextract              ## Used to extract the domain name from a URL
+autopep8==1.6.0                     ## Used to format the code
+coverage==6.4                       ## Used to test code coverage and which tests need to be written
+django==4.0.4                       ## Main framework for project
+django-cors-headers==3.12.0         ## Used to allow cross-origin requests
+django-dotenv==1.4.2                ## Used to read environment variables from .env file
+djangorestframework==3.13.1         ## Used to create RESTful APIs
+drf-yasg==1.20.0                    ## Used to autogenerate Swagger documentation
+eventlet==0.33.1                    ## Used to create a threaded server
+faker==13.13.0                      ## Used to generate fake data
+furl==2.1.3                         ## Used to create a URL object
+jupyter==1.0.0                      ## Used to create Jupyter notebooks for prototyping.
+pandas==1.4.2                       ## Used to read and write data in tabular format i.e, Dataframes and for datascience implementations
+pillow==9.1.1                       ## Used to create and manipulate images
+psycopg2-binary==2.9.3              ## Used to connect to PostgreSQL database
+pytest-django==4.5.2                ## Used to automate testing of Django apps
+requests==2.27.1                    ## Used to make HTTP requests to external APIs
+scipy==1.8.1                        ## Used to perform scientific mathematical operations
+spacy==3.3.0                        ## Used to perform natural language processing
+spacy-langdetect==0.1.2             ## Language detector module used to detect language of text
+sympy==1.10.1                       ## Used to perform symbolic mathematical operations
+tldextract==3.3.0                   ## Used to extract the domain name from a URL
