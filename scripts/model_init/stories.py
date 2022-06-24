@@ -16,7 +16,11 @@ class AddStory:
         self.user = User.objects.filter(username=username).first()
         if not self.user:
             logger.error(f'User: {username} not found')
-            raise Exception(f'User: {username} not found')
+            self.user = User.objects.create(
+                username=username,
+                password = "Password123",
+                email = f"{username}@gmail.com"
+            )
         self.user_id = self.user.id
 
     def generate_story(self):
