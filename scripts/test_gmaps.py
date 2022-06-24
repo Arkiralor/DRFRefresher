@@ -17,7 +17,7 @@ def main():
             continue
         logger.info(f"Location: {location.city_town}, {location.country.name}")
         response = GoogleMapsAPIHandler.get_city_geocode(location)
-        print(response)
+        logger.info(response)
 
 
 if __name__ == '__main__':

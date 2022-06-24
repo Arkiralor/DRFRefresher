@@ -49,7 +49,7 @@ def see_users(request):
         "users": users,
     }
 
-    print(f"Response: {context}")
+    logger.info(f"Response: {context}")
 
     return render(
         request,

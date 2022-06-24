@@ -94,7 +94,7 @@ class LanguageHandlers:
 
             return resp
         except Exception as ex:
-            print(f"Error: {ex}")
+            logger.warning(f"Error: {ex}")
 
 
 @ln.factory('language_detector')

@@ -61,9 +61,6 @@ class AddStory:
 
         for i in range(n_entries):
             resp = self.generate_story()
-            # print("\n\n\n")
-            # print(f"Story: {resp}")
-            # print("\n\n\n")
             serialized = StorySerializer(data=resp)
             if serialized.is_valid():
                 serialized.save()

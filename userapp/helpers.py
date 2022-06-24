@@ -94,7 +94,7 @@ class OTPHelper:
         """
         logger.info("Generating OTP")
 
-        ## OTP is a 8 character hex sequence
+        ## OTP is a 4 character hex sequence
         part_1 = token_hex(2)
         part_2 = token_hex(2)
 
