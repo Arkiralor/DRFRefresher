@@ -163,3 +163,7 @@ EMAIL_USE_SSL = eval(environ['EMAIL_USE_SSL'])
 OTP_ATTEMPT_LIMIT = int(environ.get('OTP_ATTEMPT_LIMIT', 10000))
 OTP_ATTEMPT_TIMEOUT = int(environ.get('OTP_ATTEMPT_TIMEOUT', 0))
 
+## Razorpay credentials:
+RAZORPAY_KEY = environ.get('RAZORPAY_KEY_ID', None)
+RAZORPAY_SECRET = environ.get('RAZORPAY_SECRET_KEY', None)
+

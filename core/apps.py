@@ -18,4 +18,5 @@ CUSTOM_APPS = [
     'index_app.apps.IndexAppConfig',
     'locationapp.apps.LocationappConfig',
     'blacklist.apps.BlacklistConfig',
+    'payment_app.apps.PaymentAppConfig'
 ]
