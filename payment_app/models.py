@@ -84,8 +84,7 @@ class SubscriptionTransaction(models.Model):
     )
     subscription_order = models.ForeignKey(
         SubscriptionOrder,
-        on_delete=models.CASCADE,
-        related_name='order'
+        on_delete=models.CASCADE
     )
     transaction_id = models.CharField(
         max_length=128
@@ -134,8 +133,7 @@ class UpcomingSubscription(models.Model):
     )
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
-        related_name='user'
+        on_delete=models.CASCADE
     )
     order = models.ForeignKey(
         SubscriptionOrder,
@@ -144,8 +142,7 @@ class UpcomingSubscription(models.Model):
     )
     transaction = models.ForeignKey(
         SubscriptionTransaction,
-        on_delete=models.CASCADE,
-        related_name='transaction'
+        on_delete=models.CASCADE
     )
     start_on = models.DateTimeField(
         null=True,
@@ -185,16 +182,18 @@ class Subscriber(models.Model):
     )
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
-        related_name='user'
+        on_delete=models.CASCADE
     )
     order = models.ForeignKey(
         SubscriptionOrder,
-        on_delete=models.CASCADE,
-        related_name='order'
+        on_delete=models.CASCADE
     )
     is_subscribed = models.BooleanField(
         default=False
+    )
+    subscribed_from = models.DateTimeField(
+        null=True,
+        blank=True
     )
     subscribed_till = models.DateTimeField(
         null=True,
@@ -211,5 +210,5 @@ class Subscriber(models.Model):
     class Meta:
         verbose_name = "Subscriber"
         verbose_name_plural = "Subscribers "
-        ordering = ('-start_on',)
-        unique_together = ('user', 'order', 'start_on')
+        ordering = ('-subscribed_from',)
+        unique_together = ('user', 'order', 'subscribed_from')

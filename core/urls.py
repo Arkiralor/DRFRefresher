@@ -10,10 +10,11 @@ from core import logger
 
 
 urlpatterns = [
-    path('blacklist/', include('blacklist.urls')),    
+    path('blacklist/', include('blacklist.urls')),   
+    path('location/', include('locationapp.urls')),
+    path('payment/', include('payment_app.urls')), 
     path('search/', include('searchapp.urls')),
     path('story/', include('storyapp.urls')),
-    path('location/', include('locationapp.urls')),
     path('user/', include('userapp.urls')),    
 ]
 

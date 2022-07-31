@@ -13,7 +13,7 @@ class RazorpayPaymentHandler:
     razorpay_secret = settings.RAZORPAY_SECRET
 
     @classmethod
-    def create_sub_order(cls, amount: int = None, currency: str = None, order_description: str = None):
+    def create_sub_order(cls, user_id=None, amount: int = None, currency: str = None, order_description: str = None, *args, **kwargs):
         """
         Create an order for the amount
         args:
@@ -30,6 +30,7 @@ class RazorpayPaymentHandler:
         client = razorpay.Client(auth=(cls.razorpay_key, cls.razorpay_secret))
         order = client.order.create(order_data)
         new_subscription_order = SubscriptionOrder.objects.create(
+            user=user_id,
             payment_id=order.get('id'),
             order_description=order_description,
             amount=amount,
