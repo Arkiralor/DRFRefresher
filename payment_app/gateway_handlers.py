@@ -38,7 +38,6 @@ class RazorpayPaymentHandler:
 
         return new_subscription_order
 
-
     @classmethod
     def handle_sub_order_payment(cls, order_id: str):
         """
@@ -56,8 +55,8 @@ class RazorpayPaymentHandler:
                 transaction_status=order.get('status')
             )
             resp = {
-            "error": "Payment not successful for orderId: {}".format(order_id)
-        }
+                "error": "Payment not successful for orderId: {}".format(order_id)
+            }
 
         subscription_order = SubscriptionOrder.objects.get(payment_id=order_id)
         subscription_order.is_paid = True
@@ -70,7 +69,8 @@ class RazorpayPaymentHandler:
             transaction_status=order.get('status')
         )
 
-        subscriber = Subscriber.objects.filter(user=subscription_order.user).first()
+        subscriber = Subscriber.objects.filter(
+            user=subscription_order.user).first()
         if subscriber:
             upcoming_subscription = UpcomingSubscription.objects.create(
                 user=subscription_order.user,
@@ -83,13 +83,11 @@ class RazorpayPaymentHandler:
         subscriber.order = subscription_order
         subscriber.save()
 
-        order_serialized, transaction_serialized = SubscriptionOrderSerializer(subscription_order).data, SubscriptionTransactionSerializer(new_subscription_transaction).data
+        order_serialized, transaction_serialized = SubscriptionOrderSerializer(
+            subscription_order).data, SubscriptionTransactionSerializer(new_subscription_transaction).data
         resp = {
             "order": order_serialized,
             "transaction": transaction_serialized
         }
-        
+
         return resp
-
-
-            
