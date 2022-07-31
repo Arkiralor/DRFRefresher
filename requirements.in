@@ -13,6 +13,7 @@ pandas==1.4.2                       ## Used to read and write data in tabular fo
 pillow==9.1.1                       ## Used to create and manipulate images
 psycopg2-binary==2.9.3              ## Used to connect to PostgreSQL database
 pytest-django==4.5.2                ## Used to automate testing of Django apps
+razorpay                            ## Used to handle payments
 requests==2.27.1                    ## Used to make HTTP requests to external APIs
 scipy==1.8.1                        ## Used to perform scientific mathematical operations
 spacy==3.3.0                        ## Used to perform natural language processing
