@@ -33,9 +33,12 @@ if settings.DEBUG or settings.ENV_TYPE == 'dev':
     ]
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    logger.info('Running in development mode')
 
 ## These url patterns are only available in a production environment
 elif settings.ENV_TYPE == 'prod' and not settings.DEBUG:
     urlpatterns += [
         path('8ccb652246c932d0/', admin.site.urls),
     ]
+
+    logger.info('Running in production mode')
