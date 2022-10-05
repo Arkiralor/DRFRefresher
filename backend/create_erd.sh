@@ -1,0 +1,1 @@
+python manage.py graph_models -a > ../docs/database_schema/database_schema.dot
