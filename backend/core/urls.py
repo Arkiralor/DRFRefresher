@@ -32,7 +32,7 @@ if settings.DEBUG or settings.ENV_TYPE == 'dev':
                 cache_timeout=0), name='schema_redoc'),
     ]
 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 ## These url patterns are only available in a production environment
 elif settings.ENV_TYPE == 'prod' and not settings.DEBUG:

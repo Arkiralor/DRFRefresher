@@ -1,9 +1,11 @@
 autopep8==1.6.0                     ## Used to format the code
+boto3                               ## AWS library for Python.
 coverage==6.4                       ## Used to test code coverage and which tests need to be written
 django==4.0.4                       ## Main framework for project
 django-cors-headers==3.12.0         ## Used to allow cross-origin requests
 django-dotenv==1.4.2                ## Used to read environment variables from .env file
 djangorestframework==3.13.1         ## Used to create RESTful APIs
+django-storages                     ## Used to enable cloud storage for Django.
 drf-yasg==1.20.0                    ## Used to autogenerate Swagger documentation
 eventlet==0.33.1                    ## Used to create a threaded server
 faker==13.13.0                      ## Used to generate fake data

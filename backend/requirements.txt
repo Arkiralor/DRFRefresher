@@ -30,6 +30,12 @@ blis==0.7.7
     # via
     #   spacy
     #   thinc
+boto3==1.24.88
+    # via -r requirements.in
+botocore==1.27.88
+    # via
+    #   boto3
+    #   s3transfer
 catalogue==2.0.7
     # via
     #   spacy
@@ -72,11 +78,14 @@ django==4.0.4
     # via
     #   -r requirements.in
     #   django-cors-headers
+    #   django-storages
     #   djangorestframework
     #   drf-yasg
 django-cors-headers==3.12.0
     # via -r requirements.in
 django-dotenv==1.4.2
+    # via -r requirements.in
+django-storages==1.13.1
     # via -r requirements.in
 djangorestframework==3.13.1
     # via
@@ -141,6 +150,10 @@ jinja2==3.1.2
     #   nbconvert
     #   notebook
     #   spacy
+jmespath==1.0.1
+    # via
+    #   boto3
+    #   botocore
 jsonschema==4.6.0
     # via nbformat
 jupyter==1.0.0
@@ -283,6 +296,7 @@ pytest-django==4.5.2
     # via -r requirements.in
 python-dateutil==2.8.2
     # via
+    #   botocore
     #   faker
     #   jupyter-client
     #   pandas
@@ -319,6 +333,8 @@ ruamel-yaml==0.17.21
     # via drf-yasg
 ruamel-yaml-clib==0.2.6
     # via ruamel-yaml
+s3transfer==0.6.0
+    # via boto3
 scipy==1.8.1
     # via -r requirements.in
 send2trash==1.8.0
@@ -401,7 +417,9 @@ uritemplate==4.1.1
     #   coreapi
     #   drf-yasg
 urllib3==1.26.9
-    # via requests
+    # via
+    #   botocore
+    #   requests
 wasabi==0.9.1
     # via
     #   spacy
